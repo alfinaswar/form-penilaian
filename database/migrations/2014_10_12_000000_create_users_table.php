@@ -18,7 +18,11 @@ return new class extends Migration {
             $table->string('password');
             $table->string('nama_sekolah');  // Nama Sekolah
             $table->string('npsn')->nullable();  // Nomor Pokok Sekolah Nasional (opsional)
+            $table->string('akreditasi')->nullable();  // Nomor Pokok Sekolah Nasional (opsional)
             $table->string('jenjang')->nullable();  // SD / SMP / SMA / SMK
+            $table->string('total_guru')->nullable();  // SD / SMP / SMA / SMK
+            $table->string('total_siswa')->nullable();  // SD / SMP / SMA / SMK
+            $table->string('total_kelas')->nullable();  // SD / SMP / SMA / SMK
             $table->string('status_sekolah')->nullable();  // Negeri / Swasta
             $table->text('alamat_sekolah')->nullable();  // Alamat lengkap sekolah
             $table->string('kota')->nullable();  // Kota atau Kabupaten
@@ -29,6 +33,7 @@ return new class extends Migration {
             $table->string('email_sekolah')->nullable();  // Email resmi sekolah
             $table->string('website_sekolah')->nullable();  // Website sekolah
             $table->text('deskripsi_sekolah')->nullable();  // Deskripsi tambahan tentang sekolah
+            $table->string('logo')->nullable();  // Logo sekolah
             $table->rememberToken();
             $table->timestamps();
         });

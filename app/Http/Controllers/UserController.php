@@ -25,7 +25,28 @@ class UserController extends Controller
         return view('users.index', compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
-
+    public function profil()
+    {
+        $sekolah = User::where('id', auth()->user()->id)->first();
+        return view('profil.index', compact('sekolah'));
+    }
+    public function editProfil($id)
+    {
+        $sekolah = User::where('id', $id)->first();
+        return view('profil.edit', compact('sekolah'));
+    }
+    public function updateProfil(Request $request, $id)
+    {
+        $data = $request->all();
+        $sekolah = User::where('id', $id)->first();
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $file->storeAs('public/logo', $file->getClientOriginalName());
+            $data['logo'] = $file->getClientOriginalName();
+        }
+        $sekolah->update($data);
+        return redirect()->route('profil.index')->with('success', 'Profil berhasil diubah');
+    }
     /**
      * Show the form for creating a new resource.
      *
