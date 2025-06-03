@@ -10,12 +10,14 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('kuisoners', function (Blueprint $table) {
+        Schema::create('balasan_kuisoners', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kuisoner');
-            $table->string('file_kuisoner');
-            $table->string('status');
-            $table->string('keterangan');
+            $table->string('kuisoner_id', 100)->nullable();
+            $table->string('responden_id', 100)->nullable();
+            $table->string('file_kuisoner', 255)->nullable();
+            $table->string('bukti_dukung', 255)->nullable();
+            $table->text('keterangan')->nullable();
+
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('kuisoners');
+        Schema::dropIfExists('balasan_kuisoners');
     }
 };

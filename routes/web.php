@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BalasanKuisonerController;
 use App\Http\Controllers\KuisonerController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,8 +41,24 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::prefix('upload-kuisoner')->group(function () {
         Route::GET('/upload-kuisoner', [KuisonerController::class, 'index'])->name('kuisoner.index');
-        Route::GET('/upload-kuisoner/edit/{id}', [KuisonerController::class, 'editProfil'])->name('kuisoner.edit');
+        Route::GET('/upload-kuisoner/create', [KuisonerController::class, 'create'])->name('kuisoner.create');
+        Route::GET('/upload-kuisoner/isi', [KuisonerController::class, 'isi'])->name('kuisoner.isi');
+        Route::POST('/upload-kuisoner/store', [KuisonerController::class, 'store'])->name('kuisoner.store');
+        Route::DELETE('/upload-kuisoner/destroy/{id}', [KuisonerController::class, 'destroy'])->name('kuisoner.destroy');
+        Route::GET('/upload-kuisoner/edit/{id}', [KuisonerController::class, 'edit'])->name('kuisoner.edit');
         Route::PUT('/upload-kuisoner/update/{id}', [KuisonerController::class, 'updateProfil'])->name('kuisoner.update');
+
+    });
+    Route::prefix('isi-kuisoner')->group(function () {
+        Route::GET('/isi-kuisoner', [BalasanKuisonerController::class, 'index'])->name('isi.index');
+        Route::GET('/isi-kuisoner/create/{id}', [BalasanKuisonerController::class, 'create'])->name('isi.create');
+        Route::GET('/upload-kuisoner/isi', [BalasanKuisonerController::class, 'isi'])->name('isi.isi');
+        Route::POST('/isi-kuisoner/store', [BalasanKuisonerController::class, 'store'])->name('isi.store');
+        Route::DELETE('/isi-kuisoner/destroy/{id}', [BalasanKuisonerController::class, 'destroy'])->name('isi.destroy');
+        Route::GET('/isi-kuisoner/edit/{id}', [BalasanKuisonerController::class, 'edit'])->name('isi.edit');
+        Route::GET('/isi-kuisoner/show/{id}', [BalasanKuisonerController::class, 'show'])->name('isi.show');
+
+        Route::PUT('/isi-kuisoner/update/{id}', [BalasanKuisonerController::class, 'updateProfil'])->name('isi.update');
 
     });
     Route::prefix('bukti-upload')->group(function () {

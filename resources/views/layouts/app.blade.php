@@ -15,20 +15,24 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
-    <title>Yash Admin Sales Management System</title>
+    <title>Kuisoner</title>
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 
     <link href="{{ asset('') }}assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="{{ asset('') }}assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <!-- tagify-css -->
 
     <!-- Style css -->
     <link href="{{ asset('') }}assets/css/style.css" rel="stylesheet">
 
 </head>
+
 
 <body data-typography="poppins" data-theme-version="light" data-layout="vertical" data-nav-headerbg="light"
     data-headerbg="color_1">
@@ -98,6 +102,12 @@
                         <div class="header-right d-flex align-items-center">
                             <div class="input-group search-area">
                             </div>
+                            <div class="ml-auto">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Logout</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </nav>
@@ -127,6 +137,8 @@
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
+
+                    {{-- @can('profile-sekolah') --}}
                     <li>
                         <a href="{{ route('profil.index') }}">
                             <div class="menu-icon">
@@ -140,6 +152,10 @@
                             <span class="nav-text">Profile Sekolah</span>
                         </a>
                     </li>
+                    {{-- @endcan
+                    @can('upload-kuisoner') --}}
+
+
                     <li>
                         <a href="{{ route('kuisoner.index') }}">
                             <div class="menu-icon">
@@ -153,6 +169,23 @@
                             <span class="nav-text">Upload Kuisoner</span>
                         </a>
                     </li>
+                    {{-- @endcan
+                    @can('isi-kuisoner') --}}
+                    <li>
+                        <a href="{{ route('isi.index') }}">
+                            <div class="menu-icon">
+                                <!-- Icon: Upload/Document for Kuisoner -->
+                                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path
+                                        d="M16 16v2H8v-2H5v4h14v-4h-3zm-4-1c.55 0 1-.45 1-1V5.83l2.59 2.58L16 7l-4-4-4 4 1.41 1.41L11 5.83V14c0 .55.45 1 1 1z"
+                                        fill="#90959F" />
+                                </svg>
+                            </div>
+                            <span class="nav-text">Isi Kuisoner</span>
+                        </a>
+                    </li>
+                    {{-- @endcan
+                    @can('upload-bukti') --}}
                     <li>
                         <a href="{{ route('bukti.index') }}">
                             <div class="menu-icon">
@@ -166,7 +199,9 @@
                             <span class="nav-text">Upload Bukti</span>
                         </a>
                     </li>
+                    {{-- @endcan --}}
                 </ul>
+                {{-- @can('management-user') --}}
                 <ul class="metismenu" id="menu">
                     <li class="menu-title">Management User</li>
                     <li>
@@ -196,6 +231,7 @@
                         </a>
                     </li>
                 </ul>
+                {{-- @endcan --}}
             </div>
         </div>
 
@@ -252,13 +288,12 @@
 
 
     <!-- tagify -->
-
-
     <script src="{{ asset('') }}assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('') }}assets/js/plugins-init/datatables.init.js"></script>
+
     <script src="{{ asset('') }}assets/vendor/datatables/js/dataTables.buttons.min.js"></script>
     <script src="{{ asset('') }}assets/vendor/datatables/js/buttons.html5.min.js"></script>
     <script src="{{ asset('') }}assets/vendor/datatables/js/jszip.min.js"></script>
-    <script src="{{ asset('') }}assets/js/plugins-init/datatables.init.js"></script>
 
     <!-- Apex Chart -->
 
@@ -277,3 +312,4 @@
 </body>
 
 </html>
+@stack('scripts')
