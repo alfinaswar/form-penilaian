@@ -77,7 +77,28 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success', 'User created successfully');
     }
+    public function Register(Request $request)
+    {
 
+        $user = User::create([
+            'name' => $request->input('nama_sekolah'),
+            'npsn' => $request->input('npsn'),
+            'reg_number' => $this->generateRegNumber(),
+            'nama_sekolah' => $request->input('nama_sekolah'),
+            'jenjang' => $request->input('jenjang'),
+            'status_sekolah' => $request->input('status_sekolah'),
+            'alamat_sekolah' => $request->input('alamat_sekolah'),
+            'cp' => $request->input('cp'),
+            'telepon_sekolah' => $request->input('telepon_sekolah'),
+            'email_sekolah' => $request->input('email_sekolah'),
+            'email' => $request->input('email_sekolah'),
+            'password' => Hash::make($request->input('password')),
+        ]);
+
+        $user->assignRole('Admin');
+
+        return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login menggunakan email yang didaftarkan.');
+    }
     /**
      * Display the specified resource.
      *
@@ -149,5 +170,29 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');
+    }
+    protected function generateRegNumber()
+    {
+        $now = now();
+        $tahun = $now->format('Y');
+        $bulan = $now->format('m');
+
+        // Ambil nomor urut terakhir untuk bulan dan tahun ini
+        $lastUser = User::whereYear('created_at', $tahun)
+            ->whereMonth('created_at', $bulan)
+            ->whereNotNull('reg_number')
+            ->orderBy('reg_number', 'desc')
+            ->first();
+
+        if ($lastUser && preg_match('/^R' . $tahun . $bulan . '(\d{4})$/', $lastUser->reg_number, $matches)) {
+            $lastNumber = (int) $matches[1];
+            $nextNumber = $lastNumber + 1;
+        } else {
+            $nextNumber = 1;
+        }
+
+        $regNumber = 'R' . $tahun . $bulan . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+
+        return $regNumber;
     }
 }

@@ -27,7 +27,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home/kuisoner', [HomeController::class, 'kuisoner'])->name('home.kuisoner');
 
+Route::POST('/register-sekolah', [UserController::class, 'Register'])->name('users.register');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);

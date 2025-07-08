@@ -3,171 +3,79 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-xl-12 col-xxl-12">
-            <div class="card">
-                <div class="card-body p-0">
-                    <div class="table-responsive active-projects">
-                        <div class="tbl-caption">
-                            <h4 class="heading mb-0">Active Projects</h4>
-                        </div>
-                        <table id="projects-tbl" class="table">
-                            <thead>
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Progres Kuanta</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="datatable-progres" class="table table-bordered table-hover align-middle">
+                            <thead class="table-light">
                                 <tr>
-                                    <th>Project Name</th>
-                                    <th>Project Lead</th>
-                                    <th>Progress</th>
-                                    <th>Assignee</th>
-                                    <th>Status</th>
-                                    <th>Due Date</th>
+                                    <th style="width: 180px;">No Registrasi</th>
+                                    <th style="width: 220px;">Nama Sekolah</th>
+                                    <th style="width: 180px;">Progres Kuesioner</th>
+                                    <th style="width: 180px;">Progres Bukti Dukung</th>
+                                    <th style="width: 150px;">Status</th>
+                                    <th style="width: 150px;">Isi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Batman</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="images/contacts/pic1.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <p class="mb-0 ms-2">Liam Risher</p>
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <div class="tbl-progress-box">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary"
-                                                    style="width:53%; height:5px; border-radius:4px;" role="progressbar">
-                                                </div>
+                                @foreach ($user as $item)
+                                    <tr>
+                                        <td>
+                                            <span class="badge bg-info text-dark fs-6">R2024070001</span>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="{{ asset('assets/images/bglogin/kuantalogo.png') }}"
+                                                    class="avatar avatar-sm rounded-circle border me-2" alt="Logo Sekolah"
+                                                    style="width:40px; height:40px;">
+                                                <span class="fw-semibold">SDN Contoh 1</span>
                                             </div>
-                                            <span class="text-primary">53%</span>
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <div class="avatar-list avatar-list-stacked">
-                                            <img src="images/contacts/pic1.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <img src="images/contacts/pic555.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <img src="images/contacts/pic666.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <span class="badge badge-primary light border-0">Inprogress</span>
-                                    </td>
-                                    <td>
-                                        <span>06 Sep 2021</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Bender Project</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="images/contacts/pic2.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <p class="mb-0 ms-2">Oliver Noah</p>
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <div class="tbl-progress-box">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-danger"
-                                                    style="width:30%; height:5px; border-radius:4px;" role="progressbar">
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="progress flex-grow-1" style="height: 8px;">
+                                                    <div class="progress-bar bg-success" style="width: 75%;" role="progressbar">
+                                                    </div>
                                                 </div>
+                                                <span class="ms-2 text-success fw-bold">75%</span>
                                             </div>
-                                            <span class="text-danger">30%</span>
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <div class="avatar-list avatar-list-stacked">
-                                            <img src="images/contacts/pic1.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <img src="images/contacts/pic555.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <img src="images/contacts/pic666.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <span class="badge badge-danger light border-0">Pending</span>
-                                    </td>
-                                    <td>
-                                        <span>06 Sep 2021</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Canary</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="images/contacts/pic888.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <p class="mb-0 ms-2">Elijah James</p>
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <div class="tbl-progress-box">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success"
-                                                    style="width:40%; height:5px; border-radius:4px;" role="progressbar">
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="progress flex-grow-1" style="height: 8px;">
+                                                    <div class="progress-bar bg-warning" style="width: 40%;" role="progressbar">
+                                                    </div>
                                                 </div>
+                                                <span class="ms-2 text-warning fw-bold">40%</span>
                                             </div>
-                                            <span class="text-success">40%</span>
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <div class="avatar-list avatar-list-stacked">
-                                            <img src="images/contacts/pic666.jpg" class="avatar avatar-md  rounded-circle"
-                                                alt="">
-                                            <img src="images/contacts/pic555.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <img src="images/contacts/pic1.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <img src="images/contacts/pic666.jpg" class="avatar avatar-md  rounded-circle"
-                                                alt="">
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <span class="badge badge-success light border-0">Completed</span>
-                                    </td>
-                                    <td>
-                                        <span>06 Sep 2021</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Casanova</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="images/contacts/pic1.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <p class="mb-0 ms-2">William Risher</p>
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <div class="tbl-progress-box">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary"
-                                                    style="width:53%; height:5px; border-radius:4px;" role="progressbar">
-                                                </div>
-                                            </div>
-                                            <span class="text-primary">53%</span>
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <div class="avatar-list avatar-list-stacked">
-                                            <img src="images/contacts/pic1.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <img src="images/contacts/pic555.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                            <img src="images/contacts/pic666.jpg" class="avatar avatar-md rounded-circle"
-                                                alt="">
-                                        </div>
-                                    </td>
-                                    <td class="pe-0">
-                                        <span class="badge badge-primary light border-0">Inprogress</span>
-                                    </td>
-                                    <td>
-                                        <span>06 Sep 2021</span>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-warning text-dark">Sedang Proses</span>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('home.kuisoner') }}" class="btn btn-primary">Isi</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
-                @endsection
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- DataTables JS (jika belum include di layout) --}}
+    @push('scripts')
+        <script>
+            $(document).ready(function () {
+                $('#datatable-progres').DataTable({
+
+                });
+            });
+        </script>
+    @endpush
+@endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -24,6 +25,12 @@ class HomeController extends Controller
      */
     public function index(): View
     {
-        return view('home');
+        $user = User::get();
+        return view('home', compact('user'));
+    }
+    public function kuisoner()
+    {
+        $user = User::get();
+        return view('kuisoner', compact('user'));
     }
 }

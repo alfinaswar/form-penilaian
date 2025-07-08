@@ -19,73 +19,85 @@
 </head>
 
 <body class="vh-100">
-    <div class=" authincation h-100">
+    <div class="authincation h-100">
         <div class="container h-100">
             <div class="row justify-content-center h-100 align-items-center">
-                <div class="col-md-6">
-                    <div class="authincation-content">
-                        <div class="row no-gutters">
-                            <div class="col-xl-12">
-                                <div class="auth-form">
-                                    <div class="text-center mb-3">
-                                        <a href="index.html"><img src="{{asset('')}}assets/images/logo/LOGO-AKP2I.png"
-                                                alt=""></a>
+                <div class="col-md-10">
+                    <div class="row no-gutters bg-white rounded shadow overflow-hidden">
+                        <!-- Kolom Kiri -->
+                        <div class="col-md-6  d-flex flex-column justify-content-center align-items-center text-center p-4">
+                            <img src="{{ asset('assets/images/bglogin/kuantalogo.png') }}" alt="Logo" class="mb-3" style="max-width: 150px;">
+                            <h4 class="mb-2">PUSAT PGLH - KUANTA</h4>
+                            <p class="mb-1">Sistem Informasi Adiwiyata</p>
+                            <p class="mb-1">Pusat Pengembangan Generasi Lingkungan Hidup</p>
+                            <p class="mb-0">Sekretariat / Sekretariat Utama</p>
+                        </div>
+
+                        <!-- Kolom Kanan (Login Form) -->
+                        <div class="col-md-6 p-4">
+                            <div class="auth-form">
+                                <!-- Alert Berhasil Daftar -->
+                                @if(session('success'))
+                                    <div class="alert alert-success border border-success alert-outline mb-4" role="alert" style="border-width:2px;">
+                                        <strong>Berhasil!</strong> {{ session('success') }}
                                     </div>
-                                    {{-- <h4 class="text-center mb-4">Sign up your account</h4> --}}
-                                    <form class=" dez-form pb-3" method="POST" action="{{ route('login') }}">
-                                        @csrf
-                                        <h3 class="form-title m-t0 text-center">Selamat Datang</h3>
-                                        <div class="dez-separator-outer m-b5">
-                                            <div class="dez-separator bg-primary style-liner"></div>
-                                        </div>
-                                        <p>Masukkan alamat e-mail dan kata sandi Anda.</p>
-                                        <div class="form-group mb-3">
-                                            <input id="email" type="email"
-                                                class="form-control @error('email') is-invalid @enderror" name="email"
-                                                value="{{ old('email') }}" required autocomplete="email" autofocus
-                                                placeholder="Email">
+                                @endif
+                                <!-- Login Form -->
+                                <form class="dez-form pb-3" method="POST" action="{{ route('login') }}">
+                                    @csrf
+                                    <h3 class="form-title text-center">Selamat Datang</h3>
+                                    <div class="dez-separator-outer m-b5">
+                                        <div class="dez-separator bg-primary style-liner"></div>
+                                    </div>
+                                    <p class="text-center">Masukkan alamat e-mail dan kata sandi Anda.</p>
 
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <input id="password" type="password"
-                                                class="form-control @error('password') is-invalid @enderror"
-                                                name="password" required autocomplete="current-password"
-                                                placeholder="Password">
+                                    <div class="form-group mb-3">
+                                        <input id="email" type="email"
+                                            class="form-control @error('email') is-invalid @enderror"
+                                            name="email" value="{{ old('email') }}" required autocomplete="email"
+                                            autofocus placeholder="Email">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
 
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="text-center bottom">
-                                            <button class="btn btn-primary button-md btn-block" id="nav-sign-tab"
-                                                type="submit">Login</button>
+                                    <div class="form-group mb-3">
+                                        <input id="password" type="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            name="password" required autocomplete="current-password"
+                                            placeholder="Password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
 
-                                        </div>
-                                    </form>
+                                    <div class="text-center mb-3">
+                                        <button class="btn btn-primary btn-block" type="submit">Login</button>
+                                    </div>
+                                </form>
 
+                                <!-- Registration Link -->
+                                <div class="text-center">
+                                    <p class="mb-2">Belum punya akun?</p>
+                                    <a href="{{ route('register') }}" class="text-primary">Daftar Sekarang</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div> <!-- End col-md-6 -->
+                    </div> <!-- End row -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!--**********************************
-	Scripts
-***********************************-->
-    <!-- Required vendors -->
-    <script src="{{asset('')}}assets/vendor/global/global.min.js"></script>
-    <script src="{{asset('')}}assets/js/custom.js"></script>
-    <script src="{{asset('')}}assets/js/deznav-init.js"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('assets/vendor/global/global.min.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/deznav-init.js') }}"></script>
 </body>
+
 
 </html>
