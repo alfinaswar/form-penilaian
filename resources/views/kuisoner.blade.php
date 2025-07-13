@@ -143,7 +143,12 @@
                                     </td>
                                     <td rowspan="4">1</td>
                                     <td>Dokumentasi proses IPMLH sekolah, daerah dan global {1/2}</td>
-                                    <td>LENGKAP1</td>
+                                    <td><select name="Status1[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot1[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -152,8 +157,8 @@
                                             <option value="4">4</option>
                                             <option value="5">5</option>
                                         </select></td>
-                                    <td rowspan="13">Total1</td>
-                                    <td rowspan="13">Nilai1</td>
+                                    <td rowspan="13"><input type="text" class="form-control" name="Total1[]"></td>
+                                    <td rowspan="13"><input type="text" class="form-control" name="Nilai1[]"></td>
                                     <td> </td>
                                 </tr>
                                 <tr>
@@ -161,7 +166,12 @@
                                     <td rowspan="3"> <br><br></td>
                                     <td rowspan="3">Sesuai dengan Laporan EDS dan hasil IPMLH {3}</td>
                                     <td>Dokumentasi proses EDS {1/2}</td>
-                                    <td>LENGKAP1</td>
+                                    <td><select name="Status1[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot1[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -174,7 +184,12 @@
                                 </tr>
                                 <tr>
                                     <td>Laporan EDS yang terkait lingkungan hidup {1/2}</td>
-                                    <td>LENGKAP1</td>
+                                    <td><select name="Status1[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot1[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -187,7 +202,12 @@
                                 </tr>
                                 <tr>
                                     <td>Tabel rencana Gerakan PBLHS {1/2}</td>
-                                    <td>LENGKAP1</td>
+                                    <td><select name="Status1[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot1[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -205,7 +225,12 @@
                                     <td>Pihak yang terlibat dalam penyusunan dokumen Rencana Gerakan PBLHS</td>
                                     <td rowspan="3">2</td>
                                     <td>Undangan, daftar hadir, notulensi rapat {1/2}</td>
-                                    <td>LENGKAP1</td>
+                                    <td><select name="Status1[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot1[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -222,7 +247,12 @@
                                     <td>Rencana Gerakan PBLHS yang disetujui kepala sekolah, dewan pendidik,
                                         komite
                                         sekolah, peserta didik, dan masyarakat {1/2}</td>
-                                    <td>LENGKAP1</td>
+                                    <td><select name="Status1[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot1[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -235,7 +265,12 @@
                                 </tr>
                                 <tr>
                                     <td>Dokumentasi (foto dan/atau video) {1}</td>
-                                    <td>LENGKAP1</td>
+                                    <td><select name="Status1[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot1[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -256,7 +291,12 @@
                                         komite
                                         sekolah, dan disahkan pejabat yang berwenang (2 tahun terakhir) {1/2}
                                     </td>
-                                    <td>LENGKAP1</td>
+                                    <td><select name="Status1[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot1[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -271,7 +311,12 @@
                                     <td> </td>
                                     <td>Visi, misi, tujuan sekolah dan program pengembangan diri {3}</td>
                                     <td>Program ekstrakurikuler dan pembiasaan diri {1/2}</td>
-                                    <td>LENGKAP1</td>
+                                    <td><select name="Status1[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot1[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -306,7 +351,12 @@
                                         disahkan oleh kepala sekolah dan ditandatangani oleh pendidik pengampu
                                         (2
                                         tahun terakhir) {1/2}</td>
-                                    <td rowspan="3">LENGKAP1</td>
+                                    <td rowspan="3"><select name="Status1[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td rowspan="3"><select name="Bobot1[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -331,8 +381,8 @@
                                     <td colspan="6">Pembelajaran pada mata pelajaran, ekstrakurikuler dan
                                         pembiasaan diri
                                         yang mengintegrasikan penerapan PRLH di Sekolah</td>
-                                    <td rowspan="13">Total12</td>
-                                    <td rowspan="13">Nilai2</td>
+                                    <td rowspan="13"><input type="text" class="form-control" name="Total2[]"></td>
+                                    <td rowspan="13"><input type="text" class="form-control" name="Nilai2[]"></td>
                                     <td> </td>
                                 </tr>
                                 <tr>
@@ -345,7 +395,12 @@
                                         fungsi sanitasi dan drainase sekolah</td>
                                     <td rowspan="4">6</td>
                                     <td>Profil sekolah {1/2}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -360,7 +415,12 @@
                                     <td rowspan="7"> <br><br><br><br><br><br></td>
                                     <td rowspan="3">≤ 1 unsur utama {1}</td>
                                     <td>Daftar piket kelas {1/2}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -375,7 +435,12 @@
                                     <td>Dokumentasi hasil praktek/penugasan/penelitian kebersihan, fungsi
                                         sanitasi dan drainase
                                         sekolah {1}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -389,7 +454,12 @@
                                 <tr>
                                     <td>SK Tim/pokja kebersihan, fungsi sanitasi dan drainase sekolah {1/2/3}
                                     </td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -406,7 +476,12 @@
                                     <td rowspan="2">7</td>
                                     <td>Buku monitoring/ceklis kegiatan memelihara kebersihan, fungsi sanitasi
                                         dan drainase sekolah {1/2/3}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -422,7 +497,12 @@
                                     <td>Dokumentasi (foto dan/atau video) kegiatan memelihara kebersihan,
                                         fungsi sanitasi
                                         dan drainase sekolah {1}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -440,7 +520,12 @@
                                         kebersihan, fungsi
                                         sanitasi dan drainase sekolah sebelum dan setelah pelaksanaan Gerakan
                                         PBLHS {1}</td>
-                                    <td rowspan="2">LENGKAP2</td>
+                                    <td rowspan="2"><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td rowspan="2"><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -466,7 +551,12 @@
                                         dan penggunaan ulang barang/sampah (Reduce dan Reuse) baik pada mapel
                                         maupun
                                         ekstrakurikuler {1/2}</td>
-                                    <td rowspan="2">LENGKAP2</td>
+                                    <td rowspan="2"><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td rowspan="2"><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -487,7 +577,12 @@
                                     <td rowspan="2">10</td>
                                     <td>Bukti penyerahan sampah kepada pihak ketiga untuk didaur ulang {1/2/3}
                                     </td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -503,7 +598,12 @@
                                     <td>Daftar dan dokumentasi (foto dan/atau video) upaya pengurangan,
                                         penggunaan
                                         kembali dan daur ulang sampah {1/2}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -523,7 +623,12 @@
                                     <td>Jadwal piket yang menunjukkan keterlibatan peserta didik dan kader
                                         Adiwiyata
                                         dalam mengumpulkan sampah dari sumbernya ke TPS {1/2}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -540,7 +645,12 @@
                                     <td rowspan="2">Peserta didik dan kader adiwiyata {3}</td>
                                     <td>SOP pemindahan sampah yang menunjukkan keterlibatan peserta didik dan
                                         kader Adiwiyata {1/2/3}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -559,7 +669,12 @@
                                         kegiatan pemindahan sampah dari sumber ke tempat pengelolaan sampah di
                                         Sekolah {1/2}
                                     </td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -581,7 +696,12 @@
                                         selama satu tahun terakhir yang diketahui oleh Ketua Tim Adiwiyata
                                         sekolah atau Ketua
                                         pokja pengelolaan sampah {1/2}</td>
-                                    <td rowspan="2">LENGKAP2</td>
+                                    <td rowspan="2"><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td rowspan="2"><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -609,7 +729,12 @@
                                         ditanam dan pembibitan, serta proses kegiatan penanaman, pemeliharaan
                                         dan pembibitan di
                                         lingkungan sekolah {1/2}</td>
-                                    <td rowspan="2">LENGKAP2</td>
+                                    <td rowspan="2"><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td rowspan="2"><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -635,7 +760,12 @@
                                         pemeliharaan dan pembibitan pohon/tanaman</td>
                                     <td rowspan="2">14</td>
                                     <td rowspan="2">Profil sekolah {1/2/3}</td>
-                                    <td rowspan="2">LENGKAP2</td>
+                                    <td rowspan="2"><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td rowspan="2"><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -660,7 +790,12 @@
                                     <td>Dokumentasi hasil praktek/penugasan/penelitian kegiatan penanaman,
                                         pemeliharaan
                                         dan pembibitan baik pada mapel maupun ekstrakurikuler {1/2}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -678,7 +813,12 @@
                                     <td>Buku monitoring/cek list kegiatan penanaman, pemeliharaan dan
                                         pembibitan
                                         tanaman {1/2/3/4/5}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -697,7 +837,12 @@
                                     <td rowspan="2">16</td>
                                     <td>Dokumentasi hasil praktek/penugasan/penelitian kegiatan konservasi air
                                         {1/2/3}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -716,7 +861,12 @@
                                     <td>Dokumentasi (foto dan/atau video) yang menunjukkan kegiatan konservasi
                                         air yang
                                         dilakukan sekolah {1/2}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -734,7 +884,12 @@
                                     <td>Jumlah upaya konservasi energi</td>
                                     <td rowspan="4">17</td>
                                     <td>Aturan/tata tertib perilaku penghematan energi {1/2}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -751,7 +906,12 @@
                                     <td rowspan="3"> <br><br></td>
                                     <td rowspan="3">≥ 7 upaya {5}</td>
                                     <td>Dokumentasi (foto dan/atau video) kegiatan konservasi energi {1}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -768,7 +928,12 @@
                                     <td>Dokumentasi (foto dan/atau video) instalasi dan peralatan elektronik
                                         hemat energi {1}
                                     </td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -785,7 +950,12 @@
                                     <td>Dokumentasi hasil praktek/penugasan/penelitian terkait pembangkit
                                         listrik dari energi
                                         terbarukan (jika ada) {1}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -806,7 +976,12 @@
                                         inovatif dan
                                         proses penemuan karya inovatif Sekolah terkait dengan penerapan PRLH
                                         {1}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -823,7 +998,12 @@
                                     <td rowspan="3"> <br><br></td>
                                     <td rowspan="3">· ≥ 5 karya inovatif</td>
                                     <td>Karya inovatif yang dihasilkan oleh Sekolah {1}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -838,7 +1018,12 @@
                                 </tr>
                                 <tr>
                                     <td>Penghargaan karya inovatif terkait dengan penerapan PRLH {1}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -855,7 +1040,12 @@
                                     <td>Informasi detil dan penting terkait dengan karya inovatif yang telah
                                         dihasilkan Sekolah
                                         dalam upaya penerapan PRLH {1}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -877,7 +1067,12 @@
                                         notulensi,
                                         dll) aksi penerapan PRLH untuk dan bersama masyarakat sekitar Sekolah
                                         {1/2/3/4}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -896,7 +1091,12 @@
                                     <td>Dokumentasi (foto dan/atau video) aksi penerapan PRLH untuk dan bersama
                                         masyarakat sekitar Sekolah dari berbagai sudut pengambilan gambar
                                         {1/2/3}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -916,7 +1116,12 @@
                                         fungsi drainase di
                                         lingkungan sekitar Sekolah dari berbagai sudut pengambilan gambar {1/2}
                                     </td>
-                                    <td rowspan="2">LENGKAP2</td>
+                                    <td rowspan="2"><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td rowspan="2"><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -943,7 +1148,12 @@
                                         pemilahan, pemanfaatan kembali dan daur ulang) di lingkungan sekitar
                                         Sekolah dari
                                         berbagai sudut pengambilan gambar {1/2}</td>
-                                    <td rowspan="2">LENGKAP2</td>
+                                    <td rowspan="2"><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td rowspan="2"><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -970,7 +1180,12 @@
                                     <td rowspan="4">22</td>
                                     <td>Dokumen MoU atau dokumen kerjasama lainnya antara Sekolah dengan mitra
                                         {1/2}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -989,7 +1204,12 @@
                                     <td>Dokumen tertulis (undangan, notulensi pertemuan, serah terima bantuan
                                         dan
                                         dokumen terkait lainnya) {1}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1005,7 +1225,12 @@
                                 <tr>
                                     <td>Dokumentasi (foto dan/atau video) pertemuan, rapat yang dilakukan {1}
                                     </td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1021,7 +1246,12 @@
                                 <tr>
                                     <td>Tauatan dari group jejaring kerja dan komunikasi di media social {1}
                                     </td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1039,7 +1269,12 @@
                                     <td>1) Jumlah kegiatan kampanye dan publikasi Gerakan PBLHS</td>
                                     <td rowspan="2">23</td>
                                     <td>Dokumen tertulis (undangan, brosur, leaflet dll) {1/2/3}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1058,7 +1293,12 @@
                                     <td>Dokumentasi kampanye yang menunjukkan jumlah dan materi kegiatan.
                                         Dokumentasi
                                         dapat berupa foto dan/atau video (bisa dalam bentuk tautan) {1/2}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1079,7 +1319,12 @@
                                         website/blog/fanpage sekolah, pameran, media sosial, media cetak, media
                                         elektronik dan
                                         media lainnya) yang memuat materi kampanye Gerakan PBLHS {1/2/3}</td>
-                                    <td rowspan="2">LENGKAP2</td>
+                                    <td rowspan="2"><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td rowspan="2"><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1105,7 +1350,12 @@
                                     <td rowspan="2">Surat undangan, poster, dan dokumen tertulis terkait dengan
                                         kegiatan
                                         pemberdayaan Kader Adiwiyata {1/2/3/4}</td>
-                                    <td rowspan="2">LENGKAP2</td>
+                                    <td rowspan="2"><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td rowspan="2"><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1130,7 +1380,12 @@
                                     <td rowspan="2">26</td>
                                     <td>Dokumen pembagian tugas atau rencana aksi Kader Adiwiyata {1/2/3/4}
                                     </td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1147,7 +1402,12 @@
                                     <td>· ≥ 5 kegiatan</td>
                                     <td>Dokumentasi (foto dan/atau video) kegiatan pemberdayaan Kader Adiwiyata
                                         {1/2}</td>
-                                    <td>LENGKAP2</td>
+                                    <td><select name="Status2[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot2[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1167,7 +1427,12 @@
                                     <td rowspan="2">27</td>
                                     <td>Tabel setiap pemantauan dan evaluasi pelaksanaan Gerakan PBLHS yang
                                         ditandatangani oleh kepala sekolah. {1/2/3/4}</td>
-                                    <td>LENGKAP3</td>
+                                    <td><select name="Status3[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot3[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1176,8 +1441,8 @@
                                             <option value="4">4</option>
                                             <option value="5">5</option>
                                         </select></td>
-                                    <td rowspan="8">Total3</td>
-                                    <td rowspan="8">Nilai3</td>
+                                    <td rowspan="8"><input type="text" class="form-control" name="Total3[]"></td>
+                                    <td rowspan="8"><input type="text" class="form-control" name="Nilai3[]"></td>
                                     <td> </td>
                                 </tr>
                                 <tr>
@@ -1206,7 +1471,12 @@
                                     <td rowspan="2">28</td>
                                     <td>Tabel rencana Gerakan PBLHS yang ditandatangani oleh kepala sekolah
                                         {1/2}</td>
-                                    <td>LENGKAP3</td>
+                                    <td><select name="Status3[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot3[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1222,7 +1492,12 @@
                                     <td>Dokumentasi (foto dan/atau video) setiap pemantauan dan evaluasi
                                         pelaksanaan
                                         Gerakan PBLHS {1}</td>
-                                    <td>LENGKAP3</td>
+                                    <td><select name="Status3[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot3[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1242,7 +1517,12 @@
                                     <td>Tabel setiap pemantauan dan evaluasi pelaksanaan Gerakan PBLHS yang
                                         disusun
                                         oleh Tim Adiwiyata Sekolah {1}</td>
-                                    <td>LENGKAP3</td>
+                                    <td><select name="Status3[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot3[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1258,7 +1538,12 @@
                                         sekolah, peserta didik
                                         dan masyarakat</td>
                                     <td>Dokumentasi (foto dan/atau video) pelibatan para pihak {1}</td>
-                                    <td>LENGKAP3</td>
+                                    <td><select name="Status3[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot3[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1271,7 +1556,12 @@
                                 </tr>
                                 <tr>
                                     <td>Undangan, daftar hadir, dan notulensi pelibatan para pihak {1}</td>
-                                    <td>LENGKAP3</td>
+                                    <td><select name="Status3[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot3[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1286,7 +1576,12 @@
                                     <td>Tabel setiap pemantauan dan evaluasi pelaksanaan Gerakan PBLHS yang
                                         ditandatangani oleh
                                         kepala sekolah {1}</td>
-                                    <td>LENGKAP3</td>
+                                    <td><select name="Status3[]" class="multi-select">
+                                            <option value="">Pilih</option>
+                                            <option value="L">Lengkap</option>
+                                            <option value="TL">Tidak lengkap</option>
+                                        </select>
+                                    </td>
                                     <td><select name="Bobot3[]" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -1314,34 +1609,27 @@
             </div>
         </div>
     </div>
-
-
 @endsection
 @push('scripts')
     <script>
         function hitungTotalBobot() {
             let total = 0;
-            document.querySelectorAll('.bobot-select').forEach(select => {
-                total += parseInt(select.value) || 0;
+            const selects = document.querySelectorAll('select[name="Bobot1[]"]');
+
+            selects.forEach(function(select) {
+                const val = parseInt(select.value) || 0;
+                total += val;
             });
 
-            document.getElementById('totalBobot').innerText = total;
-
-            console.log('Total bobot saat ini:', total);
-
-
+            console.log("Total Bobot:", total);
         }
 
-        // Event listener untuk semua select
-        document.querySelectorAll('.bobot-select').forEach(select => {
+        const selects = document.querySelectorAll('select[name="Bobot1[]"]');
+        selects.forEach(function(select) {
             select.addEventListener('change', hitungTotalBobot);
         });
 
+        // Hitung pertama kali saat halaman dimuat
         hitungTotalBobot();
-
-        $(document).ready(function () {
-            hitungTotalBobot()
-        });
     </script>
-
 @endpush

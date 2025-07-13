@@ -27,7 +27,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <!-- tagify-css -->
-
+    <link rel="stylesheet" href="{{ asset('') }}assets/vendor/select2/css/select2.min.css">
+    <link href="{{ asset('') }}assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <!-- Style css -->
     <link href="{{ asset('') }}assets/css/style.css" rel="stylesheet">
 
@@ -78,7 +79,8 @@
             <div class="nav-control">
                 <div class="hamburger">
                     <span class="line">
-                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M10.7468 5.58925C11.0722 5.26381 11.0722 4.73617 10.7468 4.41073C10.4213 4.0853 9.89369 4.0853 9.56826 4.41073L4.56826 9.41073C4.25277 9.72622 4.24174 10.2342 4.54322 10.5631L9.12655 15.5631C9.43754 15.9024 9.96468 15.9253 10.3039 15.6143C10.6432 15.3033 10.6661 14.7762 10.3551 14.4369L6.31096 10.0251L10.7468 5.58925Z"
                                 fill="#452B90" />
@@ -297,7 +299,9 @@
 
     <!-- Apex Chart -->
 
-
+    <script src="{{ asset('') }}assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="{{ asset('') }}assets/vendor/select2/js/select2.full.min.js"></script>
+    <script src="{{ asset('') }}assets/js/plugins-init/select2-init.js"></script>
 
 
     <!-- Vectormap -->
