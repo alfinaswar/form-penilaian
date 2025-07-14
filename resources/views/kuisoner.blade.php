@@ -1,13 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 mb-3 text-end">
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('users.create') }}"> Buat Pengguna Baru</a>
-            </div>
-        </div>
-    </div>
+
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -18,7 +12,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Data Pengguna Sistem</h4>
+                <h4 class="card-title">Kuisoner</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -45,7 +39,7 @@
                             border-width: 1px;
                             font-family: Arial, sans-serif;
                             font-size: 14px;
-                            font-weight: normal;
+                            font-weight: bold;
                             overflow: hidden;
                             padding: 10px 5px;
                             word-break: normal;
@@ -95,46 +89,36 @@
                         }
                     </style>
                     <div class="table-responsive">
+                        <form action="" method="POST"></form>
                         <table class="tg">
                             <colgroup>
                                 <col style="width: 244.5px">
                                 <col style="width: 376.5px">
-                                <col style="width: 421.5px">
+                                <col style="width: 221.5px">
                                 <col style="width: 133.5px">
                                 <col style="width: 601.5px">
                                 <col style="width: 121.5px">
                                 <col style="width: 82.5px">
-                                <col style="width: 67.5px">
-                                <col style="width: 67.5px">
+                                <col style="width: 167.5px">
+                                <col style="width: 167.5px">
                                 <col style="width: 211.5px">
                             </colgroup>
                             <thead>
                                 <tr>
-                                    <th>Nomor Register:</th>
-                                    <th>SB93#K</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>KOMPONEN</th>
+                                    <th>STANDAR</th>
+                                    <th>INDIKATOR</th>
+                                    <th>URUT FOLDER</th>
+                                    <th>BUKTI</th>
+                                    <th>STATUS</th>
+                                    <th>BOBOT</th>
+                                    <th>TOTAL</th>
+                                    <th>NILAI</th>
+                                    <th>SARAN PERBAIKAN</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>KOMPONEN</td>
-                                    <td>STANDAR</td>
-                                    <td>INDIKATOR {BOBOT}</td>
-                                    <td>URUT FOLDER KE</td>
-                                    <td>BUKTI</td>
-                                    <td>STATUS</td>
-                                    <td>BOBOT</td>
-                                    <td>TOTAL</td>
-                                    <td>NILAI</td>
-                                    <td>SARAN PERBAIKAN</td>
-                                </tr>
+
                                 <tr>
                                     <td>Perencanaan Gerakan PBLHS</td>
                                     <td>1. Rencana Gerakan PBLHS disusun berdasarkan Laporan EDS dan hasil
@@ -149,16 +133,15 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot1[]" class="multi-select">
+                                    <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
                                         </select></td>
-                                    <td rowspan="13"><input type="text" class="form-control" name="Total1[]"></td>
-                                    <td rowspan="13"><input type="text" class="form-control" name="Nilai1[]"></td>
+                                    <td rowspan="13"><input type="text" class="form-control" name="Total1[]" id="Total1">
+                                    </td>
+                                    <td rowspan="13"><input type="text" class="form-control" name="Nilai1[]" id="Nilai1">
+                                    </td>
                                     <td> </td>
                                 </tr>
                                 <tr>
@@ -172,13 +155,11 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot1[]" class="multi-select">
+                                    <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -190,7 +171,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot1[]" class="multi-select">
+                                    <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -208,13 +189,10 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot1[]" class="multi-select">
+                                    <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -231,13 +209,10 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot1[]" class="multi-select">
+                                    <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -253,13 +228,10 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot1[]" class="multi-select">
+                                    <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -271,13 +243,9 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot1[]" class="multi-select">
+                                    <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -297,13 +265,10 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot1[]" class="multi-select">
+                                    <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -317,13 +282,11 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot1[]" class="multi-select">
+                                    <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -333,14 +296,7 @@
                                     <td rowspan="2">4</td>
                                     <td> </td>
                                     <td> </td>
-                                    <td><select name="Bobot1[]" class="multi-select">
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select></td>
+                                    <td></td>
                                     <td> </td>
                                 </tr>
                                 <tr>
@@ -357,13 +313,12 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td rowspan="3"><select name="Bobot1[]" class="multi-select">
+                                    <td rowspan="3"><select name="Bobot1[]" onchange="calculateTotal()"
+                                            class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -381,8 +336,10 @@
                                     <td colspan="6">Pembelajaran pada mata pelajaran, ekstrakurikuler dan
                                         pembiasaan diri
                                         yang mengintegrasikan penerapan PRLH di Sekolah</td>
-                                    <td rowspan="13"><input type="text" class="form-control" name="Total2[]"></td>
-                                    <td rowspan="13"><input type="text" class="form-control" name="Nilai2[]"></td>
+                                    <td rowspan="52"><input type="text" class="form-control" name="Total2[]" id="Total2">
+                                    </td>
+                                    <td rowspan="52"><input type="text" class="form-control" name="Nilai2[]" id="Nilai2">
+                                    </td>
                                     <td> </td>
                                 </tr>
                                 <tr>
@@ -401,13 +358,11 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -421,13 +376,11 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -441,13 +394,9 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -460,13 +409,11 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -482,13 +429,11 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
                                         </select></td>
                                     <td> </td>
                                 </tr>
@@ -503,7 +448,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -526,7 +471,8 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td rowspan="2"><select name="Bobot2[]" class="multi-select">
+                                    <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
+                                            class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -557,7 +503,8 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td rowspan="2"><select name="Bobot2[]" class="multi-select">
+                                    <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
+                                            class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -583,7 +530,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -604,7 +551,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -629,7 +576,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -651,7 +598,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -675,7 +622,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -702,7 +649,8 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td rowspan="2"><select name="Bobot2[]" class="multi-select">
+                                    <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
+                                            class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -735,7 +683,8 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td rowspan="2"><select name="Bobot2[]" class="multi-select">
+                                    <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
+                                            class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -766,7 +715,8 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td rowspan="2"><select name="Bobot2[]" class="multi-select">
+                                    <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
+                                            class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -796,7 +746,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -819,7 +769,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -843,7 +793,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -867,7 +817,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -890,7 +840,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -912,7 +862,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -934,7 +884,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -956,7 +906,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -982,7 +932,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1004,7 +954,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1024,7 +974,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1046,7 +996,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1073,7 +1023,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1097,7 +1047,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1122,7 +1072,8 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td rowspan="2"><select name="Bobot2[]" class="multi-select">
+                                    <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
+                                            class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1154,7 +1105,8 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td rowspan="2"><select name="Bobot2[]" class="multi-select">
+                                    <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
+                                            class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1186,7 +1138,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1210,7 +1162,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1231,7 +1183,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1252,7 +1204,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1275,7 +1227,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1299,7 +1251,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1325,7 +1277,8 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td rowspan="2"><select name="Bobot2[]" class="multi-select">
+                                    <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
+                                            class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1356,7 +1309,8 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td rowspan="2"><select name="Bobot2[]" class="multi-select">
+                                    <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
+                                            class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1386,7 +1340,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1408,7 +1362,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot2[]" class="multi-select">
+                                    <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1427,22 +1381,13 @@
                                     <td rowspan="2">27</td>
                                     <td>Tabel setiap pemantauan dan evaluasi pelaksanaan Gerakan PBLHS yang
                                         ditandatangani oleh kepala sekolah. {1/2/3/4}</td>
-                                    <td><select name="Status3[]" class="multi-select">
-                                            <option value="">Pilih</option>
-                                            <option value="L">Lengkap</option>
-                                            <option value="TL">Tidak lengkap</option>
-                                        </select>
+                                    <td>
                                     </td>
-                                    <td><select name="Bobot3[]" class="multi-select">
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select></td>
-                                    <td rowspan="8"><input type="text" class="form-control" name="Total3[]"></td>
-                                    <td rowspan="8"><input type="text" class="form-control" name="Nilai3[]"></td>
+                                    <td></td>
+                                    <td rowspan="8"><input type="text" class="form-control" name="Total3[]" id="Total3">
+                                    </td>
+                                    <td rowspan="8"><input type="text" class="form-control" name="Nilai3[]" id="Nilai3">
+                                    </td>
                                     <td> </td>
                                 </tr>
                                 <tr>
@@ -1456,14 +1401,7 @@
                                         s.d.
                                         Maret 2019</td>
                                     <td> </td>
-                                    <td><select name="Bobot3[]" class="multi-select">
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select></td>
+                                    <td></td>
                                     <td> </td>
                                 </tr>
                                 <tr>
@@ -1477,7 +1415,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot3[]" class="multi-select">
+                                    <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1498,7 +1436,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot3[]" class="multi-select">
+                                    <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1523,7 +1461,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot3[]" class="multi-select">
+                                    <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1544,7 +1482,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot3[]" class="multi-select">
+                                    <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1562,7 +1500,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot3[]" class="multi-select">
+                                    <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1582,7 +1520,7 @@
                                             <option value="TL">Tidak lengkap</option>
                                         </select>
                                     </td>
-                                    <td><select name="Bobot3[]" class="multi-select">
+                                    <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -1599,7 +1537,8 @@
                                     <td></td>
                                     <td colspan="3">Nilai Kuanta Total</td>
                                     <td></td>
-                                    <td>100</td>
+                                    <td><input readonly type="text" class="form-control" name="TotalAkhir" id="TotalAkhir">
+                                    </td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -1612,24 +1551,97 @@
 @endsection
 @push('scripts')
     <script>
-        function hitungTotalBobot() {
-            let total = 0;
+        function calculateTotal() {
             const selects = document.querySelectorAll('select[name="Bobot1[]"]');
+            let total = 0;
 
-            selects.forEach(function(select) {
-                const val = parseInt(select.value) || 0;
-                total += val;
+            // Hitung total dari semua select
+            selects.forEach(select => {
+                total += parseInt(select.value) || 0;
             });
 
-            console.log("Total Bobot:", total);
+            // Hitung Nilai1 dengan rumus: 20 * total / 19
+            const nilai1 = (20 * total / 19);
+
+            // Update tampilan total
+            const totalElement = document.getElementById('Total1');
+            if (totalElement) {
+                totalElement.textContent = total;
+            }
+
+            // Update input fields
+            $("#Total1").val(total);
+            $("#Nilai1").val(nilai1.toFixed(2));
+
+            // Hitung total akhir dengan benar
+            const nilai2 = parseFloat($("#Nilai2").val()) || 0;
+            const nilai3 = parseFloat($("#Nilai3").val()) || 0;
+            const TotalAkhir = nilai1 + nilai2 + nilai3;
+
+            $("#TotalAkhir").val(TotalAkhir.toFixed(2));
+            console.log('Total:', total, 'Nilai1:', nilai1.toFixed(2), 'Total Akhir:', TotalAkhir.toFixed(2));
         }
 
-        const selects = document.querySelectorAll('select[name="Bobot1[]"]');
-        selects.forEach(function(select) {
-            select.addEventListener('change', hitungTotalBobot);
-        });
+        function calculateTotal2() {
+            const selects = document.querySelectorAll('select[name="Bobot2[]"]');
+            let total = 0;
 
-        // Hitung pertama kali saat halaman dimuat
-        hitungTotalBobot();
+            // Hitung total dari semua select
+            selects.forEach(select => {
+                total += parseInt(select.value) || 0;
+            });
+
+            // Hitung Nilai2 dengan rumus: 60 * total / 89
+            const nilai2 = (60 * total / 89);
+
+            // Update tampilan total
+            const totalElement = document.getElementById('Total2');
+            if (totalElement) {
+                totalElement.textContent = total;
+            }
+
+            // Update input fields
+            $("#Total2").val(total);
+            $("#Nilai2").val(nilai2.toFixed(2));
+
+            // Hitung total akhir dengan benar
+            const nilai1 = parseFloat($("#Nilai1").val()) || 0;
+            const nilai3 = parseFloat($("#Nilai3").val()) || 0;
+            const TotalAkhir = nilai1 + nilai2 + nilai3;
+
+            $("#TotalAkhir").val(TotalAkhir.toFixed(2));
+            console.log('Total:', total, 'Nilai2:', nilai2.toFixed(2), 'Total Akhir:', TotalAkhir.toFixed(2));
+        }
+
+        function calculateTotal3() {
+            const selects = document.querySelectorAll('select[name="Bobot3[]"]');
+            let total = 0;
+
+            // Hitung total dari semua select
+            selects.forEach(select => {
+                total += parseInt(select.value) || 0;
+            });
+
+            // Hitung Nilai3 dengan rumus: 20 * total / 11
+            const nilai3 = (20 * total / 11);
+
+            // Update tampilan total
+            const totalElement = document.getElementById('Total3');
+            if (totalElement) {
+                totalElement.textContent = total;
+            }
+
+            // Update input fields
+            $("#Total3").val(total);
+            $("#Nilai3").val(nilai3.toFixed(2));
+
+            // Hitung total akhir dengan benar
+            const nilai1 = parseFloat($("#Nilai1").val()) || 0;
+            const nilai2 = parseFloat($("#Nilai2").val()) || 0;
+            const TotalAkhir = nilai1 + nilai2 + nilai3;
+
+            $("#TotalAkhir").val(TotalAkhir.toFixed(2));
+            console.log('Total:', total, 'Nilai3:', nilai3.toFixed(2), 'Total Akhir:', TotalAkhir.toFixed(2));
+        }
     </script>
 @endpush
