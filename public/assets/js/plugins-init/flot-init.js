@@ -14,7 +14,7 @@
 				bars: {
 					show: true,
 					lineWidth: 0,
-					fillColor: '#452b90'
+					fillColor: '#f93a0b'
 				}
 			},
 			grid: {
@@ -24,14 +24,14 @@
 			yaxis: {
 				tickColor: 'transparent',
 				font: {
-					color: '#858282',
+					color: '#7e7e7e',
 					size: 10
 				}
 			},
 			xaxis: {
 				tickColor: 'transparent',
 				font: {
-					color: '#858282',
+					color: '#7e7e7e',
 					size: 10
 				}
 			}
@@ -44,14 +44,14 @@
 			bars: {
 				show: true,
 				lineWidth: 0,
-				fillColor: '#452b90'
+				fillColor: '#f93a0b'
 			}
 		}, {
 			data: [[1, 5], [3, 7], [5, 10], [7, 7], [9, 9], [11, 5], [13, 4], [15, 6]],
 			bars: {
 				show: true,
 				lineWidth: 0,
-				fillColor: '#ffaa2b'
+				fillColor: '#145650'
 			}
 		}], 
 		{
@@ -62,14 +62,14 @@
 			yaxis: {
 				tickColor: 'transparent',
 				font: {
-					color: '#858282',
+					color: '#7e7e7e',
 					size: 10
 				}
 			},
 			xaxis: {
 				tickColor: 'transparent',
 				font: {
-					color: '#858282',
+					color: '#7e7e7e',
 					size: 10
 				}
 			}
@@ -84,12 +84,12 @@
 			{
 				data: newCust,
 				label: 'New Customer',
-				color: '#452b90'
+				color: '#f93a0b'
 			},
 			{
 				data: retCust,
 				label: 'Returning Customer',
-				color: '#ffaa2b'
+				color: '#145650'
 			}
 		],
 		{
@@ -121,14 +121,14 @@
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#999'
+					color: '#7e7e7e'
 				}
 			},
 			xaxis: {
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#999'
+					color: '#7e7e7e'
 				}
 			}
 		});
@@ -142,12 +142,12 @@
 			{
 				data: newCust,
 				label: 'New Customer',
-				color: '#452b90'
+				color: '#f93a0b'
 			},
 			{
 				data: retCust,
 				label: 'Returning Customer',
-				color: '#ffaa2b'
+				color: '#145650'
 			}
 		],
 		{
@@ -184,14 +184,14 @@
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			},
 			xaxis: {
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			}
 		});		
@@ -205,12 +205,12 @@
 			{
 				data: newCust2,
 				label: 'New Customer',
-				color: '#452b90'
+				color: '#f93a0b'
 			},
 			{
 				data: retCust2,
 				label: 'Returning Customer',
-				color: '#ffaa2b'
+				color: '#145650'
 			}
 		],
 		{
@@ -242,14 +242,14 @@
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			},
 			xaxis: {
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			}
 		});
@@ -263,12 +263,12 @@
 			{
 				data: newCust,
 				label: 'New Customer',
-				color: '#452b90'
+				color: '#f93a0b'
 			},
 			{
 				data: retCust,
 				label: 'Returning Customer',
-				color: '#ffaa2b'
+				color: '#145650'
 			}
 		],
 		{
@@ -301,14 +301,14 @@
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			},
 			xaxis: {
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			}
 		});
@@ -322,12 +322,12 @@
 			{
 				data: newCust,
 				label: 'New Customer',
-				color: '#452b90'
+				color: '#f93a0b'
 			},
 			{
 				data: retCust,
 				label: 'Returning Customer',
-				color: '#ffaa2b'
+				color: '#145650'
 			}
 		],
 		{
@@ -364,14 +364,14 @@
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			},
 			xaxis: {
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			}
 		});
@@ -446,7 +446,7 @@
 		var updateInterval = 1000;
 
 		var plot4 = $.plot('#flotRealtime1', [getRandomData()], {
-			colors: ['#452b90'],
+			colors: ['#f93a0b'],
 			series: {
 				lines: {
 					show: true,
@@ -463,7 +463,7 @@
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			},
 			yaxis: {
@@ -472,7 +472,7 @@
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			}
 		});
@@ -511,7 +511,7 @@
 		var updateInterval = 1000;
 		
 		var plot5 = $.plot('#flotRealtime2', [getRandomData()], {
-			colors: ['#452b90'],
+			colors: ['#f93a0b'],
 			series: {
 				lines: {
 					show: true,
@@ -529,7 +529,7 @@
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			},
 			yaxis: {
@@ -538,7 +538,7 @@
 				color: 'transparent',
 				font: {
 					size: 10,
-					color: '#858282'
+					color: '#7e7e7e'
 				}
 			}
 		});
@@ -553,91 +553,6 @@
 			setTimeout(update_plot5, updateInterval);
 		}
 	}
-	$(function() {
-
-		var d1 = [];
-		for (var i = 0; i <= 10; i += 1) {
-			d1.push([i, parseInt(Math.random() * 30)]);
-		}
-
-		var d2 = [];
-		for (var i = 0; i <= 10; i += 1) {
-			d2.push([i, parseInt(Math.random() * 30)]);
-		}
-
-		var d3 = [];
-		for (var i = 0; i <= 10; i += 1) {
-			d3.push([i, parseInt(Math.random() * 30)]);
-		}
-
-		var stack = 0,
-			bars = true,
-			lines = false,
-			steps = false;
-
-		function plotWithOptions() {
-			$.plot("#flotRealtime3", [ d1, d2, d3 ], {
-				series: {
-					stack: stack,
-					
-					size: 11,
-					lineHeight: 13,
-					style: "italic",
-					weight: "bold",
-					family: "sans-serif",
-					variant: "small-caps",
-					color: "var(--primary)",
-
-					lines: {
-						show: false,
-						fill: false,
-						steps: steps
-					},
-					bars: {
-						show: bars,
-						lineWidth: 0,
-						barWidth: 0.6
-						
-					},
-					
-				},grid: {
-				borderWidth: 1,
-				borderColor: 'transparent'
-			},
-                yaxis: {
-                    tickColor: 'transparent',
-					
-                },
-				xaxis:{
-					tickColor:'transparent',
-					
-					
-				}
-			});
-		}
-
-		plotWithOptions();
-
-		$(".stackControls button").click(function (e) {
-			e.preventDefault();
-			stack = $(this).text() == "With stacking" ? true : null;
-			plotWithOptions();
-		});
-
-		$(".graphControls button").click(function (e) {
-			e.preventDefault();
-			bars = $(this).text().indexOf("Bars") != -1;
-			lines = $(this).text().indexOf("Lines") != -1;
-			steps = $(this).text().indexOf("steps") != -1;
-			plotWithOptions();
-		});
-
-		// Add the Flot version string to the footer
-
-		$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
-	});
-	
-
 	
 	/* Function ============ */
 	return {
@@ -656,8 +571,6 @@
 			flotLine4();
 			flotRealtime1();
 			flotRealtime2();
-			
-			
 		},
 		
 		resize:function(){

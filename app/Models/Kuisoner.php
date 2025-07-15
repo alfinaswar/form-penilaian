@@ -12,8 +12,18 @@ class Kuisoner extends Model
     protected $guarded = ['id'];
 
 
-    public function BalasanKuisoner()
-    {
-        return $this->belongsTo(BalasanKuisoner::class, 'id', 'kuisoner_id');
-    }
+    protected $casts = [
+        'Status1' => 'array',
+        'Bobot1' => 'array',
+        'Total1' => 'array',
+        'Nilai1' => 'array',
+        'Total2' => 'array',
+        'Nilai2' => 'array',
+        'Status2' => 'array',
+        'Bobot2' => 'array',
+        'Total3' => 'array',
+        'Nilai3' => 'array',
+        'Status3' => 'array',
+        'Bobot3' => 'array',
+    ];
 }

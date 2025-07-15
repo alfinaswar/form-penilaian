@@ -1,12 +1,12 @@
 [data-theme-version="dark"] {
     .footer {
-        background-color: $dark-card;
+        background-color: transparent;
 
         .copyright {
             background-color: transparent;
 
             p {
-                color: $white;
+                color: rgba(255,255,255,0.6);
             }
         }
     }

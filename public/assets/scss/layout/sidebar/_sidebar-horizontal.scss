@@ -5,43 +5,11 @@
 ////////////////////
 @media (min-width: 64rem) {
     [data-layout="horizontal"] {
-		.deznav .metismenu > li > ul {
-			.extra-menu-li{
-				&:hover{
-					.extra-menu-links{
-						display:block!important;
-						position: relative!important;
-						top:12px!important;
-						left: 0 !important;
-						right: auto !important;
-					}
-				}
-				.extra-menu-links{
-					position:relative;
-					top:12px!important;
-					left:0!important;
-					padding:0!important;
-					overflow:hidden;
-					right:auto!important;
-					box-shadow:none;
-					display:block!important;
-					&:not(.show){
-						height:0;
-					}
-					li{
-						a{
-							padding: 1rem 1.25rem 1rem 1.25rem!important;
-						}
-					}
-				}
-			}
-		}
-		
+        
         .nav-header {
-            height:4.375rem;
-            width: 18.563rem;
+            width: var(--width);
+			height: var(--height);
 			top:0;
-			z-index:7;
             .nav-control {
                 display: none;
             }
@@ -54,28 +22,27 @@
 
         .header {
             width: 100%;
-			height: 4.375rem;
-            padding-left: 18.563rem;
+			height: 5.5rem;
+            padding-left: var(--width);
 			padding-top:0;
-			z-index: 6;
         }
 
-        .deznav {
+        .dlabnav {
             width:100%;
             position: relative;
             height: auto;
             padding-bottom: 0;
             top: 0;
-            z-index: 5;
+            z-index: 2;
 			
             .slimScrollDiv {
                 overflow: visible!important;
 
-                .deznav-scroll {
+                .dlabnav-scroll {
                     overflow: visible!important;
                 }
             }
-			.deznav-scroll {
+			.dlabnav-scroll {
 				overflow: visible!important;
 			}
             .slimScrollBar {
@@ -112,7 +79,7 @@
 			
             .metismenu {
                 flex-direction: row;
-				padding: 0.8rem 1.25rem;
+				padding:0.625rem 1.25rem;
 				margin-bottom: 0;
                 display: inline-flex;
                 flex-wrap: wrap;	
@@ -128,7 +95,6 @@
                 li {
                     flex-direction: column;
                     position: relative;
-					margin-top: -12px;
 
                     &:hover {
                         &>ul {
@@ -136,19 +102,17 @@
                         }
                     }
                     
-                    &>ul{
+                    &>ul {
                         position: absolute;
-                        //height: auto !important;
+                        height: auto !important;
                         top: 100%;
                         width: 100%;
                         min-width: 13.75rem;
                         z-index: 999;
                         left: auto;
                         right: auto;
-						//y
-                        //padding: 0.5rem 0;
-                        padding : 1.2rem 0 0.5rem;
-						display: none;
+                        padding: 0.5rem 0;
+                        display: none;
                         box-shadow: 0rem 0rem 2.5rem 0rem rgba(82, 63, 105, 0.1);
 						margin:0;
 						background:$white;
@@ -164,7 +128,7 @@
     
                             a {
                                 transition: all .4s ease-in-out;
-                                padding: 1rem 1.25rem 1rem 1.25rem;
+                                padding: 0.5rem 1.25rem 0.5rem 1.25rem;
                                 margin-left: -.1rem;
 								@at-root [direction="rtl"]#{&} {
 									padding: 0.5rem 1.25rem 0.5rem 1.25rem;
@@ -183,22 +147,9 @@
 									}
 								}
                             }
-							// y
-							//&:last-child{
-							//	a{
-							//		padding-bottom:0;
-							//	}
-							//}
-							svg{
-								width:0.938rem;
-								height:1rem;
-							}
                         }
-						.menu-title{
-								display:none;
-						}
                         
-                        ul{
+                        ul {
                             left: 100%;
                             top: 0;
 							box-shadow: 0rem 0rem 2.5rem 0rem rgba(82, 63, 105, 0.1);
@@ -229,23 +180,13 @@
 					&.mm-active{
 						padding:0;			
 						& > a{
-							color:var(--secondary);
-							
+							background:var(--rgba-primary-1)!important;
+							color:var(--primary);
+							border-radius: 1rem;
 							i{
-								color:$white;
+								color:var(--primary);
 								background:transparent;
 								box-shadow:none;
-							}
-							
-							
-						}
-						ul{
-							li{
-								&>a {
-									&:after {
-									transform:rotate(-225deg) translateY(-50%);
-									}
-								}
 							}
 						}
 					}
@@ -265,7 +206,7 @@
                         }
                     }
                     &>a {
-						padding: 0.75rem 0.6375rem 0.75rem 0.6375rem;
+                        padding: 0.9375rem 2.5rem 0.9375rem 0.9375rem;
 						margin: 0.125rem 0.125rem;
                         @at-root [direction="rtl"]#{&} {
 							padding: 0.9375rem 0.9375rem 0.9375rem 2.5rem;
@@ -286,7 +227,6 @@
                         &:after {
                             right: 1.25rem;
                             transform: rotate(-135deg) translateY(-50%);
-							display:none;
                         }
                     }
                     &:hover {
@@ -351,7 +291,7 @@
                     &:last-child {
                         &>ul {
                             ul {
-                                left: -100%;
+                                left:100%;
                             }
 							&.left{
 								ul{
@@ -383,13 +323,9 @@
                         }
                     }
                 }
-				.menu-title{
-					display:none;
-				}
             }
 			.copyright,
-			.plus-box,
-			.help-desk{
+			.plus-box{
 				display:none;
 			}
         }
@@ -397,13 +333,12 @@
         .content-body {
             margin-left: 0;
 			.container-fluid{
-				padding-top: 1.875rem;
+				padding-top:2.5rem;
 			}
             .page-titles {
                 margin-left: 0!important;
                 margin-right: 0!important;
-                margin-bottom: 0;
-				margin-top: 1.5rem;
+                margin-bottom: 1.875rem;
             }
         }
 
@@ -415,54 +350,52 @@
     }
 
     [data-header-position="fixed"][data-layout="horizontal"] {
-        .deznav {
-            top: 4.375rem;
+        .dlabnav {
+            top: var(--height);
         }
 		.header{
-			height: 4.375rem;
+			height: var(--height);
 		}
 		.content-body {
-			padding-top: 4.375rem;
+			padding-top: 5rem;
 		}
     } //ok
-	[data-sidebar-position="static"][data-layout="horizontal"] {
-		.content-body{
-			.page-titles{
-				margin-top:0;
-			}
-		}
-	}
-		
-	}
+
     [data-header-position="fixed"][data-sidebar-position="fixed"] {
-        .deznav {
+        .dlabnav {
             position: fixed;
         }
     } //ok
 
     [data-header-position="fixed"][data-layout="horizontal"][data-sidebar-position="fixed"] {
         .content-body {
-            padding-top: 9.325rem;
+            padding-top: 10rem;
         }
     } //ok
 	[data-header-position="fixed"][data-layout="horizontal"][data-sidebar-position="fixed"][data-sidebar-style="modern"] {
         .content-body {
-            padding-top: 10.625rem;
+            padding-top: 11.5rem;
         }
     } //ok
 	
     [data-layout="horizontal"][data-container="boxed"] {
-		.content-body {
-            padding-top: 12rem! important;
-        }
+
         .footer {
             margin-left: 0;
             max-width: 74.9375rem;
             margin: 0 auto;
         }
     }
+
+    [data-layout="horizontal"][data-container="wide"] {
+        .page-titles {
+            margin-left: -1.875rem;
+            margin-right: -1.875rem;
+        }
+    }
+
     [data-layout="horizontal"][data-sidebar-style="modern"] {
-		 .deznav {
+		 .dlabnav {
 			.header-profile{
 				margin-bottom:0;
 				img{
@@ -480,10 +413,10 @@
 	}
     [data-layout="horizontal"][data-sidebar-style="compact"] {
         .page-titles {
-           margin-top: 1rem;
+            margin-top: 0;
         }
         
-        .deznav {
+        .dlabnav {
 			.header-profile{
 				margin-bottom:0;
 				img{
@@ -499,11 +432,16 @@
 	
                 &>li {
                     &>ul {
-                       top: 6rem;
+                        top: 4.5rem;
                     }
                     &>a {
-						
                         padding: 1.125rem 1.25rem 0.625rem 1.25rem;
+						.badge-xs{
+							&.style-1{
+								margin-left:0px;
+								
+							}
+						}
 
                         &::after {
                             display: none;
@@ -525,11 +463,6 @@
                     li {
                         text-align: left;
                     }
-					&.mm-active{
-						a{
-							background:transparent!important;
-						}
-					}
                 }
             }
         }
@@ -568,30 +501,36 @@
             }
         }
     }
-
+	
+	[data-header-position="fixed"][data-layout="horizontal"][data-sidebar-position="fixed"][data-sidebar-style="full"],
     [data-header-position="fixed"][data-layout="horizontal"][data-sidebar-position="fixed"][data-sidebar-style="compact"] {
         .content-body {
-            // padding-top: 13.125rem;
-            padding-top: 13.125rem;
+            padding-top: 11.5rem;
         }
     }
+	[data-header-position="fixed"][data-layout="horizontal"][data-sidebar-position="fixed"][data-sidebar-style="full"][data-container="boxed"]{
+        .content-body {
+            padding-top: 13.5rem;
+        }
+    }
+	[data-header-position="fixed"][data-layout="horizontal"][data-sidebar-position="fixed"][data-sidebar-style="full"]{
+		.content-body {
+            padding-top: 10rem;
+			@media screen and (max-width: 1367px) {
+				padding-top: 13.5rem;
+			}
+        }
+	}
 
     [data-sidebar-position="fixed"][data-layout="horizontal"] {
-        .deznav.fixed {
+        .dlabnav.fixed {
             position: fixed;
-			// padding: 0 0.9375rem;
+			padding: 0 0.9375rem;
             left: 0;
             top: 0;
 			border-radius:0;
 			width:100%;
         }
     }
-	[data-sidebar-position="fixed"][data-header-position="fixed"][data-layout="horizontal"] {
-        .deznav.fixed {
-            position: fixed;
-            left: 0;
-			top: 80px;
-			border-radius:0;
-			width:100%;
-        }
-    }
+
+}

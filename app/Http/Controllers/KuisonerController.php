@@ -47,9 +47,11 @@ class KuisonerController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        return view('kuisoner.create');
+        $idUser = $id;
+        $data = Kuisoner::where('idUser', $idUser)->first();
+        return view('kuisoner.create', compact('idUser', 'data'));
     }
 
     /**
@@ -58,11 +60,7 @@ class KuisonerController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        if ($request->hasFile('file_kuisoner')) {
-            $file = $request->file('file_kuisoner');
-            $file->storeAs('public/file_kuisoner', $file->getClientOriginalName());
-            $data['file_kuisoner'] = $file->getClientOriginalName();
-        }
+        $data['idUser'] = $request->idUser;
         Kuisoner::create($data);
         return redirect()->route('kuisoner.index')->with('success', 'Kuisoner berhasil ditambahkan');
     }

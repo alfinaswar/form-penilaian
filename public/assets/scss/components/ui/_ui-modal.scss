@@ -106,9 +106,6 @@
 .modal-backdrop{
     z-index: 10!important;
 }
-.modal-dialog-center{
-	min-height:calc(100% - 3.5rem);
-	display:flex;
-	align-items:center;
-	justify-content:center;
+.modal .required {
+	color:$danger;
 }

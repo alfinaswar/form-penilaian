@@ -12,10 +12,21 @@ return new class extends Migration {
     {
         Schema::create('kuisoners', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kuisoner');
-            $table->string('file_kuisoner');
-            $table->string('status');
-            $table->string('keterangan');
+            $table->string('idUser');
+            $table->json('Status1');
+            $table->json('Bobot1');
+            $table->json('Total1');
+            $table->json('Nilai1');
+            $table->json('Total2');
+            $table->json('Nilai2');
+            $table->json('Status2');
+            $table->json('Bobot2');
+            $table->json('Total3');
+            $table->json('Nilai3');
+            $table->json('Status3');
+            $table->json('Bobot3');
+            $table->string('TotalAkhir');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

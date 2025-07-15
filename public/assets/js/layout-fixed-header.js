@@ -1,7 +1,7 @@
 (function($) {
     "use strict"
 
-    new dzSettings({
+    new dlabSettings({
         headerPosition: "fixed",
     });
 

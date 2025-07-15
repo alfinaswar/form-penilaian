@@ -6,9 +6,6 @@
  .progress-bar-primary {
      background-color: var(--primary);
  }
-  .progress-bar-secondary {
-     background-color: var(--secondary);
- }
  
  .progress-bar-success {
      background-color: $success;
@@ -31,7 +28,7 @@
  }
  
 .progress {
-	height: 5px;
+	height: 6px;
 	background-color:#f6f6f6;
     overflow: hidden;
     // box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.13);

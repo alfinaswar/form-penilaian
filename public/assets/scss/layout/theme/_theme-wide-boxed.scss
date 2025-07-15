@@ -9,21 +9,6 @@
                 text-align: right;
             }
         }
-		.content-body {
-			padding-right:0rem;
-		}
-		.email-susb{
-			display:none;
-		}
-		.market-previews,
-		.assets-al{
-			width:50%;
-		}
-		.buy-coin .coin-img img{
-			width: 332px;
-			bottom: -11px;
-		}
-		
     }
 }
 
@@ -51,7 +36,7 @@
 }
 
 [data-header-position="fixed"][data-layout="horizontal"][data-container="wide-boxed"] {
-    .deznav {
+    .dlabnav {
         max-width: 92.5rem;
     }
 } //ok
@@ -99,14 +84,14 @@
     }
 
     .menu-toggle {
-        .deznav {
+        .dlabnav {
             position: absolute;
         }
     }
 }
 
 [data-container="wide-boxed"][data-sidebar-position="fixed"][data-layout="horizontal"] {
-    .deznav.fixed {
+    .dlabnav.fixed {
         left: auto;
         max-width: 92.5rem;
     }

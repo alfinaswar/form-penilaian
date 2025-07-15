@@ -2,10 +2,9 @@
 @import './bs-custom';
 
 $strong:#646c9a;
-$border: #E6E6E6;
+$border: #e6e6e6;
 $shadow: 0rem 0rem 2.5rem 0rem rgba(82,63,105,0.1);
-// $body-bg: #C7EBFC;
-$body-bg: #F3F0EC;
+$body-bg: #f5f5f5;
 
 
 ///////////////
@@ -20,20 +19,20 @@ $charade: #23252F;
 /////////////////////////
 $d-ctd: #ddd;
 $d-ctl: #828690;
-$d-border:rgba(255,255,255,0.10);
-$d-bg: #151C2C;
-$dark-card: #182237;
+$d-border: #2e2e42;
+$d-bg: #17171E;
+$dark-card: #212130;
 $dark_bg_lighter: #1E2A4A;
 
 /////////////////////////
 // Primary Light
 /////////////////////////
-$primary-light: lighten($primary, 43%);
-$secondary-light: lighten($secondary, 30%);
-$success-light: lighten($success, 40%);
-$warning-light: lighten($warning, 40%);
-$danger-light: lighten($danger, 25%);
-$info-light: lighten($info, 30%);
+$primary-light: lighten($primary, 65%);
+$secondary-light: lighten($secondary, 70%);
+$success-light: lighten($success, 30%);
+$warning-light: lighten($warning, 25%);
+$danger-light: lighten($danger, 38%);
+$info-light: lighten($info, 25%);
 $dark-light: lighten($dark, 50%);
 
 /////////////////////////
@@ -103,26 +102,23 @@ $sky: #2290FF;
 
 
 $color_pallate_1: $white;
-$color_pallate_2: #222B40;
+$color_pallate_2: #6610f2;
 $color_pallate_3: $primary;
-$color_pallate_4: $secondary;
-$color_pallate_5: #3250ff;
-$color_pallate_6:  #3f8cff;
-$color_pallate_7: #40a7e2;
-$color_pallate_8: #B65FBD;
-$color_pallate_9:  #88a67e;
-$color_pallate_10: #1C2E9E;
-$color_pallate_11: #c6164f;
+$color_pallate_4: #4d06a5;
+$color_pallate_5: #dc3545;
+$color_pallate_6:  #fd7e14;
+$color_pallate_7: #ffc107;
+$color_pallate_8: #fff;
+$color_pallate_9:  #20c997;
+$color_pallate_10:  #17a2b8;
+$color_pallate_11: #94618E;
 $color_pallate_12:#343a40 ;
 $color_pallate_13: #2a2a2a;
 $color_pallate_14: #4885ed;
 $color_pallate_15: #4cb32b;
 
 //utility variables
-$radius: 0.625rem; 
-$radius-lg:0.625rem;
-$radius-sm:0.375rem;
-$radius-xs:0.25rem;
+$radius: 0.5rem; 
 
 
 $loader--width: 15.625rem;

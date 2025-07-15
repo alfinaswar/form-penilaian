@@ -133,7 +133,7 @@
 
 }
 .bg-primary-light{
-    background: var(--rgba-primary-1);
+    background: var(--rgba-primary-5);
 	@at-root [data-theme-version="dark"] & {
 		background-color: var(--rgba-primary-1);
 	}
@@ -157,7 +157,7 @@
 	}
 }
 .bg-danger-light{
-   background:  rgba($danger-light, 0.4);
+   background:  rgba($danger-light, 0.5);
 	@at-root [data-theme-version="dark"] & {
 		background-color: rgba($danger, 0.05);
 	}

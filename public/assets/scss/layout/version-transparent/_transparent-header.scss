@@ -12,7 +12,7 @@
 
             &:focus {
                 box-shadow: none;
-                border-color:var(--primary);
+                border-color: $primary;
             }
 
             &::placeholder {

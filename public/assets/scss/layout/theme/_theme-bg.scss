@@ -1,8 +1,7 @@
 :root{
 	--nav-headbg: #FFFFFF;
 	--sidebar-bg: #FFFFFF;
-	// --headerbg: #C7EBFC;
-	--headerbg: #F3F0EC;
+	--headerbg: #FFFFFF;
 }
 
 //background for nav header
@@ -11,34 +10,34 @@
     [data-nav-headerbg="#{$name}"] {
         @if $name != "color_1"  {
 			--nav-headbg: #{$color};
-
 			.nav-header{
 				.brand-logo{
-					.logo-abbr{
-						path{
-							fill: $white;
-						}
-						
-					}	
-				}
 					.brand-title{
 						path{
 							fill:$white;
 						}
-						.yesh{
-							fill: $white;
-						}
-						.admin1{
-							fill: black;
+						tspan{
+							fill:$white;	
 						}
 					}
 				}
+				.hamburger .line{
+					background:$black;
+				}
 			}
-			/* .nav-control{
-				background-color:transparent;
-			} */
+			.nav-header .rect-primary-rect {
+				fill: #ffffff;
+			}
+			.nav-header{
+				.logo-abbr{
+					path{
+						fill:#f93a0b;
+					}
+				}
+			}
+			
 			//special work for color
-			/* &[data-nav-headerbg="color_8"]{
+			&[data-nav-headerbg="color_8"]{
 				.nav-header{
 					.brand-logo{
 						.brand-title{
@@ -54,43 +53,30 @@
 						background:$black;
 					}
 				}
-			} */
+			}
 			
 		}
 	}
+}
 //background for nav header
 @each $name, $color in $theme_backgrounds {
-	[data-sidebarbg="#{$name}"][data-theme-version="dark"],
-    [data-sidebarbg="#{$name}"] {
+	[data-sibebarbg="#{$name}"][data-theme-version="dark"],
+    [data-sibebarbg="#{$name}"] {
         @if $name != "color_1"  {
 			--sidebar-bg: #{$color};
 			
 			/* .hamburger .line{
 				background:$white;
 			} */
-			
-			.menu-toggle .deznav .metismenu li > ul{
+			.menu-toggle .dlabnav .metismenu li > ul{
 				background:$color!important;
 			}
-			.deznav .metismenu ul a:before{
+			.dlabnav .metismenu ul a:before{
 				background:rgba($white,0.5);
 			}
-			.deznav{
-				.menu-icon{
-					svg{
-						path,
-						ellipse{
-							// stroke:$white!important;
-						}
-					}
-				}
-			}
 			
-			&[data-layout="vertical"]{
-				.deznav {
-					.menu-title{
-						color:$white;
-					}
+			&[data-sidebar-style="full"][data-layout="vertical"]{
+				.dlabnav {
 					.metismenu{
 						&>li{
 							&.mm-active{
@@ -102,16 +88,7 @@
 							}
 						}				
 					} 
-					.plus-box{
-						h5,
-						p{
-							color:$white;
-							
-						}
-					}
-					
 				}
-				
 			}
 			&[data-sidebar-style="mini"],
 			&[data-sidebar-style="modern"],
@@ -119,21 +96,24 @@
 			&[data-sidebar-style="icon-hover"][data-layout="horizontal"],
 			&[data-sidebar-style="full"][data-layout="horizontal"]
 			{
-				.deznav{
+				.dlabnav{
 					.metismenu li ul{
 						background-color: lighten($color: $color, $amount: 10%);
 					}
 				} 
-				
+				.dlabnav .metismenu > li.mm-active > a,
+				.dlabnav .metismenu > li:hover > a{
+						background:rgba($white,0.15)!important;
+				}
 			}
 			/* &[data-sidebar-style="full"][data-layout="vertical"]{
-				.deznav .metismenu > li.mm-active > a,
-				.deznav .metismenu > li:hover > a{
+				.dlabnav .metismenu > li.mm-active > a,
+				.dlabnav .metismenu > li:hover > a{
 						background:transparent;
 				}	
 			} */
 			&[data-sidebar-style="compact"][data-layout="vertical"]{
-				.deznav {
+				.dlabnav {
 					.metismenu {
 						&>li {
 							a{
@@ -143,12 +123,9 @@
 							}
 							&>a{
 								&>i{
-									background: lighten($color: $color, $amount: 3%);
+									background: lighten($color: $color, $amount: 3%)!important;
 									color:rgba($white,0.7);
 								}
-								.menu-icon{
-									background-color:lighten($color: $color, $amount: 10%);	
-								}	
 							}
 							&.mm-active,&:hover{
 								&>a {
@@ -156,7 +133,7 @@
 									background:transparent!important;
 									color:$white!important;
 									i{
-										background:var(--primary);
+										background: lighten($color: $color, $amount: 10%)!important;
 										color:$white!important;
 									}
 								}
@@ -165,25 +142,10 @@
 					}
 				}
 			}
-			&[data-sidebar-style="compact"][data-layout="horizontal"]{
-				.deznav {
-					.metismenu {
-						&>li {
-							&>a{
-								.menu-icon{
-									background-color:lighten($color: $color, $amount: 10%);	
-								}	
-							}
-							
-						}
-					}
-				}
-				
-			}
-			.deznav {
+			.dlabnav {
 				.metismenu{
 					a{
-						color:$white;
+						color:rgba($white,0.8)!important;
 					}
 					li{
 						ul{
@@ -191,28 +153,22 @@
 								&:hover,
 								&:focus,
 								&.mm-active {
-									color:var(--secondary)!important;
+									color:$white;
 								}
 							}
 						}
 					}
 					&>li{
-						&:hover{
-							&>a{
-								/* background: rgba(255, 255, 255, 0.15) !important; */
-							}
-						}
 						&>a{
-							
-							color:
+							color:rgba($white,0.85)!important;
 							i{
 								color:rgba($white,0.85)!important;
 							}
-							
 						}
 						&.mm-active{
 							&>a{
-								color:var(--secondary)!important;
+								background:rgba($white,0.15)!important;
+								color:$white!important;
 								i{
 									color:$white!important;
 								}
@@ -224,37 +180,33 @@
 					}
 					.has-arrow:after{
 						border-color: rgba($white,0.85) transparent transparent rgba($white,0.85)!important;
-					}				
+					}					
 				} 
-				.help-desk{
-					.btn{
-						background-color:lighten($color: $color, $amount: 10%);	
-						border-color:lighten($color: $color, $amount: 10%);	
-					}
-				}
 				.header-info2 span{
 					color: $white;
 				}
 				.sidebar-info{
 					color: $white; 
 					i{
-						color: $white; 		
+						color: $white!important; 		
 					}
 				}
-				
 			}
 			.plus-box{
 				background-color: lighten($color: $color, $amount: 10%);
 			}
 			.copyright{
 				color:$white;
+				strong{
+					color:$white;
+				}
 			}
 			//special work for color
-			/* &[data-sibebarbg="color_8"]{
-				.deznav .metismenu ul a:before {
+			&[data-sibebarbg="color_8"]{
+				.dlabnav .metismenu ul a:before {
 					background:rgba($black,0.5);
 				}
-				 .deznav {
+				 .dlabnav {
 					.metismenu{
 						a{
 							color:rgba($black,0.6)!important;
@@ -306,7 +258,7 @@
 				 .plus-box{
 					background-color:rgba($black,0.4);	
 				} 
-			} */
+			}
 		}
 	}
 }
@@ -317,131 +269,47 @@
     [data-headerbg="#{$name}"] {
         @if $name != "color_1"  {
 			--headerbg: #{$color};
-				.header-left{
-					.search-area{
-						.form-control,
-						.input-group-text{
-							background-color:lighten($color: $color, $amount: 10%);
-						}
-					}
-				}
-				
 				.search-area .input-group-text,
 				.search-area .form-control,.search-area .form-control::placeholder{
 					color:$white;
-					
 				}
 				.search-area .input-group-append .input-group-text i{
 					color:$white;
 				}
-			.header-left .search-area{
-				background-color: lighten($color: $color, $amount: 10%);
-			}	
-			.header-right{
+			.header-left{
 				.search-area .form-control,
 				.search-area .input-group-text{
 					background-color: lighten($color: $color, $amount: 10%);
 					i{
 						color:$white;
 					}
-					svg{
-						path{
-						fill:$white;
-						}
-					}
 				}
-				.dz-side-menu{
-					.search-coundry{
-						.dashboard-select{
-							// color:$white;
-							&:after{
-								// border-color:$white;
-							}
-						}
-					}
-				}
-				.nav-item{
-					svg{
-						path,
-						circle{
-							stroke:$white!important;
-							fill:$white!important;
-						}
-					}
-					&.ps-3{
-						&:hover{
-							background:transparent;
-						}
-					}
-					.ai-icon{
-						svg{
-							path,
-							circle{
-								stroke:var(--primary)!important;
-							}
-						}
-					}
-					
-				}
-				.header-border{
-					.btn{
-						background-color:lighten($color: $color, $amount: 10%);
-						border-color:lighten($color: $color, $amount: 10%);
-					}
-					&:hover{
-						background:transparent;
-					}
-				}
-				
-				.header-info{
-					 p{
-						color: #E1E1E1;
-					 }
-					 h6{
-						color:$white;
-					 }
-				}
-				
-			}
-			.header-left{
 				.dashboard_bar{
+					color:$white;	
+				}
+				.plus-icon a{
+					background-color: lighten($color: $color, $amount: 10%);	
+				}
+					
+			}
+			.header-right{
+				svg{
+					path{
+						fill:$white;
+					}
+				}
+				#icon-dark{
 					color:$white;
 				}
 			}
-			.header-right .notification_dropdown .nav-link{
-				background:lighten($color: $color, $amount: 10%);
+			.header-profile > a.nav-link .header-info small, .header-profile > a.nav-link .header-info span{
+				color:$white;	
 			}
-			.front-menu{
-				a{
-					color: $white;
-				}
-			}
-			
 			.hamburger .line{
 				background:$white!important;
-					svg{
-						rect{
-							fill:$white!important;
-						}
-					}
 				}
-			.hamburger{
-				svg{
-					rect{
-						fill:$white!important;
-					}
-				}
-			}
-			&[data-headerbg="color_4"]{
-				.search-area .input-group-text,
-				.search-area .form-control,.search-area .form-control::placeholder{
-					color:var(--bs-card-color);
-					
-				}
-			}
-			
 			//special work for color
-			/* &[data-headerbg="color_8"]{
+			&[data-headerbg="color_8"]{
 					
 				.search-area .input-group-text,
 				.search-area .form-control,.search-area .form-control::placeholder{
@@ -473,61 +341,9 @@
 						fill:rgba($black,0.4);	
 					}
 				}
-			} */
+			}
+			}	
 			
-		}
-	}
-}
-//background for nav header
- @each $name, $color in $theme_backgrounds {
-	 [data-primary="#{$name}"][data-nav-headerbg="#{$name}"][data-theme-version="light"],
-     [data-nav-headerbg="#{$name}"] {
-		 @if $name == "color_1"  {
-			
-			&[data-layout="horizontal"]{
-				.header .header-content {
-					padding-left: 0;
-				}
-			}
-			&[data-sidebar-style="mini"],
-			&[data-sidebar-style="modern"],
-			&[data-sidebar-style="compact"]{
-				.color-title{
-					display:none! important;
-				}
-			}
-			&[data-sidebar-style="icon-hover"]{
-				.color-title{
-					display:none! important ;
-				}
-				.iconhover-toggle{
-						.color-title{
-							display:block! important;
-					}
-				}
-			}
-			&[data-sidebar-style="icon-hover"][data-layout="horizontal"]{
-				.color-title{
-					display:block! important;
-				}
-			}
-			&[data-sidebar-style="morden"][data-layout="horizontal"]{
-				.color-title{
-					display:block! important;
-				}
-			}
-			&[data-sidebar-style="compact"][data-layout="horizontal"]{
-				.color-title{
-					display:block! important;
-				}
-			}
-			&[data-sidebar-style="compact"][data-layout="vertical"]{
-				.menu-toggle {
-					.color-title{
-						display:block! important;
-					}
-				}
-			}
 		}
 	}
 }

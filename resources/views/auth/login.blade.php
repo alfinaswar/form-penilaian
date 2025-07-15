@@ -27,7 +27,7 @@
                         <!-- Kolom Kiri -->
                         <div class="col-md-6  d-flex flex-column justify-content-center align-items-center text-center p-4">
                             <img src="{{ asset('assets/images/bglogin/kuantalogo.png') }}" alt="Logo" class="mb-3" style="max-width: 150px;">
-                            <h4 class="mb-2">PUSAT PGLH - KUANTA</h4>
+                            <h4 class="mb-2">KUANTA</h4>
                             <p class="mb-1">Sistem Informasi Adiwiyata</p>
                             <p class="mb-1">Pusat Pengembangan Generasi Lingkungan Hidup</p>
                             <p class="mb-0">Sekretariat / Sekretariat Utama</p>

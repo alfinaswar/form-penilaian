@@ -9,28 +9,8 @@
                 text-align: right;
             }
         }
-		.content-body {
-			padding-right: 0rem;
-		}
 		.invoice-num {
 			font-size: 1.375rem;
-		}
-		.email-susb{
-			display:none;
-		}
-		.market-previews,
-		.assets-al{
-			width:50%;
-		}
-		.buy-coin .coin-img img{
-			width: 332px;
-			bottom: -11px;
-		}
-		.dz-side-menu{
-			display:none;
-		}
-		.out-footer{
-			margin-right: 5.375rem;
 		}
     }
 }
@@ -55,7 +35,7 @@
 
 
 [data-header-position="fixed"][data-layout="horizontal"][data-container="boxed"] {
-    .deznav {
+    .dlabnav {
         max-width: 74.9375rem;
     }
 } //ok
@@ -103,14 +83,14 @@
     }
 
     .menu-toggle {
-        .deznav {
+        .dlabnav {
             position: absolute;
         }
     }
 }
 
 [data-container="boxed"][data-sidebar-position="fixed"][data-layout="horizontal"] {
-    .deznav.fixed {
+    .dlabnav.fixed {
         left: auto;
         max-width: 74.9375rem;
     }

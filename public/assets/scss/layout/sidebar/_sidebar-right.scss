@@ -1,9 +1,9 @@
 .sidebar-right-trigger {
 	position: absolute;
 	z-index: 9;
-	top: 7.75rem;
+	top: 14.75rem;
 	right: 100%;
-	background-color:var(--primary);
+	background-color: $primary;
 	color: $white;
 	display: inline-block;
 	height: 3rem;
@@ -60,7 +60,7 @@
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		padding: 10px;
+		padding: 20px;
 		opacity: 0.5;
 		font-size: 12px;
 	}
@@ -74,7 +74,7 @@
         width: 3rem;
 		line-height:3rem;
 		text-align:center;
-		background:var(--primary);
+		background:rgba($black,1);
 		color:$white;
 	}
 	
@@ -83,9 +83,6 @@
         right: 5.25rem;
 		box-shadow: 0rem 0rem 3.125rem rgba(0 ,0 ,0 ,0.2);
         z-index: 9999;
-		@include respond ('phone-land'){
-			display:none;
-		}
 		
 		.bg-overlay{
 			position:fixed;
@@ -206,7 +203,6 @@
     #nav_header, 
     #header, 
     #sidebar,
-    #secondary,
 	#primary{
 
 
@@ -242,14 +238,6 @@
 				display:block;
 			}
 		}
-	}
-}
-.nice-select.wide{
-	line-height: 2.1125rem;
-    // height: 48px;
-	&.form-control-sm{
-		height: 35px;
-		line-height: 1rem;
 	}
 }
 

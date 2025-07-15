@@ -45,9 +45,9 @@
 						{
 							label: "My First dataset",
 							data:  [35, 18, 30, 35, 40, 20, 30, 25, 22, 20, 45, 35],
-							borderColor: 'rgba(248,185,64,1)',
+							borderColor: 'rgba(249, 58, 11, 1)',
 							borderWidth: "0",
-							backgroundColor: 'rgba(248,185,64,1)'
+							backgroundColor: 'rgba(249, 58, 11, 1)'
 							
 						}
 					]
@@ -55,12 +55,14 @@
 				options: {
 					responsive: true,
 					maintainAspectRatio: false,
-					
+					plugins:{
+						legend: false,
+					},
 					legend: {
 						display: false
 					},
 					scales: {
-						yAxes: [{
+						y: {
 							gridLines: {
 								color: "rgba(89, 59, 219,0.1)",
 								drawBorder: true
@@ -68,18 +70,18 @@
 							ticks: {
 								fontColor: "#999",
 							},
-						}],
-						xAxes: [{
+						},
+						x: {
 							gridLines: {
 								display: false,
 								zeroLineColor: "transparent"
 							},
 							ticks: {
 								stepSize: 5,
-								fontColor:	'#ffffff',
+								fontColor: "#999",
 								fontFamily: "Nunito, sans-serif"
 							}
-						}]
+						}
 					},
 					tooltips: {
 						mode: "index",
@@ -135,6 +137,9 @@
 				options: {
 					responsive: !0,
 					maintainAspectRatio: false,
+					plugins:{
+						legend: false,
+					},
 					legend: {
 						display: !1
 					},
@@ -142,15 +147,15 @@
 						enabled: false
 					},
 					scales: {
-						xAxes: [{
+						x: {
 							display: !1,
 							gridLines: {
 								display: !1
 							},
 							barPercentage: 1,
 							categoryPercentage: 0.5
-						}],
-						yAxes: [{
+						},
+						y: {
 							display: !1,
 							ticks: {
 								padding: 10,
@@ -158,13 +163,13 @@
 								max: 100,
 								min: 0
 							},
-							gridLines: {
+							grid: {
 								display: !0,
 								drawBorder: !1,
 								lineWidth: 1,
 								zeroLineColor: "#48f3c0"
 							}
-						}]
+						}
 					}
 				}
 			});
@@ -201,17 +206,20 @@
 							data: [65, 59, 80, 81, 56, 55, 40],
 							borderColor: 'rgba(255, 255, 255, .8)',
 							borderWidth: "0",
+							barThickness:'25',
 							backgroundColor: 'rgba(255, 255, 255, .8)', 
 							hoverBackgroundColor: 'rgba(255, 255, 255, .8)'
 						}
 					]
 				},
 				options: {
-					legend: false,
+					plugins:{
+						legend: false,
+					},
 					responsive: true, 
 					maintainAspectRatio: false,  
 					scales: {
-						yAxes: [{
+						y: {
 							display: false, 
 							ticks: {
 								beginAtZero: true, 
@@ -220,22 +228,22 @@
 								min: 0, 
 								stepSize: 10
 							}, 
-							gridLines: {
+							grid: {
 								display: false, 
 								drawBorder: false
 							}
-						}],
-						xAxes: [{
+						},
+						x: {
 							display: false, 
 							barPercentage: 0.5, 
-							gridLines: {
+							grid: {
 								display: false, 
 								drawBorder: false
 							}, 
 							ticks: {
 								display: false
 							}
-						}]
+						}
 					}
 				}
 			});
@@ -264,17 +272,20 @@
 							data: [65, 59, 80, 81, 56, 55, 40, 88, 45, 95, 54, 76],
 							borderColor: chart_widget_2gradientStroke,
 							borderWidth: "0",
-							backgroundColor: 'rgba(248,185,64,1)', 
+							barThickness:'5',
+							backgroundColor: chart_widget_2gradientStroke, 
 							hoverBackgroundColor: chart_widget_2gradientStroke
 						}
 					]
 				},
 				options: {
-					legend: false,
+					plugins:{
+						legend: false,
+					},
 					responsive: true, 
 					maintainAspectRatio: false,  
 					scales: {
-						yAxes: [{
+						y: {
 							display: false, 
 							ticks: {
 								beginAtZero: true, 
@@ -283,22 +294,22 @@
 								min: 0, 
 								stepSize: 10
 							}, 
-							gridLines: {
+							grid: {
 								display: false, 
 								drawBorder: false
 							}
-						}],
-						xAxes: [{
+						},
+						x: {
 							display: false, 
 							barPercentage: 0.1, 
-							gridLines: {
+							grid: {
 								display: false, 
 								drawBorder: false
 							}, 
 							ticks: {
 								display: false
 							}
-						}]
+						}
 					}
 				}
 			});
@@ -320,6 +331,7 @@
 				label: 'Expense',
 				backgroundColor: '#ff2c53',
 				hoverBackgroundColor: '#ff5777', 
+				barThickness:'18',
 				data: [
 					'20',
 					'14',
@@ -338,6 +350,7 @@
 				label: 'Earning',
 				backgroundColor: '#F1F3F7',
 				hoverBackgroundColor: '#F1F3F7', 
+				barThickness:'18',
 				data: [
 					'12',
 					'18',
@@ -360,6 +373,9 @@
 			type: 'bar',
 			data: barChartData,
 			options: {
+				plugins:{
+					legend: false,
+				},
 				legend: {
 					display: false
 				}, 
@@ -373,29 +389,29 @@
 				responsive: true,
 				maintainAspectRatio: false, 
 				scales: {
-					xAxes: [{
+					x: {
 						display: false, 
 						stacked: true,
 						barPercentage: .2, 
 						ticks: {
 							display: false
 						}, 
-						gridLines: {
+						grid: {
 							display: false, 
 							drawBorder: false
 						}
-					}],
-					yAxes: [{
+					},
+					y: {
 						display: false, 
 						stacked: true, 
-						gridLines: {
+						grid: {
 							display: false, 
 							drawBorder: false
 						}, 
 						ticks: {
 							display: false
 						}
-					}]
+					}
 				}
 			}
 		});
@@ -418,6 +434,7 @@
 				label: 'Expense',
 				backgroundColor: '#430b58',
 				hoverBackgroundColor: '#6c2586', 
+				barThickness:'10',
 				data: [
 					'20',
 					'14',
@@ -443,7 +460,8 @@
 			}, {
 				label: 'Earning',
 				backgroundColor: '#F1F3F7',
-				hoverBackgroundColor: '#F1F3F7', 
+				hoverBackgroundColor: '#F1F3F7',
+				barThickness:'10',				
 				data: [
 					'32',
 					'58',
@@ -474,7 +492,10 @@
 			type: 'bar',
 			data: barChartData2,
 			options: {
-				legend: {
+				plugins:{
+					legend: false,
+				},
+				legend:{
 					display: false
 				}, 
 				title: {
@@ -487,7 +508,7 @@
 				responsive: true,
 				maintainAspectRatio: false, 
 				scales: {
-					xAxes: [{
+					x: {
 						display: false, 
 						stacked: true,
 						barPercentage: 1, 
@@ -495,15 +516,15 @@
 						ticks: {
 							display: false
 						}, 
-						gridLines: {
+						grid:{
 							display: false, 
 							drawBorder: false
 						}
-					}],
-					yAxes: [{
+					},
+					y: {
 						display: false, 
 						stacked: true, 
-						gridLines: {
+						grid:{
 							display: false, 
 							drawBorder: false
 						}, 
@@ -512,7 +533,7 @@
 							max: 100, 
 							min: 0
 						}
-					}]
+					}
 				}
 			}
 		});
@@ -555,6 +576,7 @@
 					showGrid: !1,
 					offset: 0
 				}
+
 			});
 		}
 	}
@@ -627,11 +649,13 @@
 					]
 				},
 				options: {
-					legend: false,
+					plugins:{
+						legend: false,
+					},
 					responsive: true, 
 					maintainAspectRatio: false,  
 					scales: {
-						yAxes: [{
+						y: {
 							display: false, 
 							ticks: {
 								beginAtZero: true, 
@@ -644,8 +668,8 @@
 								display: false, 
 								drawBorder: false
 							}
-						}],
-						xAxes: [{
+						},
+						x: {
 							display: false, 
 							barPercentage: 0.6, 
 							gridLines: {
@@ -655,7 +679,7 @@
 							ticks: {
 								display: false
 							}
-						}]
+						}
 					}
 				}
 			});
@@ -714,10 +738,14 @@
 					pointBorderColor: '#2780d4',
 					pointHoverBackgroundColor: '#2780d4',
 					pointHoverBorderColor: '#2780d4',
-					data: [20, 10, 18, 15, 32, 18, 15, 22, 8, 6, 12, 13, 10, 18, 14, 24, 16, 12, 19, 21, 16, 14, 24, 21, 13, 15, 27, 29, 21, 11, 14, 19, 21, 17]
+					data: [20, 10, 18, 15, 32, 18, 15, 22, 8, 6, 12, 13, 10, 18, 14, 24, 16, 12, 19, 21, 16, 14, 24, 21, 13, 15, 27, 29, 21, 11, 14, 19, 21, 17],
+					fill:true,
 				}]
 			},
 			options: {
+				plugins:{
+					legend:false,
+				},
 				title: {
 					display: !1
 				},
@@ -737,15 +765,15 @@
 					mode: "index"
 				},
 				scales: {
-					xAxes: [{
+					x: {
 						display: !1,
 						gridLines: !1,
 						scaleLabel: {
 							display: !0,
 							labelString: "Month"
 						}
-					}],
-					yAxes: [{
+					},
+					y: {
 						display: !1,
 						gridLines: !1,
 						scaleLabel: {
@@ -755,7 +783,7 @@
 						ticks: {
 							beginAtZero: !0
 						}
-					}]
+					}
 				},
 				elements: {
 					line: {
@@ -799,10 +827,14 @@
 					pointHoverBackgroundColor: '#2780d4',
 					pointHoverBorderColor: '#2780d4',
 					borderWidth: 0, 
+					fill:true,
 					data: [20, 10, 18, 10, 32, 15, 15, 22, 18, 6, 12, 13]
 				}]
 			},
 			options: {
+				plugins:{
+					legend:false,
+				},
 				title: {
 					display: !1
 				},
@@ -822,15 +854,15 @@
 					mode: "index"
 				},
 				scales: {
-					xAxes: [{
+					x: {	
 						display: !1,
 						gridLines: !1,
 						scaleLabel: {
 							display: !0,
 							labelString: "Month"
 						}
-					}],
-					yAxes: [{
+					},
+					y: {
 						display: !1,
 						gridLines: !1,
 						scaleLabel: {
@@ -840,7 +872,7 @@
 						ticks: {
 							beginAtZero: !0
 						}
-					}]
+					}
 				},
 				elements: {
 					line: {
@@ -876,18 +908,20 @@
 				datasets: [{
 					label: "Sales Stats",
 					backgroundColor: "rgba(98, 126, 234, .5)",
-					borderColor: '#ffaa2b',
-					pointBackgroundColor: '#ffaa2b',
-					pointBorderColor: '#ffaa2b',
-					pointHoverBackgroundColor: '#ffaa2b',
-					pointHoverBorderColor: '#ffaa2b',
-					data: [0, 18, 14, 24, 16, 30]
+					borderColor: '#145650',
+					pointBackgroundColor: '#145650',
+					pointBorderColor: '#145650',
+					pointHoverBackgroundColor: '#145650',
+					pointHoverBorderColor: '#145650',
+					data: [0, 18, 14, 24, 16, 30],
+					fill:true,
+					tension: 0.5,
 				}]
 			},
-			chart: {
-				width: 250,
-			  },
 			options: {
+				plugins:{
+					legend:false,
+				},
 				title: {
 					display: !1
 				},
@@ -907,7 +941,7 @@
 					mode: "index"
 				},
 				scales: {
-					xAxes: [{
+					x: {
 						display: !1,
 						gridLines: !1,
 						scaleLabel: {
@@ -918,8 +952,8 @@
 							max: 30, 
 							min: 0
 						}
-					}],
-					yAxes: [{
+					},
+					y: {
 						display: !1,
 						gridLines: !1,
 						scaleLabel: {
@@ -929,7 +963,7 @@
 						ticks: {
 							beginAtZero: !0
 						}
-					}]
+					}
 				},
 				elements: {
 					line: {
@@ -971,16 +1005,20 @@
 						borderWidth: "2",
 						backgroundColor: 'transparent',  
 						pointBackgroundColor: '#3693FF', 
-						pointRadius: 0
+						pointRadius: 0,
+						tension: 0.5,
+					
 					}
 				]
 			},
 			options: {
-				legend: false, 
+				plugins:{
+					legend:false,
+				},
 				responsive: true, 
 				maintainAspectRatio: false, 
 				scales: {
-					yAxes: [{
+					y: {
 						display: false, 
 						ticks: {
 							beginAtZero: true, 
@@ -994,8 +1032,8 @@
 							drawBorder: false, 
 							display: false
 						}
-					}],
-					xAxes: [{
+					},
+					x: {
 						display: false, 
 						ticks: {
 							padding: 0, 
@@ -1005,7 +1043,7 @@
 							display: false, 
 							drawBorder: false
 						}
-					}]
+					}
 				}
 			}
 		});
@@ -1031,16 +1069,19 @@
 						borderWidth: "2",
 						backgroundColor: 'transparent',  
 						pointBackgroundColor: '#2780d4', 
-						pointRadius: 0
+						pointRadius: 0,
+						tension: 0.5,
 					}
 				]
 			},
 			options: {
-				legend: false, 
+				plugins:{
+					legend:false,
+				},
 				responsive: true, 
 				maintainAspectRatio: false, 
 				scales: {
-					yAxes: [{
+					y: {
 						display: false, 
 						ticks: {
 							beginAtZero: true, 
@@ -1054,8 +1095,8 @@
 							drawBorder: false, 
 							display: false
 						}
-					}],
-					xAxes: [{
+					},
+					x: {
 						display: false, 
 						ticks: {
 							padding: 0, 
@@ -1065,7 +1106,7 @@
 							display: false, 
 							drawBorder: false
 						}
-					}]
+					}
 				}
 			}
 		});
@@ -1089,16 +1130,19 @@
 						{
 							label: "My First dataset",
 							data: [25, 60, 30, 71, 26, 85, 50],
-							borderColor: 'rgba(248,185,64,1)',
+							borderColor: 'rgba(249, 58, 11, 1)',
 							borderWidth: "2",
-							backgroundColor: 'rgba(248,185,64,1)',  
-							pointBackgroundColor: 'rgba(248,185,64,1)', 
-							pointRadius: 0
+							backgroundColor: 'rgba(249, 58, 11, 1)',  
+							pointBackgroundColor: 'rgba(249, 58, 11, 1)', 
+							pointRadius: 0,
+							tension: 0.5,
 						}
 					]
 				},
 				options: {
-					legend: false, 
+					plugins:{
+						legend:false,
+					},
 					responsive: true, 
 					maintainAspectRatio: false,
 					tooltips: {
@@ -1109,7 +1153,7 @@
 						caretPadding: 10
 					}, 
 					scales: {
-						yAxes: [{
+						y: {
 							display: false, 
 							ticks: {
 								beginAtZero: true, 
@@ -1123,8 +1167,8 @@
 								drawBorder: false, 
 								display: false
 							}
-						}],
-						xAxes: [{
+						},
+						x: {
 							display: false, 
 							ticks: {
 								padding: 0, 
@@ -1135,7 +1179,7 @@
 								display: false, 
 								drawBorder: false
 							}
-						}]
+						}
 					}
 				}
 			});
@@ -1190,14 +1234,14 @@
 						borderWidth: 0,
 						labelMargin: 0
 					},
-					xaxis: {
+					x: {
 						color: 'transparent',
 						font: {
 							size: 10,
 							color: '#fff'
 						}
 					},
-					yaxis: {
+					y: {
 						min: 0,
 						max: 100,
 						color: 'transparent',
@@ -1304,13 +1348,7 @@
 		  });
 		});
 		
-	}
-	var donutChart1 = function(){
-		$("span.donut1").peity("donut", {
-			width: "100",
-			height: "100"
-		});
-	}
+	}	
 	
 	/* Function ============ */
 		return {
@@ -1336,7 +1374,6 @@
 				chartWidget15();
 				chartWidget16();
 				chartWidget17();
-				donutChart1();
 				widgetSparkLinedash(); 
 				widgetSparkBar();
 				widgetStackedBarChart();

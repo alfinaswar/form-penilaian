@@ -7,10 +7,10 @@
 		.nav-header {
 			width: 11.25rem;
 		}
-		.deznav .metismenu .has-arrow[aria-expanded=true]:after, .deznav .metismenu .mm-active > .has-arrow:after{
+		.dlabnav .metismenu .has-arrow[aria-expanded=true]:after, .dlabnav .metismenu .mm-active > .has-arrow:after{
 			margin-right:0;	
 		}
-        .deznav {
+        .dlabnav {
             .header-profile{
 				margin-bottom: 0.3125rem;
 				&>a.nav-link{
@@ -48,23 +48,11 @@
                         padding: 0.7rem 0.5rem;
 						svg{
 						
-							margin-right: 0.0125rem;
-							margin-top: -1.3875rem;
-						}
-						.menu-icon{
-						    display: block;
-							padding: 0;
-							background-color:rgba(13, 153, 255, 0.05);
-							color: rgba(0, 0, 0, 0.3);
-							width: 3.125rem;
-							height: 3.125rem;
-							line-height: 3.125rem;
-							border-radius: $radius;
-							line-height: 4.25rem;
+							max-width: 1.3125rem;
+							max-height: 1.3125rem;
+							display: block;
 							margin-left: auto;
-							margin-right: auto;
-							margin-bottom: 0.3125rem;
-							
+							margin-right: auto;	
 						}
 						i{
 							@include transitionMedium;
@@ -75,8 +63,9 @@
 					}
 					
 					& > a{
+						background: transparent!important;
 						box-shadow: none;
-						font-size: 0.813rem;
+						font-size: 0.9375rem;
 					}
                 }
             }
@@ -89,10 +78,7 @@
 				margin-top: 1.25rem;
 			}
 			.header-info2{
-				padding:0;	
-				img{
-					margin-left:-1rem;	
-				}
+				//padding:0;	
 			}
 			.sidebar-info{
 				display:none!important;	
@@ -100,17 +86,11 @@
 			.header-profile2{
 				margin: 0 3rem;	
 			}
-			.feature-box,
-			.support-box,
-			.help-desk{
-				display:none;
-			}
         }
 
         .nav-text {
             display: inline-block;
             margin-top: 0.3125rem;
-			font-size:0.813rem;
         }
 
         .nav-label {
@@ -128,12 +108,12 @@
         }
 
         .content-body {
-            margin-left: 10.5rem;
+            margin-left: 11.4rem;
         }
 		
 		&[data-theme-version="dark"]{
 			&[data-layout="horizontal"]{
-				.deznav {
+				.dlabnav {
 					.metismenu {
 						 li {
 							&>a i{
@@ -144,7 +124,7 @@
 				}
 			}
             &[data-layout="vertical"]{
-                .deznav {
+                .dlabnav {
                     .metismenu {
                          li {
                              &>a i{
@@ -163,7 +143,7 @@
             }
 		}
 		&[data-layout="vertical"]{
-			.deznav {
+			.dlabnav {
 				.metismenu {
 					 li {
 						&:hover{
@@ -185,14 +165,11 @@
 	.content-body {
 		margin-left:0;
 	}
-	.deznav{
+	.dlabnav{
 		margin-bottom:0;
 	}
-	.header {
-		padding-left: 18.563rem;
-	}
 	.nav-header {
-		width: 18.563rem;
+		width: var(--width);
 		.brand-logo {
 			padding-left: 2.5rem;
 			padding-right: 2.5rem;
@@ -200,9 +177,8 @@
 	}
 }
 [data-layout="vertical"][data-sidebar-style="compact"] {
-    .deznav {
+    .dlabnav {
         width: 11.25rem;
-		padding-top: 1rem;
         
         .metismenu {
 		
@@ -230,7 +206,14 @@
 
             &>li {
 				&>a{
-					padding:0.9rem 0.5rem;
+					padding:1.2rem 0.5rem;
+					
+					.badge-xs{
+						&.style-1{
+							margin-left:0px;
+							//margin-top:5px;
+						}
+					}
 				}
                 &>a.has-arrow::after {
                     top: 0.0625rem;
@@ -249,14 +232,19 @@
 						margin-right: 0.3125rem;
 					}
                 }
-				&.mm-active {
-					&>a {
-						background:transparent;
-						color:var(--primary);
-					}
-				}	
             }
         }
 
     }
 }
+[data-sidebar-style="compact"][data-container="wide-boxed"][data-layout="horizontal"],
+ [data-sidebar-style="compact"][data-container="boxed"][data-layout="horizontal"] {
+		.dlabnav{
+			.badge{
+				position: absolute;
+				right: -3px;
+				top: 1px;
+			}
+		}
+	 
+	 }

@@ -17,12 +17,14 @@
 	margin-top: -4.5rem;
 	margin-right: 0.625rem;
 	
+	@include respond('tab-land') {
+		
+	}
 	@include respond('phone') {
 		width: 5rem;
 		margin-left: auto;
 		margin-right: auto;
 		margin-bottom:1.25rem;
-		margin-top: -2.8rem;
 	}
 }
 [direction="rtl"]{
@@ -155,7 +157,7 @@
 .post-input{
     margin-bottom: 1.875rem;
     .form-control{
-        height: 4.6875rem;
+        /* height: 4.6875rem; */
         font-weight: 400;
         margin: 0.9375rem 0;
     }
@@ -208,212 +210,3 @@
         }
     }
 }
-
-.profile-page{
-	height:60px;
-}
-.card-profile{
-	background-image:url('../images/crm-profile.jpg');
-	background-size: cover;
-	background-position: center center;
-	height: 420px;
-    padding: 30px;
-	.admin-user{
-		background-color: #fff;
-		padding: 30px;
-		max-width: 380px;
-		margin-top: auto;
-		margin-bottom: auto;
-		text-align: center;
-		border-radius:$radius;
-		.img-wrraper{
-			position:relative;
-			margin-bottom: 10px;
-			img{
-				height:80px;
-				width:80px;
-				border: 7px solid rgba(62, 95, 206, 0.08);
-			}
-			a{
-				position: absolute;
-				bottom: 0;
-				margin: 0 24px;
-				height: 30px;
-				width: 30px;
-				background:$white;
-				color: var(--primary);
-				text-align: center;
-				line-height: 30px;
-				border-radius: 50%;
-				box-shadow: 0 0 6px 3px rgba(68, 102, 242, 0.1);
-			}
-		}
-	}
-	.user-details{
-		.title{
-			h4{
-				font-size:1rem;
-			}
-			h6{
-				color:$body-color;
-				margin-bottom: 20px;
-			}
-		}
-	}
-	.user-social-links{
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		a{
-			color: var(--primary);
-			display: block;
-			height: 30px;
-			width: 30px;
-			background-color: var(--rgba-primary-1);
-			text-align: center;
-			line-height: 30px;
-			margin: 0 6px;
-			border-radius:$radius-sm;
-			&:hover{
-				background:var(--primary);
-				color:$white;
-			}
-		}
-	}
-	
-	.follow-list{
-		display: flex;
-        justify-content: center;
-		li{
-			padding:10px;
-			border-radius:$radius-sm;
-			margin: 0 9px;
-            margin-top: 44px;
-			background: var(--rgba-primary-1);
-			min-width: 100px;
-			@include respond ('phone'){
-				padding: 6px;
-				min-width: 74px;
-				margin-right: 6px;
-                margin-left: 6px;
-			}
-		}
-		.follow-num{
-			font-size:1rem;
-			font-weight:500;
-			color:black;
-		}	
-		
-	}
-}
-.profile-accordion{
-	.accordion-item{
-		background:transparent;
-		.accordion-header{
-			padding:0;
-			border: 0;
-			.accordion-button{
-				padding: 0;
-                background: transparent;
-				box-shadow:none;
-				font-size:1rem;
-				font-weight:500;
-				color:black;
-			}
-		}
-		.accordion-body{
-			padding-left:0;
-			padding-right:0;
-		}
-	}
-}
-.about-me{
-	ul{
-		li{
-			display: flex;
-            align-items: center;
-			margin: 15px 0px;
-			margin-top:0;
-			h6{
-				margin-bottom:0;
-				
-			}
-			i{
-				height:35px;
-				width:35px;
-				background-color:var(--rgba-primary-1);
-				color:var(--primary);
-				text-align: center;
-                line-height: 35px;
-				border-radius:$radius;
-				margin-right:15px;
-			}
-		}
-	}
-}
-.second-head{
-	font-size: 1rem;
-    font-weight: 500;
-    color: black;
-}
-.bg-facebook{
-	background:#4867aa;
-	color:white;
-	&:hover{
-		background:#4867aa;
-	   color:white;
-	}
-}
-.bg-whatsapp{
-	background:#1ad03f;
-	color:white;
-	&:hover{
-		background:#1ad03f;
-	   color:white;
-	}
-}
-.bg-skype{
-	background:#0194d7;
-	color:white;
-	&:hover{
-		background:#0194d7;
-	   color:white;
-	}
-}
-.bg-linkedin{
-	background:#0a66c2;
-	color:white;
-	&:hover{
-		background:#0a66c2;
-	   color:white;
-	}
-}
-.profile-interest{
-	img{
-		border-radius:$radius;
-	}
-}
-.post-img{
-	img{
-		border-radius:$radius;
-		width: 100%;
-		@include respond ('laptop'){
-			margin-bottom:10px;
-			margin-left:0!important;
-			margin-right:0!important;
-		}
-	}
-}
-.friend-list{
-	.avatar{
-		margin-left: 9px;
-        margin-bottom: 16px;
-	}
-}
-/* :root{
---bs-table-accent-bg:var(--rgba-primary-1);
-}
-.table-striped > tbody > tr:nth-of-type(odd) > *{
-	background: #ffffff;
-    --bs-table-accent-bg: var(--rgba-primary-1);
-} */

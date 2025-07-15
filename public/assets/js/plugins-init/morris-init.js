@@ -30,8 +30,8 @@
 				}],
 				resize: true,
 				redraw: true,
-				colors: ['#452b90', 'rgb(255, 92, 0)', '#ffaa2b'],
-				
+				colors: ['#f93a0b', 'rgb(255, 92, 0)', '#145650'],
+				//responsive:true,
 				
 			});
 		}
@@ -86,7 +86,7 @@
 				ykeys: ['item1'],
 				labels: ['Item 1'],
 				gridLineColor: 'transparent',
-				lineColors: ['rgb(69,43,144)'], //here
+				lineColors: ['rgb(238, 60, 60)'], //here
 				lineWidth: 1,
 				hideHover: 'auto',
 				pointSize: 0,
@@ -142,12 +142,12 @@
 				labels: ['Phone', 'Windows', 'Mac'],
 				pointSize: 3,
 				fillOpacity: 0,
-				pointStrokeColors: ['#EE3C3C', '#ffaa2b', '#452b90'],
+				pointStrokeColors: ['#EE3C3C', '#145650', '#f93a0b'],
 				behaveLikeLine: true,
 				gridLineColor: 'transparent',
 				lineWidth: 3,
 				hideHover: 'auto',
-				lineColors: ['rgb(69,43,144)', 'rgb(0, 171, 197)', '#452b90'],
+				lineColors: ['rgb(238, 60, 60)', 'rgb(0, 171, 197)', '#f93a0b'],
 				resize: true
 
 			});
@@ -198,22 +198,11 @@
 					xkey: 'y',
 					ykeys: ['a', 'b', 'c'],
 					labels: ['A', 'B', 'C'],
-					barColors: ['#452b90', '#ffaa2b', '#ff9f00'],
+					barColors: ['#f93a0b', '#145650', '#ff9f00'],
 					hideHover: 'auto',
 					gridLineColor: 'transparent',
 					resize: true,
 					barSizeRatio: 0.25,
-					yaxis: {
-						
-						  style: {
-							  colors: '#fff',  
-						  }
-					  },
-					  xaxis: {
-							style: {
-							  colors: '#fff',  
-						},
-					}	
 				});	
 			}
 		}
@@ -286,7 +275,7 @@
 				xkey: 'y',
 				ykeys: ['a', 'b'],
 				labels: ['A', 'B'],
-				barColors: ['#452b90', "#F1F3F7"],
+				barColors: ['#f93a0b', "#F1F3F7"],
 				hideHover: 'auto',
 				gridLineColor: 'transparent',
 				resize: true,
@@ -343,7 +332,7 @@
 
 
 				],
-				lineColors: ['#452b90', 'rgb(16, 202, 147)', 'rgb(255, 92, 0)'],
+				lineColors: ['#f93a0b', 'rgb(16, 202, 147)', 'rgb(255, 92, 0)'],
 				xkey: 'period',
 				ykeys: ['smartphone', 'windows', 'mac'],
 				labels: ['Phone', 'Windows', 'Mac'],
@@ -353,8 +342,7 @@
 				fillOpacity: 0.95,
 				behaveLikeLine: true,
 				gridLineColor: 'transparent',
-				hideHover: 'auto',
-				
+				hideHover: 'auto'
 
 			});
 		}

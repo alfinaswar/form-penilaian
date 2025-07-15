@@ -79,8 +79,7 @@
             <div class="nav-control">
                 <div class="hamburger">
                     <span class="line">
-                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M10.7468 5.58925C11.0722 5.26381 11.0722 4.73617 10.7468 4.41073C10.4213 4.0853 9.89369 4.0853 9.56826 4.41073L4.56826 9.41073C4.25277 9.72622 4.24174 10.2342 4.54322 10.5631L9.12655 15.5631C9.43754 15.9024 9.96468 15.9253 10.3039 15.6143C10.6432 15.3033 10.6661 14.7762 10.3551 14.4369L6.31096 10.0251L10.7468 5.58925Z"
                                 fill="#452B90" />
@@ -158,49 +157,13 @@
                     @can('upload-kuisoner') --}}
 
 
-                    <li>
-                        <a href="{{ route('kuisoner.index') }}">
-                            <div class="menu-icon">
-                                <!-- Icon: Upload/Document for Kuisoner -->
-                                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path
-                                        d="M16 16v2H8v-2H5v4h14v-4h-3zm-4-1c.55 0 1-.45 1-1V5.83l2.59 2.58L16 7l-4-4-4 4 1.41 1.41L11 5.83V14c0 .55.45 1 1 1z"
-                                        fill="#90959F" />
-                                </svg>
-                            </div>
-                            <span class="nav-text">Upload Kuisoner</span>
-                        </a>
-                    </li>
+
                     {{-- @endcan
                     @can('isi-kuisoner') --}}
-                    <li>
-                        <a href="{{ route('isi.index') }}">
-                            <div class="menu-icon">
-                                <!-- Icon: Upload/Document for Kuisoner -->
-                                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path
-                                        d="M16 16v2H8v-2H5v4h14v-4h-3zm-4-1c.55 0 1-.45 1-1V5.83l2.59 2.58L16 7l-4-4-4 4 1.41 1.41L11 5.83V14c0 .55.45 1 1 1z"
-                                        fill="#90959F" />
-                                </svg>
-                            </div>
-                            <span class="nav-text">Isi Kuisoner</span>
-                        </a>
-                    </li>
+
                     {{-- @endcan
                     @can('upload-bukti') --}}
-                    <li>
-                        <a href="{{ route('bukti.index') }}">
-                            <div class="menu-icon">
-                                <!-- Icon: Upload/Attachment for Bukti -->
-                                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path d="M16.5 6.5l-9 9a3 3 0 104.24 4.24l9-9a5 5 0 00-7.07-7.07l-9 9"
-                                        stroke="#90959F" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <span class="nav-text">Upload Bukti</span>
-                        </a>
-                    </li>
+
                     {{-- @endcan --}}
                 </ul>
                 {{-- @can('management-user') --}}

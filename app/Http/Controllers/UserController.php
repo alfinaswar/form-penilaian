@@ -171,27 +171,20 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');
     }
+    // Fungsi generate kode register unik dengan format seperti SJ89#K (2 huruf, 2 digit angka, #, 1 huruf)
     protected function generateRegNumber()
     {
-        $now = now();
-        $tahun = $now->format('Y');
-        $bulan = $now->format('m');
-
-        // Ambil nomor urut terakhir untuk bulan dan tahun ini
-        $lastUser = User::whereYear('created_at', $tahun)
-            ->whereMonth('created_at', $bulan)
-            ->whereNotNull('reg_number')
-            ->orderBy('reg_number', 'desc')
-            ->first();
-
-        if ($lastUser && preg_match('/^R' . $tahun . $bulan . '(\d{4})$/', $lastUser->reg_number, $matches)) {
-            $lastNumber = (int) $matches[1];
-            $nextNumber = $lastNumber + 1;
-        } else {
-            $nextNumber = 1;
-        }
-
-        $regNumber = 'R' . $tahun . $bulan . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+        do {
+            $hurufDepan = '';
+            for ($i = 0; $i < 2; $i++) {
+                $hurufDepan .= chr(rand(65, 90));
+            }
+            $angka = str_pad(rand(0, 99), 2, '0', STR_PAD_LEFT);
+            $tengah = '#';
+            $hurufAkhir = chr(rand(65, 90));
+            $regNumber = $hurufDepan . $angka . $tengah . $hurufAkhir;
+            $exists = User::where('reg_number', $regNumber)->exists();
+        } while ($exists);
 
         return $regNumber;
     }

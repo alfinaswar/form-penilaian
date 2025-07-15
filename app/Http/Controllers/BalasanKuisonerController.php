@@ -65,11 +65,8 @@ class BalasanKuisonerController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        if ($request->hasFile('file_kuisoner')) {
-            $file = $request->file('file_kuisoner');
-            $file->storeAs('public/file_kuisoner', $file->getClientOriginalName());
-            $data['file_kuisoner'] = $file->getClientOriginalName();
-        }
+        dd($data);
+
         BalasanKuisoner::create($data);
         return redirect()->route('isi.index')->with('success', 'Kuisoner berhasil ditambahkan');
     }

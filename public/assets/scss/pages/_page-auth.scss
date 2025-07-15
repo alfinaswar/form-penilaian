@@ -81,7 +81,7 @@
     }
 	&.style-1{
 		background:rgba($white,0.5);
-		backdrop-filter:blur(1.25rem);
+		backdrop-filter:blur(20px);
 		.form-control{
 			background:rgba($white,0.6);
 			border-radius:0.3125rem;
@@ -115,14 +115,8 @@
 		@include respond ('phone'){
 			.auth-form{
 				padding: 1.875rem 0rem;
-				
 			}
 		}
-	}
-}
-.auth-form{
-	img{
-	  width: 160px;
 	}
 }
 
@@ -201,21 +195,4 @@
         display: inline-block;
         margin-bottom: 0.9375rem;
     }
-}
-.login-form{
-	margin: 0 58px;
-    background: white;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 10px;
-	@include respond ('phone'){
-		margin:0 10px;
-	}
-}
-.forget-main{
-	.forget-tab{
-		border-radius:$radius;
-		&:active{
-			color:var(--primary)!important;
-		}
-	}
 }

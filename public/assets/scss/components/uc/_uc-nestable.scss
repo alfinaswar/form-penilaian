@@ -4,24 +4,36 @@
     overflow: hidden;
 }
 
-
+// .dd-item > button {
+//     height: 2.1rem;
+// }
 .dd-handle {
-    color: var(--primary);
-    background: #efefef;
+    color: $white;
+    background: var(--primary);
     border-radius: 0.3125rem;
 	padding: 0.5rem 1rem;
 	height:auto;
-    border: 1px solid $border-color;
+    border: 1px solid $border;
 	cursor:all-scroll;
 }
 .dd-handle:hover {
-    color: var(--secondary);
-    background: $body-bg;
+    color: $white;
+    background: var(--primary);
 }
-
+// #nestable2 .dd-handle {
+    // color: $white;
+    // border: 1px solid $border;
+    // background: $primary;
+// }
+// #nestable2 .dd-handle:hover {
+//     background: $primary;
+// }
+// #nestable2 .dd-item>button:before {
+//     color: $white;
+// }
 .dd3-content:hover {
-    color: var(--secondary);
-    background: $light;
+    color: $white;
+    background: var(--primary);
 }
 .dd3-content {
     color: $white;
@@ -29,7 +41,4 @@
 .dd-item>button{
 	line-height:28px;
 	color:$white;
-}
-.dd-item>button:before{
-	color:var(--primary);
 }

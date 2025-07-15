@@ -7,18 +7,14 @@ $fn:'HelveticaNeue'; // fn = font normal
 $fm:'HelveticaNeueMed'; // fm = font Medium 
 $border-radius: 0.75rem;
 // Body
-// $body-bg   : #C7EBFC;
-$body-bg   : #F3F0EC;
+$body-bg   : #f5f5f5;
 $body-color: #888888;
-$headings-color: #374557;
+$headings-color: #000;
 // Typography
-$font-family-base: 'poppins', sans-serif,
+$font-family-base: 'Roboto',
 sans-serif;
 $headings-font-weight   : 500;
 // $headings-font-family:        $fm;
-
-
-
 
 $font-size-base     : 0.875rem !default;
 $font-weight-base   : 400 !default;
@@ -29,6 +25,7 @@ $h3-font-size       : 1.5rem;
 $h4-font-size       : 1.125rem;
 $h5-font-size       : 1rem;
 $h6-font-size       : 0.938rem;
+
 
 
 //
@@ -49,7 +46,7 @@ $black   : #000 !default;
 
 $blue  : #5e72e4;
 $indigo: #6610f2 !default;
-$purple: #BB6BD9 !default;
+$purple: #6f42c1 !default;
 $pink  : #e83e8c !default;
 $red   : #EE3232;
 $orange: #ff9900 !default;
@@ -97,15 +94,15 @@ $colors: map-merge((
     "gray": $gray-600,
     "gray-dark": $gray-800),
   $colors);
-  
+
 
   
-$primary  : #452B90 !default;
-$secondary: #F8B940 !default;
-$success  : #3A9B94 !default;
-$info     : #58bad7 !default;
-$warning  : #FF9F00 !default;
-$danger   : #FF5E5E !default;
+$primary  : #F93A0B !default;
+$secondary: #145650 !default;
+$success  : #68e365 !default;
+$info     : #D653C1 !default;
+$warning  : #ffa755 !default;
+$danger   : #f72b50 !default;
 $light    : #c8c8c8 !default;
 $dark     : #6e6e6e;
 
@@ -113,7 +110,6 @@ $dark     : #6e6e6e;
 :root{
 	--primary: #{$primary};
 	--secondary: #{$secondary};
-	--secondary-dark: #{darken($secondary, 10)};
 	--primary-hover: #{darken($primary, 10)};
 	--primary-dark: #{darken($primary, 30)};
 	--rgba-primary-1: #{rgba($primary, 0.1)};
@@ -125,20 +121,15 @@ $dark     : #6e6e6e;
 	--rgba-primary-7: #{rgba($primary, 0.7)};
 	--rgba-primary-8: #{rgba($primary, 0.8)};
 	--rgba-primary-9: #{rgba($primary, 0.9)};
-	--rgba-secondary-1: #{rgba($secondary, 0.1)};
-	--rgba-secondary-2: #{rgba($secondary, 0.2)};
-	--rgba-secondary-3: #{rgba($secondary, 0.3)};
-	--rgba-secondary-4: #{rgba($secondary, 0.4)};
-	--rgba-secondary-5: #{rgba($secondary, 0.5)};
-	--rgba-secondary-6: #{rgba($secondary, 0.6)};
-	--rgba-secondary-7: #{rgba($secondary, 0.7)};
-	--rgba-secondary-8: #{rgba($secondary, 0.8)};
-	--rgba-secondary-9: #{rgba($secondary, 0.9)};
 	--font-family-base: #{$font-family-base};
 	--font-family-title: #{$font-family-base};
 	 --title: #{$headings-color}; 
 }
-
+//  sidebar header 
+:root {
+    --width: 17.5rem;
+    --height: 5rem;
+}
 
 
 
@@ -159,14 +150,16 @@ $theme-colors: map-merge(("primary": $primary,
 $heading-primary-size: 1.8rem;
 $sub-heading-size    : 1.6rem !default;
 
-$grid-gutter-width: 25px;
+$grid-gutter-width: 30px;
 
 $dropdown-lik-color: $body-color;
 
 
-$border-color  : #CCCCCC;
+$border-color  : #EEEEEE;
 $headings-color:#3d4465 !default;
 $rounded : 1.75rem ;
+
+$radius-sm:0.375rem;
 
 $grid-breakpoints: (xs: 0,
   sm: 576px,

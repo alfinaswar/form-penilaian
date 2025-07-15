@@ -32,9 +32,29 @@
 .form-check-label{
     margin-left: 0.3125rem;
     margin-top: 0.1875rem;
+	@at-root [data-theme-version="dark"] & {
+		color:$white;
+	}   
 }
-
-
+.radio{
+	label{
+		@at-root [data-theme-version="dark"] & {
+			color:$white;
+		}
+	}
+}
+.radio.disabled{
+	label{
+		@at-root [data-theme-version="dark"] & {
+			color:$d-ctl;
+		}
+	}
+}
+.radio-inline{
+	@at-root [data-theme-version="dark"] & {
+		color:$white;
+	}
+}
 .form-check-inline {
     .form-check-input {
         margin-right: 0.625rem;
@@ -42,11 +62,14 @@
 }
 .form-check-input{
 	top:0.125rem;
-	border-width:1px;
+	border-width:0.125rem;
 	width: 1.25rem;
 	height: 1.25rem;
-	border-color: #999;
-    background-color: #fff;
+	border-color: #e7e7e7;
+	@at-root [data-theme-version="dark"] & {
+	background:$d-bg;
+	border-color:$d-border;
+ }   
 }
 .rtl .form-check-label{
 	&:before,
@@ -58,7 +81,10 @@
 .form-check {
     line-height: normal;
 }
-
+.form-check-input[type="radio"] {
+   margin-top:0;
+ 
+}
 
 // Toggle Switch
 .toggle-switch{
@@ -170,8 +196,8 @@
 				background-color: $info;
 				border-color: $info;
 				@at-root [data-theme-version="dark"] & {
-					// background-color: $info-opacity;
-					// border-color: transparent;
+					background-color: $info;
+					border-color: transparent;
 				}
 			}
 		}
@@ -187,8 +213,8 @@
 				background-color: $danger;
 				border-color: $danger;
 				@at-root [data-theme-version="dark"] & {
-					// background-color: $danger-opacity;
-					// border-color: transparent;
+					background-color: $danger;
+					border-color: transparent;
 				}
 			}
 		}
@@ -204,8 +230,8 @@
 				background-color: $success;
 				border-color: $success;
 				@at-root [data-theme-version="dark"] & {
-					// background-color: $success-opacity;
-					// border-color: transparent;
+					background-color: $success;
+					border-color: transparent;
 				}
 			}
 		}
@@ -221,8 +247,8 @@
 				background-color: $warning;
 				border-color: $warning;
 				@at-root [data-theme-version="dark"] & {
-					// background-color: $warning-opacity;
-					// border-color: transparent;
+					background-color: $warning;
+					border-color: transparent;
 				}
 			}
 		}
@@ -238,8 +264,8 @@
 				background-color: $secondary;
 				border-color: $secondary;
 				@at-root [data-theme-version="dark"] & {
-					// background-color: $secondary-opacity;
-					// border-color: transparent;
+					background-color: $secondary-opacity;
+					border-color: transparent;
 				}
 			}
 		}
@@ -274,10 +300,8 @@
 	}
 }
 
-//form Switch
-.form-switch .form-check-input {
-		width: 2.5rem;
-	}
+
+
 
 
 
