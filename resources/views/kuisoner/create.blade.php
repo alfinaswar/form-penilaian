@@ -113,6 +113,14 @@
                         <form action="{{route('kuisoner.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="text" value="{{$idUser}}" name="idUser" hidden>
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <label for="link" class="form-label"><b>Masukkan link bukti (misal: Google
+                                            Drive)</b></label>
+                                    <input type="text" class="form-control" name="link" id="link"
+                                        placeholder="Contoh: https://drive.google.com/....">
+                                </div>
+                            </div>
                             <table class="tg">
                                 <colgroup>
                                     <col style="width: 244.5px">
@@ -391,11 +399,11 @@
                                         <td colspan="6">Pembelajaran pada mata pelajaran, ekstrakurikuler dan
                                             pembiasaan diri
                                             yang mengintegrasikan penerapan PRLH di Sekolah</td>
-                                        <td rowspan="52"><input type="text" class="form-control" name="Total2[]"
-                                                id="Total2">
+                                        <td rowspan="52"><input type="text" class="form-control" name="Total2[]" id="Total2"
+                                                value="{{$data->Total2[0]}}">
                                         </td>
-                                        <td rowspan="52"><input type="text" class="form-control" name="Nilai2[]"
-                                                id="Nilai2">
+                                        <td rowspan="52"><input type="text" class="form-control" name="Nilai2[]" id="Nilai2"
+                                                value="{{$data->Nilai2[0]}}">
                                         </td>
                                         <td> </td>
                                     </tr>
@@ -410,9 +418,12 @@
                                         <td rowspan="4">6</td>
                                         <td>Profil sekolah {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[0]) && $data->Status2[0] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[0]) && $data->Status2[0] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[0]) && $data->Status2[0] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -428,9 +439,12 @@
                                         <td rowspan="3">≤ 1 unsur utama {1}</td>
                                         <td>Daftar piket kelas {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[1]) && $data->Status2[1] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[1]) && $data->Status2[1] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[1]) && $data->Status2[1] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -446,9 +460,12 @@
                                             sanitasi dan drainase
                                             sekolah {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[2]) && $data->Status2[2] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[2]) && $data->Status2[2] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[2]) && $data->Status2[2] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -461,9 +478,12 @@
                                         <td>SK Tim/pokja kebersihan, fungsi sanitasi dan drainase sekolah {1/2/3}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[3]) && $data->Status2[3] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[3]) && $data->Status2[3] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[3]) && $data->Status2[3] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -481,9 +501,12 @@
                                         <td>Buku monitoring/ceklis kegiatan memelihara kebersihan, fungsi sanitasi
                                             dan drainase sekolah {1/2/3}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[4]) && $data->Status2[4] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[4]) && $data->Status2[4] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[4]) && $data->Status2[4] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -500,9 +523,12 @@
                                             fungsi sanitasi
                                             dan drainase sekolah {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[5]) && $data->Status2[5] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[5]) && $data->Status2[5] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[5]) && $data->Status2[5] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -521,9 +547,12 @@
                                             sanitasi dan drainase sekolah sebelum dan setelah pelaksanaan Gerakan
                                             PBLHS {1}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[6]) && $data->Status2[6] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[6]) && $data->Status2[6] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[6]) && $data->Status2[6] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
@@ -551,9 +580,12 @@
                                             maupun
                                             ekstrakurikuler {1/2}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[7]) && $data->Status2[7] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[7]) && $data->Status2[7] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[7]) && $data->Status2[7] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
@@ -576,9 +608,12 @@
                                         <td>Bukti penyerahan sampah kepada pihak ketiga untuk didaur ulang {1/2/3}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[8]) && $data->Status2[8] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[8]) && $data->Status2[8] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[8]) && $data->Status2[8] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -596,9 +631,12 @@
                                             penggunaan
                                             kembali dan daur ulang sampah {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[9]) && $data->Status2[9] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[9]) && $data->Status2[9] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[9]) && $data->Status2[9] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -619,9 +657,12 @@
                                             Adiwiyata
                                             dalam mengumpulkan sampah dari sumbernya ke TPS {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[10]) && $data->Status2[10] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[10]) && $data->Status2[10] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[10]) && $data->Status2[10] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -638,9 +679,12 @@
                                         <td>SOP pemindahan sampah yang menunjukkan keterlibatan peserta didik dan
                                             kader Adiwiyata {1/2/3}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[11]) && $data->Status2[11] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[11]) && $data->Status2[11] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[11]) && $data->Status2[11] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -660,9 +704,12 @@
                                             Sekolah {1/2}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[12]) && $data->Status2[12] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[12]) && $data->Status2[12] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[12]) && $data->Status2[12] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -684,9 +731,12 @@
                                             sekolah atau Ketua
                                             pokja pengelolaan sampah {1/2}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[13]) && $data->Status2[13] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[13]) && $data->Status2[13] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[13]) && $data->Status2[13] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
@@ -714,9 +764,12 @@
                                             dan pembibitan di
                                             lingkungan sekolah {1/2}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[14]) && $data->Status2[14] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[14]) && $data->Status2[14] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[14]) && $data->Status2[14] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
@@ -742,9 +795,12 @@
                                         <td rowspan="2">14</td>
                                         <td rowspan="2">Profil sekolah {1/2/3}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[15]) && $data->Status2[15] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[15]) && $data->Status2[15] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[15]) && $data->Status2[15] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
@@ -770,9 +826,12 @@
                                             pemeliharaan
                                             dan pembibitan baik pada mapel maupun ekstrakurikuler {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[16]) && $data->Status2[16] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[16]) && $data->Status2[16] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[16]) && $data->Status2[16] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -790,9 +849,12 @@
                                             pembibitan
                                             tanaman {1/2/3/4/5}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[17]) && $data->Status2[17] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[17]) && $data->Status2[17] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[17]) && $data->Status2[17] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -813,9 +875,12 @@
                                         <td>Dokumentasi hasil praktek/penugasan/penelitian kegiatan konservasi air
                                             {1/2/3}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[18]) && $data->Status2[18] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[18]) && $data->Status2[18] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[18]) && $data->Status2[18] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -835,9 +900,12 @@
                                             air yang
                                             dilakukan sekolah {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[19]) && $data->Status2[19] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[19]) && $data->Status2[19] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[19]) && $data->Status2[19] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -855,9 +923,12 @@
                                         <td rowspan="4">17</td>
                                         <td>Aturan/tata tertib perilaku penghematan energi {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[20]) && $data->Status2[20] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[20]) && $data->Status2[20] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[20]) && $data->Status2[20] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -874,9 +945,12 @@
                                         <td rowspan="3">≥ 7 upaya {5}</td>
                                         <td>Dokumentasi (foto dan/atau video) kegiatan konservasi energi {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[21]) && $data->Status2[21] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[21]) && $data->Status2[21] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[21]) && $data->Status2[21] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -892,9 +966,12 @@
                                             hemat energi {1}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[22]) && $data->Status2[22] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[22]) && $data->Status2[22] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[22]) && $data->Status2[22] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -910,9 +987,12 @@
                                             listrik dari energi
                                             terbarukan (jika ada) {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[23]) && $data->Status2[23] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[23]) && $data->Status2[23] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[23]) && $data->Status2[23] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -932,9 +1012,12 @@
                                             proses penemuan karya inovatif Sekolah terkait dengan penerapan PRLH
                                             {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[24]) && $data->Status2[24] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[24]) && $data->Status2[24] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[24]) && $data->Status2[24] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -950,9 +1033,12 @@
                                         <td rowspan="3">· ≥ 5 karya inovatif</td>
                                         <td>Karya inovatif yang dihasilkan oleh Sekolah {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[25]) && $data->Status2[25] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[25]) && $data->Status2[25] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[25]) && $data->Status2[25] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -965,9 +1051,12 @@
                                     <tr>
                                         <td>Penghargaan karya inovatif terkait dengan penerapan PRLH {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[26]) && $data->Status2[26] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[26]) && $data->Status2[26] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[26]) && $data->Status2[26] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -983,9 +1072,12 @@
                                             dihasilkan Sekolah
                                             dalam upaya penerapan PRLH {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[27]) && $data->Status2[27] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[27]) && $data->Status2[27] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[27]) && $data->Status2[27] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -1005,9 +1097,12 @@
                                             dll) aksi penerapan PRLH untuk dan bersama masyarakat sekitar Sekolah
                                             {1/2/3/4}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[28]) && $data->Status2[28] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[28]) && $data->Status2[28] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[28]) && $data->Status2[28] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -1028,9 +1123,12 @@
                                             masyarakat sekitar Sekolah dari berbagai sudut pengambilan gambar
                                             {1/2/3}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[29]) && $data->Status2[29] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[29]) && $data->Status2[29] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[29]) && $data->Status2[29] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -1051,9 +1149,12 @@
                                             lingkungan sekitar Sekolah dari berbagai sudut pengambilan gambar {1/2}
                                         </td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[30]) && $data->Status2[30] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[30]) && $data->Status2[30] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[30]) && $data->Status2[30] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
@@ -1080,9 +1181,12 @@
                                             Sekolah dari
                                             berbagai sudut pengambilan gambar {1/2}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[31]) && $data->Status2[31] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[31]) && $data->Status2[31] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[31]) && $data->Status2[31] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
@@ -1109,9 +1213,12 @@
                                         <td>Dokumen MoU atau dokumen kerjasama lainnya antara Sekolah dengan mitra
                                             {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[32]) && $data->Status2[32] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[32]) && $data->Status2[32] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[32]) && $data->Status2[32] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -1130,9 +1237,12 @@
                                             dan
                                             dokumen terkait lainnya) {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[33]) && $data->Status2[33] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[33]) && $data->Status2[33] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[33]) && $data->Status2[33] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -1147,9 +1257,12 @@
                                         <td>Dokumentasi (foto dan/atau video) pertemuan, rapat yang dilakukan {1}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[34]) && $data->Status2[34] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[34]) && $data->Status2[34] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[34]) && $data->Status2[34] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
@@ -1164,16 +1277,18 @@
                                         <td>Tauatan dari group jejaring kerja dan komunikasi di media social {1}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[35]) && $data->Status2[35] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[35]) && $data->Status2[35] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[35]) && $data->Status2[35] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-
+                                                <option value="0" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 0 ? 'selected' : '' }}>0</option>
+                                                <option value="1" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="2" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 2 ? 'selected' : '' }}>2</option>
                                             </select></td>
                                         <td></td>
 
@@ -1184,16 +1299,19 @@
                                         <td rowspan="2">23</td>
                                         <td>Dokumen tertulis (undangan, brosur, leaflet dll) {1/2/3}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[36]) && $data->Status2[36] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[36]) && $data->Status2[36] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[36]) && $data->Status2[36] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="0" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 0 ? 'selected' : '' }}>0</option>
+                                                <option value="1" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="2" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="3" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 3 ? 'selected' : '' }}>3</option>
 
                                             </select></td>
                                         <td></td>
@@ -1206,15 +1324,18 @@
                                             Dokumentasi
                                             dapat berupa foto dan/atau video (bisa dalam bentuk tautan) {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[37]) && $data->Status2[37] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[37]) && $data->Status2[37] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[37]) && $data->Status2[37] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 0 ? 'selected' : '' }}>0</option>
+                                                <option value="1" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="2" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 2 ? 'selected' : '' }}>2</option>
                                             </select></td>
                                         <td></td>
 
@@ -1228,17 +1349,20 @@
                                             elektronik dan
                                             media lainnya) yang memuat materi kampanye Gerakan PBLHS {1/2/3}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[38]) && $data->Status2[38] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[38]) && $data->Status2[38] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[38]) && $data->Status2[38] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="0" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 0 ? 'selected' : '' }}>0</option>
+                                                <option value="1" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="2" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="3" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 3 ? 'selected' : '' }}>3</option>
 
                                             </select></td>
                                         <td></td>
@@ -1257,18 +1381,21 @@
                                             kegiatan
                                             pemberdayaan Kader Adiwiyata {1/2/3/4}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[39]) && $data->Status2[39] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[39]) && $data->Status2[39] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[39]) && $data->Status2[39] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 3 ? 'selected' : '' }}>3</option>
-                                                <option value="4" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 4 ? 'selected' : '' }}>4</option>
+                                                <option value="0" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 0 ? 'selected' : '' }}>0</option>
+                                                <option value="1" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="2" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="3" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="4" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 4 ? 'selected' : '' }}>4</option>
 
                                             </select></td>
                                         <td></td>
@@ -1286,17 +1413,20 @@
                                         <td>Dokumen pembagian tugas atau rencana aksi Kader Adiwiyata {1/2/3/4}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[40]) && $data->Status2[40] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[40]) && $data->Status2[40] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[40]) && $data->Status2[40] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 3 ? 'selected' : '' }}>3</option>
-                                                <option value="4" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 4 ? 'selected' : '' }}>4</option>
+                                                <option value="0" {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 0 ? 'selected' : '' }}>0</option>
+                                                <option value="1" {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="2" {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="3" {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="4" {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 4 ? 'selected' : '' }}>4</option>
 
                                             </select></td>
                                         <td></td>
@@ -1307,15 +1437,18 @@
                                         <td>Dokumentasi (foto dan/atau video) kegiatan pemberdayaan Kader Adiwiyata
                                             {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status2[41]) && $data->Status2[41] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status2[41]) && $data->Status2[41] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status2[41]) && $data->Status2[41] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0" {{ isset($data) && isset($data->Bobot2[41]) && $data->Bobot2[41] == 0 ? 'selected' : '' }}>0</option>
+                                                <option value="1" {{ isset($data) && isset($data->Bobot2[41]) && $data->Bobot2[41] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="2" {{ isset($data) && isset($data->Bobot2[41]) && $data->Bobot2[41] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
                                         <td></td>
@@ -1331,9 +1464,11 @@
                                         <td>
                                         </td>
                                         <td></td>
-                                        <td rowspan="8"><input type="text" class="form-control" name="Total3[]" id="Total3">
+                                        <td rowspan="8"><input type="text" class="form-control" name="Total3[]" id="Total3"
+                                                value="{{$data->Total3[0]}}">
                                         </td>
-                                        <td rowspan="8"><input type="text" class="form-control" name="Nilai3[]" id="Nilai3">
+                                        <td rowspan="8"><input type="text" class="form-control" name="Nilai3[]" id="Nilai3"
+                                                value="{{$data->Nilai3[0]}}">
                                         </td>
                                         <td> </td>
                                     </tr>
@@ -1356,9 +1491,12 @@
                                         <td>Tabel rencana Gerakan PBLHS yang ditandatangani oleh kepala sekolah
                                             {1/2}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status3[0]) && $data->Status3[0] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status3[0]) && $data->Status3[0] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status3[0]) && $data->Status3[0] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
@@ -1375,9 +1513,12 @@
                                             pelaksanaan
                                             Gerakan PBLHS {1}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status3[1]) && $data->Status3[1] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status3[1]) && $data->Status3[1] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status3[1]) && $data->Status3[1] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
@@ -1397,9 +1538,12 @@
                                             disusun
                                             oleh Tim Adiwiyata Sekolah {1}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status3[2]) && $data->Status3[2] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status3[2]) && $data->Status3[2] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status3[2]) && $data->Status3[2] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
@@ -1417,9 +1561,12 @@
                                             dan masyarakat</td>
                                         <td>Dokumentasi (foto dan/atau video) pelibatan para pihak {1}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status3[3]) && $data->Status3[3] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status3[3]) && $data->Status3[3] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status3[3]) && $data->Status3[3] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
@@ -1434,9 +1581,12 @@
                                     <tr>
                                         <td>Undangan, daftar hadir, dan notulensi pelibatan para pihak {1}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status3[4]) && $data->Status3[4] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status3[4]) && $data->Status3[4] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status3[4]) && $data->Status3[4] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
@@ -1452,9 +1602,12 @@
                                             ditandatangani oleh
                                             kepala sekolah {1}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="">Pilih</option>
-                                                <option value="L">Lengkap</option>
-                                                <option value="TL">Tidak lengkap</option>
+                                                <option value="" {{ isset($data) && isset($data->Status3[5]) && $data->Status3[5] == '' ? 'selected' : '' }}>Pilih
+                                                </option>
+                                                <option value="L" {{ isset($data) && isset($data->Status3[5]) && $data->Status3[5] == 'L' ? 'selected' : '' }}>Lengkap
+                                                </option>
+                                                <option value="TL" {{ isset($data) && isset($data->Status3[5]) && $data->Status3[5] == 'TL' ? 'selected' : '' }}>Tidak
+                                                    lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
@@ -1473,14 +1626,16 @@
                                         <td colspan="3">Nilai Kuanta Total</td>
                                         <td></td>
                                         <td><input readonly type="text" class="form-control" name="TotalAkhir"
-                                                id="TotalAkhir">
+                                                id="TotalAkhir" value="{{$data->TotalAkhir ?? ''}}">
                                         </td>
                                         <td></td>
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <button type="submit" class="btn btn-success w-100"> Simpan Data</button>
+                            <br>
+                            <div class="row mt-3">
+                                <button type="submit" class="btn btn-success w-100"> Simpan Data</button>
+                            </div>
                         </form>
                     </div>
                 </div>

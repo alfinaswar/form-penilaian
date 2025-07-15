@@ -26,6 +26,7 @@ return new class extends Migration {
             $table->json('Status3');
             $table->json('Bobot3');
             $table->string('TotalAkhir');
+            $table->string('Link');
             $table->softDeletes();
             $table->timestamps();
         });
