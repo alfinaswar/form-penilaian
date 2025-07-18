@@ -1,28 +1,26 @@
 .list-group-item {
     background-color: rgba(255,255,255,0);
-    border: 1px solid $border;
+    border: 1px solid var(--border);
 	padding: 1rem 1.5rem;
-	border-top-left-radius:$radius-sm!important;
-	border-top-right-radius:$radius-sm!important;
 	&.active{
-		background-color :var(--primary);
+		background-color :var(--primary)!important;
 		border-color :var(--primary);
+		color: $white;
+		&:focus{
+			color:$white;
+		}
 	}
-    @at-root [data-theme-version="dark"] & {
-        border-color: $d-border;
-		color:$body-bg;
-    }
 }
 
 .list-group-item.disabled, .list-group-item:disabled {
-    color: #fff;
+    color: $white;
     background-color: $secondary;
     border-color: $secondary;
 }
 [class*="bg-"]{
 	.list-group-item{
 		border-color:rgba($white, 0.05);
-		//color:$white;
+		color: $white;
 	}
 }
 .bg-warning{
@@ -30,6 +28,12 @@
 		border-color:rgba($black, 0.05);
 	}
 }
-// .list-group-item-action {
-//     color: #fff;
-// }
+.list-group-item-action:active{
+	background-color: var(--card);
+}
+.list-group-item-action:focus{
+	color:var(--text-dark);
+}
+.list-group-item-action:hover, .list-group-item-action:focus{
+	color:var(--text-dark);
+}

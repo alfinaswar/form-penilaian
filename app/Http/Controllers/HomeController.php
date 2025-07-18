@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function index(): View
     {
-        $user = User::get();
+        $user = User::with('Nilai', 'NilaiKuisoner')->get();
+        // dd($user);
         return view('home', compact('user'));
     }
     public function kuisoner()

@@ -1,39 +1,27 @@
- // Variable.scss
+
 
 .nestable-cart {
     overflow: hidden;
 }
 
-// .dd-item > button {
-//     height: 2.1rem;
-// }
+
 .dd-handle {
-    color: $white;
-    background: var(--primary);
+    color: var(--primary);
+    background: var(--body-bg);
     border-radius: 0.3125rem;
 	padding: 0.5rem 1rem;
 	height:auto;
-    border: 1px solid $border;
+    border: 1px solid var(--border);
 	cursor:all-scroll;
 }
 .dd-handle:hover {
-    color: $white;
-    background: var(--primary);
+    color: var(--secondary);
+    background: var(--body-bg);
 }
-// #nestable2 .dd-handle {
-    // color: $white;
-    // border: 1px solid $border;
-    // background: $primary;
-// }
-// #nestable2 .dd-handle:hover {
-//     background: $primary;
-// }
-// #nestable2 .dd-item>button:before {
-//     color: $white;
-// }
+
 .dd3-content:hover {
-    color: $white;
-    background: var(--primary);
+    color: var(--secondary);
+    background: $light;
 }
 .dd3-content {
     color: $white;
@@ -41,4 +29,8 @@
 .dd-item>button{
 	line-height:28px;
 	color:$white;
+    float:#{$dz-pos-left};
+}
+.dd-item>button:before{
+	color:var(--primary);
 }

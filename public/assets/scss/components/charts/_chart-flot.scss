@@ -2,6 +2,7 @@
 
 .flot-chart{
     height: 15.7rem;
+    direction: ltr;
 }
 
 .tooltipflot {
@@ -13,14 +14,14 @@
   
   .legendColorBox > div {
     border: 0 !important;
-    padding: 0 !important;
-}
+    padding: 0 !important; }
   
   .legendLabel {
     font-size: 0.825rem;
-    padding-left: .5rem;
-	@at-root [data-theme-version="dark"] & {	
-		color: $white;
+    padding-left: .5rem; 
+    color: #000;
+	@at-root [data-theme-version="dark"] & {
+		color:$white;
 	}
   }
     
@@ -28,6 +29,7 @@
   background: $black;
   border: 0.0625rem solid $black;
   color: $white;
+  
 }
 
 .legend > div{

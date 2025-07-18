@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BalasanKuisonerController;
 use App\Http\Controllers\KuisonerController;
+use App\Http\Controllers\NilaiController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -21,7 +22,7 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Auth::routes();
@@ -49,6 +50,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::DELETE('/upload-kuisoner/destroy/{id}', [KuisonerController::class, 'destroy'])->name('kuisoner.destroy');
         Route::GET('/upload-kuisoner/edit/{id}', [KuisonerController::class, 'edit'])->name('kuisoner.edit');
         Route::PUT('/upload-kuisoner/update/{id}', [KuisonerController::class, 'updateProfil'])->name('kuisoner.update');
+    });
+    Route::prefix('nilai')->group(function () {
+        Route::get('/', [NilaiController::class, 'index'])->name('nilai.index');
+        Route::get('/create', [NilaiController::class, 'create'])->name('nilai.create');
+        Route::post('/store', [NilaiController::class, 'store'])->name('nilai.store');
+        Route::get('/cetak-pdf/{id}', [NilaiController::class, 'CetakPdf'])->name('nilai.cetak_pdf');
+        Route::put('/update/{id}', [NilaiController::class, 'update'])->name('nilai.update');
+        Route::delete('/destroy/{id}', [NilaiController::class, 'destroy'])->name('nilai.destroy');
+        Route::get('/show/{id}', [NilaiController::class, 'show'])->name('nilai.show');
     });
 
 

@@ -2,7 +2,7 @@
     "use strict" 
 
 
- var dlabVectorMap = function(){
+ var dzVectorMap = function(){
 	
 	var screenWidth = $(window).width();
 	
@@ -22,11 +22,11 @@
 			borderWidth: 1,
 			color: 'rgb(239, 242, 244)',
 			enableZoom: true,
-			hoverColor: 'rgba(249, 58, 11, 0.9)',
+			hoverColor: 'rgba(69, 43, 144, 0.9)',
 			hoverOpacity: null,
 			normalizeFunction: 'linear',
 			scaleColors: ['#b6d6ff', '#005ace'],
-			selectedColor: 'rgba(249, 58, 11, 0.9)',
+			selectedColor: 'rgba(69, 43, 144, 0.9)',
 			selectedRegions: null,
 			showTooltip: true,
 			onRegionClick: function(element, code, region)
@@ -57,11 +57,11 @@
 			borderWidth: 1,
 			color: 'rgb(239, 242, 244)',
 			enableZoom: true,
-			hoverColor: 'rgba(249, 58, 11, 0.9)',
+			hoverColor: 'rgba(69, 43, 144 , 0.9)',
 			hoverOpacity: null,
 			normalizeFunction: 'linear',
 			scaleColors: ['#b6d6ff', '#005ace'],
-			selectedColor: 'rgba(249, 58, 11, 0.9)',
+			selectedColor: 'rgba(69, 43, 144 , 0.9)',
 			selectedRegions: null,
 			showTooltip: true,
 			onRegionClick: function(element, code, region)
@@ -99,14 +99,14 @@
 		
 	jQuery(window).on('load',function(){
 		setTimeout(function(){
-			dlabVectorMap.load();
+			dzVectorMap.load();
 		}, 1000); 
 		
 	});
 
 	jQuery(window).on('resize',function(){
 		setTimeout(function(){
-			dlabVectorMap.resize();
+			dzVectorMap.resize();
 		}, 1000); 
 		
 	});     

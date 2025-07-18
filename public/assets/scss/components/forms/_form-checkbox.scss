@@ -1,94 +1,37 @@
-@import "../../abstracts/variable";
-
-/* input[type="checkbox"] {
-    &:after{
-        content: '';
-        display: block;
-        width: 1rem;
-        height: 1rem;
-        margin-top: 0px;
-        margin-left: -1px;
-        border: 1px solid transparent;
-        border-radius: 3px;
-        background: #d4d7da;
-        line-height: 1.3;
-    }
-
-    &:checked:after{
-        width: 1rem;
-        height: 1rem;
-        display: block;
-        content: "\f00c";
-        font-family: 'FontAwesome';
-        color: $white;
-        font-weight: 100;
-        font-size: 12px;
-        text-align: center;
-        border-radius: 3px;
-        background: $primary;
-    }
-
-} */
 .form-check-label{
-    margin-left: 0.3125rem;
+    margin-#{$dz-pos-left}: 0.3125rem;
     margin-top: 0.1875rem;
-	@at-root [data-theme-version="dark"] & {
-		color:$white;
-	}   
 }
-.radio{
-	label{
-		@at-root [data-theme-version="dark"] & {
-			color:$white;
-		}
-	}
-}
-.radio.disabled{
-	label{
-		@at-root [data-theme-version="dark"] & {
-			color:$d-ctl;
-		}
-	}
-}
-.radio-inline{
-	@at-root [data-theme-version="dark"] & {
-		color:$white;
-	}
-}
+
+
 .form-check-inline {
     .form-check-input {
-        margin-right: 0.625rem;
+        margin-#{$dz-pos-right}: 0.625rem;
     }
 }
 .form-check-input{
 	top:0.125rem;
-	border-width:0.125rem;
+	border-width:1px;
 	width: 1.25rem;
 	height: 1.25rem;
-	border-color: #e7e7e7;
-	@at-root [data-theme-version="dark"] & {
-	background:$d-bg;
-	border-color:$d-border;
- }   
+	border-color: var(--border);
+    background-color: var(--card);
 }
 .rtl .form-check-label{
 	&:before,
 	&:after{
-		right: -1.5rem !important;
-		left: inherit;
+		#{$dz-pos-right}: -1.5rem !important;
+		#{$dz-pos-left}: inherit;
 	}
 }
 .form-check {
     line-height: normal;
 }
-.form-check-input[type="radio"] {
-   margin-top:0;
- 
-}
+
 
 // Toggle Switch
 .toggle-switch{
-	padding-left:3.125rem;
+	padding-#{$dz-pos-left}:3.125rem;
 	line-height: 1.25;
 	display:inline-block;
 	color:$black;
@@ -101,7 +44,7 @@
 		border-radius: 1.25rem !important;
 		height: 0.875rem;
 		position:relative;
-		left: -0.3125rem;
+		#{$dz-pos-left}: -0.3125rem;
 		@include transitionFast;
 		background-image:none;
 		&:focus{
@@ -111,7 +54,7 @@
 			background:var(--rgba-primary-2);
 			background-image:none!important;
 			&:after{
-				left:1.25rem;
+				#{$dz-pos-left}:1.25rem;
 				background:var(--primary);
 			}
 		}
@@ -126,23 +69,23 @@
 			position:absolute;
 			border-radius: 1.5rem;
 			top: -0.1875rem;
-			left: 0;
+			#{$dz-pos-left}: 0;
 			box-shadow:0 0 0.3125rem rgba(0,0,0,0.3);
 			@include transitionFast;
 		}
 	}
 	&.text-end{
-		padding-right:0rem;
-		padding-left:0;
+		padding-#{$dz-pos-right}:0rem;
+		padding-#{$dz-pos-left}:0;
 		.form-check-input{
-			left: auto;
-			margin-left: 0;
-			float:right;
-			right: 0rem;
+			#{$dz-pos-left}: auto;
+			margin-#{$dz-pos-left}: 0;
+			float:#{$dz-pos-right};
+			#{$dz-pos-right}: 0rem;
 		}
 		.form-check-label{
-			margin-right: 0.9375rem;
-			margin-left:0;
+			margin-#{$dz-pos-right}: 0.9375rem;
+			margin-#{$dz-pos-left}:0;
 		}
 	}
 	.form-check-label{
@@ -195,10 +138,7 @@
 			&:checked{
 				background-color: $info;
 				border-color: $info;
-				@at-root [data-theme-version="dark"] & {
-					background-color: $info;
-					border-color: transparent;
-				}
+				
 			}
 		}
 	}
@@ -212,10 +152,7 @@
 			&:checked{
 				background-color: $danger;
 				border-color: $danger;
-				@at-root [data-theme-version="dark"] & {
-					background-color: $danger;
-					border-color: transparent;
-				}
+				
 			}
 		}
 	}
@@ -229,10 +166,7 @@
 			&:checked{
 				background-color: $success;
 				border-color: $success;
-				@at-root [data-theme-version="dark"] & {
-					background-color: $success;
-					border-color: transparent;
-				}
+				
 			}
 		}
 	}
@@ -246,10 +180,7 @@
 			&:checked{
 				background-color: $warning;
 				border-color: $warning;
-				@at-root [data-theme-version="dark"] & {
-					background-color: $warning;
-					border-color: transparent;
-				}
+				
 			}
 		}
 	}
@@ -263,10 +194,7 @@
 			&:checked{
 				background-color: $secondary;
 				border-color: $secondary;
-				@at-root [data-theme-version="dark"] & {
-					background-color: $secondary-opacity;
-					border-color: transparent;
-				}
+				
 			}
 		}
 	}
@@ -277,7 +205,7 @@
 
 //Check Switch
 .check-switch{
-	padding-left: 2.5rem;
+	padding-#{$dz-pos-left}: 2.5rem;
 	.form-check-label{
 		line-height: 1.875rem;
 		font-weight: 500;
@@ -287,7 +215,7 @@
 		&:after,&:before{
 			height:1.5rem;
 			width:1.5rem;
-			left: -2rem;
+			#{$dz-pos-left}: -2rem;
 			border-radius: 3rem!important;
 			border-color:var(--rgba-primary-3);
 		}
@@ -300,8 +228,10 @@
 	}
 }
 
-
-
+//form Switch
+.form-switch .form-check-input {
+		width: 2.5rem;
+	}
 
 
 

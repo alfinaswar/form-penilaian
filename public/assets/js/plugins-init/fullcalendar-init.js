@@ -7,15 +7,17 @@ function fullCalender(){
 		-----------------------------------------------------------------*/
 
 		var containerEl = document.getElementById('external-events');
-		new FullCalendar.Draggable(containerEl, {
-		  itemSelector: '.external-event',
-		  eventData: function(eventEl) {
-			return {
-			  title: eventEl.innerText.trim()
-			}
-		  }
-		 
-		});
+		if($('#external-events').length > 0){
+			new FullCalendar.Draggable(containerEl, {
+			  itemSelector: '.external-event',
+			  eventData: function(eventEl) {
+				return {
+				  title: eventEl.innerText.trim()
+				}
+			  }
+			 
+			});
+		}
 		/* initialize the calendar
 		-----------------------------------------------------------------*/
 
@@ -126,7 +128,7 @@ jQuery(window).on('load',function(){
 	
 	
 });	
-	
+
 
 		
 

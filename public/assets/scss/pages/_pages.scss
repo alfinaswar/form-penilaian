@@ -1,17 +1,19 @@
 @import "./page-error";
 @import "./page-auth";
-@import "./page-doctor-details";
+
 
 
 
 //specific HTML pages scss
 @import "./homepage";
-@import "./job-page";
-@import "./my-profile";
-@import "./statistics-page";
-@import "./job-list";
-@import "./content";
-@import "./_login";
+@import "./user";
+@import "./login";
+@import "./task";
+@import "./homepage-2";
+@import "./crm";
+@import "./analytics";
+@import "./cms";
+@import "./user-mamagment";
 
 
 
@@ -21,6 +23,7 @@
 @import "./ecom-product-detail";
 @import "./ecom-product-grid";
 @import "./ecom-product-list";
+@import "./aikit";
 
 
 

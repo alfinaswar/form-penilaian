@@ -4,6 +4,10 @@ table#example{
 }
 table.dataTable{
     font-size: 0.875rem;
+	color:var(--text-gray);
+	.form-check{
+		display: inline-block;
+	}
 }
 #example2_wrapper {
     .dataTables_scrollBody {
@@ -18,9 +22,36 @@ table.dataTable{
 .dataTables_wrapper .dataTables_paginate{
     padding-top: 0.75em;
     padding-bottom: 0.75em;
+	@include respond ('phone'){
+		justify-content:start!important;
+	}
 }
 
-
+table.dataTable thead > tr > th.sorting::after, table.dataTable thead > tr > th.sorting_desc::after, table.dataTable thead > tr > th.sorting_asc::after {
+	content: "";
+	font-family: "Font Awesome 6 Free";
+	font-weight: 900;
+	background-image: none;
+	margin-#{$dz-pos-left}: 5px;
+	font-size: calc(100% - 2px);
+	opacity: 0.5;
+}
+table.dataTable thead > tr > th.sorting{
+	&::after {
+		content: "\f0dc";
+	}
+	&.sorting_desc::after {
+		content: "\f0dd";
+		opacity: 0.5;
+	}
+	&.sorting_asc::after {
+		content: "\f0de";
+		opacity: 0.5;
+	}
+}
+table.dataTable thead > tr > th.sorting::before {
+	content: none;
+}
 
 table.dataTable thead th, table.dataTable thead td{
     border-bottom: 0.125rem solid $border-color;
@@ -30,37 +61,54 @@ table.dataTable thead th, table.dataTable thead td{
 table.dataTable tfoot th, table.dataTable tfoot td{
     border-top: 0;
 }
-
+table.dataTable tbody tr.selected > *{
+	color: var(--text-dark);
+	background: var(--light)!important;
+	border-color: var(--border)!important;
+}
 table.dataTable tbody tr, table.dataTable tbody td{
     background: transparent !important;
 }
+table.dataTable.hover > tbody > tr.selected:hover > *, table.dataTable.display > tbody > tr.selected:hover > *{
+	box-shadow: unset!important;
+}
 
 table.dataTable thead th{
-    color: $black;
+    color: var(--text-dark);
 	white-space:nowrap;
-	font-size:1rem;
+	font-size:.9375rem;
 	text-transform:capitalize;
-    font-weight: 600;
+    font-weight: 500;
 	padding: 1.25rem 0.9375rem;
-    @at-root [data-theme-version="dark"] & {
-        color: $white;
-    }
-	@include respond ('laptop'){
-		font-size:1rem;
+   
+}
+table.dataTable{
+	& > thead > tr > th{
+		padding: 1rem 0.9375rem;
+		padding-#{$dz-pos-right}: 26px;
+		padding-#{$dz-pos-left}: 0.9375rem !important;
+		text-align: #{$dz-pos-left};
+		background-color: transparent;
+		@include respond ('phone'){
+			padding-#{$dz-pos-left}: 0.4rem !important;
+		}
+	}
+}
+
+.dataTables_wrapper .dataTables_info{
+	padding-top: 0.5rem;
+	@include respond ('phone'){
+		text-align:left;
 	}
 }
 
 table.dataTable tbody td{
-    padding: 1.25rem 0.9375rem;
-	font-size:1rem;
+    padding: .85rem 0.9375rem;
+	font-size:.875rem;
 	font-weight: 400;
 	border-bottom:0;
 	@include respond('phone') {
 		padding: 0.5rem 0.3125rem;
-	}
-	@include respond ('laptop'){
-		font-size:0.875rem;
-		padding:0.5rem 0.9375rem;
 	}
 }
 
@@ -69,13 +117,17 @@ table.dataTable tr.selected{
 }
 
 table.dataTable tfoot th{
-    color: $dark;
-    font-weight: 600;
-    @at-root [data-theme-version="dark"] & {
-        color: $white;
-    }
+    color: var(--text-dark);
+    font-weight: 500;
+	font-size: .9375rem;
+	text-transform: capitalize;
 }
-
+table.dataTable > tfoot > tr > th, table.dataTable > tfoot > tr > td{
+	padding: 1rem 0.9375rem;
+	@include respond ('phone'){
+		padding: 0.5rem 0.3125rem;
+	}
+}
 td.text-ov {
     white-space: nowrap;
 }
@@ -84,66 +136,63 @@ td.text-ov {
 	align-items: center;
     display: flex;
 	flex-flow:wrap;
-	justify-content:center;
-	@include respond ('phone'){
-		flex-flow: nowrap;
-	}
 	.paginate_button.previous,.paginate_button.next{
-		font-size: 1rem;
-		height:3.125rem;
-		width: 3.125rem;
-		border:0.0625rem solid var(--primary);
-		border-radius:2.8125rem;
-		padding:0 0.85rem;
-		line-height:3.125rem;
+		font-size: 13px;
+		height:24px;
+		width: 24px;
+		background:transparent;
+		border-radius:$radius-sm;
+		padding: 0 0.45rem;
+		line-height:25px;
 		margin:0 0.625rem;
 		display:inline-block;
 		color:var(--primary)!important;
+		box-shadow:none!important;		
 		&.current:hover,
 		&.previous:hover,
 		&.next:hover{
-			color:$white!important;
-			background:var(--primary)!important;
+			color:var(--primary)!important;
+			background:var(--rgba-primary-1)!important;
+			border-color: transparent;
+
 		}
 		&.disabled{
 			color:var(--primary)!important;
 		}
 		@include respond ('phone'){
-			height:2.5rem;
-			width:fit-content;
-			min-width:2.5rem;
-			line-height:2.5rem;
-			padding:0 0.75rem;
-			margin:0.625rem 0;
+			height: 2.125rem;
+			width: fit-content;
+			line-height: 2.125rem;
+			padding: 0 0.45rem;
 		}
 	}
 	span{
 		.paginate_button{
-			height:3.125rem;
-			width:3.125rem;
+			height:24px;
+			width:24px;
 			padding:0;
-			margin-left: 0rem;
+			margin-left:0rem;
 			margin:0 0.125rem;
-			line-height:3.125rem;
+			line-height:25px;
 			text-align:center;
-			font-size:1.125rem;
-			border-radius:2.8125rem;
+			font-size:13px;
+			border-radius:$radius-sm;
+			border:0!important;
 			color:var(--primary)!important;
-			background:var(--rgba-primary-1);
-			@include respond ('phone'){
-				height:2.5rem;
-				width:2.5rem;
-				line-height:2.5rem;
-				font-size:1rem;
-			}
-			&.current,&:hover{
-				color: #fff !important;
-				background:var(--primary);
-				border:1px solid transparent;	
+			cursor: pointer;
+			box-shadow:none!important;
+			
+			&.current{
+				color: $white!important;
+				background:var(--primary)!important;
 				&:hover{
-					color:$white!important;
+					color: $white!important;
 					background:var(--primary)!important;
 				}
+			}
+			&:hover,&:active{
+				color:var(--primary)!important;
+				background:var(--rgba-primary-1)!important;
 			}
 		}
 	}
@@ -151,20 +200,16 @@ td.text-ov {
 
 .dataTables_wrapper {
     input[type="search"], input[type="text"], select {
-        border: 0.0625rem solid #e2e2e2;
+        border: 1px solid var(--border);
         padding: .3rem 0.5rem;
-        color: rgba(113, 93, 93, 1);
-        border-radius: 0.3125rem;
-        @at-root [data-theme-version="dark"] & {
-            background: $d-bg;
-            border-color: $d-border;
-            color: $white;
-        }
+		height: 2.5rem;
+        color: var(--text-dark);
+        border-radius: $radius;
     }
 	.dataTables_length{
 		margin-bottom: 0.9375rem;
 		.bootstrap-select{
-			width: 5rem;
+			width: 5rem!important;
 			margin: 0 0.3125rem;
 		}
 	}
@@ -180,11 +225,8 @@ table.dataTable.no-footer{
 .dataTables_scroll{
     padding: 1rem 0;
 
-    &Foot{
-        padding-top: 1rem;
-    }
+	
 }
-
 .dataTablesCard{
 	background-color:$white;
 	border-radius:$radius;
@@ -197,7 +239,7 @@ table.dataTable.no-footer{
 
 .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter {
     @include media-breakpoint-down(md) {
-        text-align: left;
+        text-align: #{$dz-pos-left};
     }
 }
 
@@ -220,6 +262,9 @@ table.dataTable.no-footer{
 }
 .paging_simple_numbers.dataTables_paginate {
 	padding: 0.3125rem 0.3125rem;
+	@include respond ('phone'){
+		margin: 10px -10px;
+	}
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button{
 	color: $body-color !important;
@@ -232,6 +277,7 @@ table.dataTable.row-border tbody td,
 table.dataTable.display tbody th, 
 table.dataTable.display tbody td {
     border-color: $border-color;
+	box-shadow: none!important;
     @at-root [data-theme-version="dark"] & {
         border-color: $d-border;
 	   color:rgba(255,255,255,0.7);
@@ -258,10 +304,31 @@ table.dataTable.display tbody td {
 		}
 	}
 }
-#example_wrapper.dataTables_wrapper{
-	.paginate_button.previous,.paginate_button.next{
-		@include respond ('phone'){
-			min-width:7rem;
-		}
+
+
+table.dataTable.row-border > tbody > tr > th, 
+table.dataTable.row-border > tbody > tr > td, 
+table.dataTable.display > tbody > tr > th, 
+table.dataTable.display > tbody > tr > td{
+	border-color: var(--border);
+}
+
+table.dataTable thead > tr > th.sorting::before, table.dataTable thead > tr > th.sorting::after, table.dataTable thead > tr > th.sorting_asc::before, table.dataTable thead > tr > th.sorting_asc::after, table.dataTable thead > tr > th.sorting_desc::before, table.dataTable thead > tr > th.sorting_desc::after, table.dataTable thead > tr > th.sorting_asc_disabled::before, table.dataTable thead > tr > th.sorting_asc_disabled::after, table.dataTable thead > tr > th.sorting_desc_disabled::before, table.dataTable thead > tr > th.sorting_desc_disabled::after, table.dataTable thead > tr > td.sorting::before, table.dataTable thead > tr > td.sorting::after, table.dataTable thead > tr > td.sorting_asc::before, table.dataTable thead > tr > td.sorting_asc::after, table.dataTable thead > tr > td.sorting_desc::before, table.dataTable thead > tr > td.sorting_desc::after, table.dataTable thead > tr > td.sorting_asc_disabled::before, table.dataTable thead > tr > td.sorting_asc_disabled::after, table.dataTable thead > tr > td.sorting_desc_disabled::before, table.dataTable thead > tr > td.sorting_desc_disabled::after {
+	position: relative;
+	display: inline-block;
+	#{$dz-pos-right}: 0;
+}
+table.dataTable > thead > tr > th, table.dataTable > thead > tr > td,
+table.dataTable > tfoot > tr > th, table.dataTable > tfoot > tr > td{
+	border-color: var(--border);
+}
+
+table.dataTable thead > tr > th.sorting_disabled::before{
+	content: none;
+}
+@include respond('phone'){
+	.dataTables_scrollHead,
+	.dataTables_scrollFoot{
+		overflow:auto!important;
 	}
 }

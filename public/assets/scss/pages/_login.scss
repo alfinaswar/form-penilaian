@@ -2,7 +2,7 @@
 .logo-header {
     margin-bottom: 2rem;
 	.logo-white {
-		margin-left: 0.625rem;
+		margin-#{$dz-pos-left}: 0.625rem;
 	}
 }
 
@@ -16,14 +16,14 @@
     display: flex;
     justify-content: space-between;
 }
-.dez-social-icon {
+.dz-social-icon {
     display: inline-flex;
     margin: 0 -3px;
     padding: 0;
     text-align: center;
 	li{ 
 		font-size: 12px;
-		margin-right: 0.2rem;
+		margin-#{$dz-pos-right}: 0.2rem;
 		a {
 			color: #ffffff;
 			font-size: 14px;
@@ -34,6 +34,10 @@
 			border-radius: 4px;
 		}
 	}
+}
+.bg-img-fix{
+	&:before{
+}
 }
 div#mCSB_1 {
     margin-top: 100px;
