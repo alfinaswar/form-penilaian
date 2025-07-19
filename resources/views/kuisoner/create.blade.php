@@ -181,7 +181,8 @@
                                         <td rowspan="13"><input type="text" class="form-control" name="Nilai1[]" id="Nilai1"
                                                 value="{{$data->Nilai1[0] ?? ''}}">
                                         </td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="12"> <br><br><br><br><br><br><br><br><br><br><br></td>
@@ -202,7 +203,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot1[1]) && $data->Bobot1[1] == 1 ? 'selected' : '' }}>1</option>
                                                 <option value="2" {{ isset($data) && isset($data->Bobot1[1]) && $data->Bobot1[1] == 2 ? 'selected' : '' }}>2</option>
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Laporan EDS yang terkait lingkungan hidup {1/2}</td>
@@ -221,7 +223,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot1[2]) && $data->Bobot1[2] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Tabel rencana Gerakan PBLHS {1/2}</td>
@@ -239,7 +242,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot1[3]) && $data->Bobot1[3] == 1 ? 'selected' : '' }}>1</option>
                                                 <option value="2" {{ isset($data) && isset($data->Bobot1[3]) && $data->Bobot1[3] == 2 ? 'selected' : '' }}>2</option>
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>2. Penyusunan Rencana Gerakan PBLHS melibatkan kepala sekolah, dewan
@@ -262,7 +266,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot1[4]) && $data->Bobot1[4] == 1 ? 'selected' : '' }}>1</option>
                                                 <option value="2" {{ isset($data) && isset($data->Bobot1[4]) && $data->Bobot1[4] == 2 ? 'selected' : '' }}>2</option>
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2"> <br></td>
@@ -284,7 +289,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot1[5]) && $data->Bobot1[5] == 1 ? 'selected' : '' }}>1</option>
                                                 <option value="2" {{ isset($data) && isset($data->Bobot1[5]) && $data->Bobot1[5] == 2 ? 'selected' : '' }}>2</option>
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Dokumentasi (foto dan/atau video) {1}</td>
@@ -301,7 +307,8 @@
                                                 <option value="0" {{ isset($data) && isset($data->Bobot1[6]) && $data->Bobot1[6] == 0 ? 'selected' : '' }}>0</option>
                                                 <option value="1" {{ isset($data) && isset($data->Bobot1[6]) && $data->Bobot1[6] == 1 ? 'selected' : '' }}>1</option>
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>3. Rencana Gerakan PBLHS terintegrasi dalam dokumen satu KTSP</td>
@@ -327,10 +334,12 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot1[7]) && $data->Bobot1[7] == 1 ? 'selected' : '' }}>1</option>
                                                 <option value="2" {{ isset($data) && isset($data->Bobot1[7]) && $data->Bobot1[7] == 2 ? 'selected' : '' }}>2</option>
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td> </td>
+                                        <td>
+                                        </td>
                                         <td>Visi, misi, tujuan sekolah dan program pengembangan diri {3}</td>
                                         <td>Program ekstrakurikuler dan pembiasaan diri {1/2}</td>
                                         <td><select name="Status1[]" class="multi-select">
@@ -348,16 +357,21 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot1[8]) && $data->Bobot1[8] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>4. Rencana Gerakan PBLHS terintegrasi dalam RPP</td>
                                         <td>a. Jumlah aspek penerapan PRLH yang diintegrasi dalam RPP</td>
                                         <td rowspan="2">4</td>
-                                        <td> </td>
-                                        <td> </td>
-                                        <td></td>
-                                        <td> </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
+                                        <td>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="3"> <br><br></td>
@@ -383,16 +397,19 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot1[9]) && $data->Bobot1[9] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>b. % RPP yang mengintegrasikan aspek penerapan PRLH</td>
                                         <td rowspan="2">5</td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>· &gt; 80% {5}</td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Pelaksanaan gerakan PBLHS</td>
@@ -405,7 +422,8 @@
                                         <td rowspan="52"><input type="text" class="form-control" name="Nilai2[]" id="Nilai2"
                                                 value="{{$data->Nilai2[0]}}">
                                         </td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="51">
@@ -432,7 +450,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[0]) && $data->Bobot2[0] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="7"> <br><br><br><br><br><br></td>
@@ -453,7 +472,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[1]) && $data->Bobot2[1] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Dokumentasi hasil praktek/penugasan/penelitian kebersihan, fungsi
@@ -472,7 +492,8 @@
                                                 <option value="0" {{ isset($data) && isset($data->Bobot2[2]) && $data->Bobot2[2] == 0 ? 'selected' : '' }}>0</option>
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[2]) && $data->Bobot2[2] == 1 ? 'selected' : '' }}>1</option>
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>SK Tim/pokja kebersihan, fungsi sanitasi dan drainase sekolah {1/2/3}
@@ -492,7 +513,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[3]) && $data->Bobot2[3] == 2 ? 'selected' : '' }}>2</option>
                                                 <option value="3" {{ isset($data) && isset($data->Bobot2[3]) && $data->Bobot2[3] == 3 ? 'selected' : '' }}>3</option>
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>2) Jumlah upaya pemeliharaan kebersihan, fungsi sanitasi dan drainase
@@ -515,7 +537,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[4]) && $data->Bobot2[4] == 2 ? 'selected' : '' }}>2</option>
                                                 <option value="3" {{ isset($data) && isset($data->Bobot2[4]) && $data->Bobot2[4] == 3 ? 'selected' : '' }}>3</option>
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>≥ 7 upaya {5}</td>
@@ -537,7 +560,8 @@
 
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>3) Terpeliharanya kebersihan, fungsi sanitasi dan drainase sekolah</td>
@@ -562,11 +586,13 @@
 
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Sekolah bersih, sanitasi dan drainase berfungsi {3}</td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>b. Pengelolaan sampah</td>
@@ -595,12 +621,14 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[7]) && $data->Bobot2[7] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="8"> <br><br><br><br><br><br><br></td>
                                         <td>≥ 7 upaya {5}</td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>2) Jumlah upaya daur ulang sampah</td>
@@ -623,7 +651,8 @@
                                                 <option value="3" {{ isset($data) && isset($data->Bobot2[8]) && $data->Bobot2[8] == 3 ? 'selected' : '' }}>3</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>≥ 3 upaya {3}</td>
@@ -645,7 +674,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[9]) && $data->Bobot2[9] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>3) Pelibatan peserta didik dan kader adiwiyata, dalam pemindahan sampah
@@ -671,7 +701,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[10]) && $data->Bobot2[10] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -694,7 +725,8 @@
                                                 <option value="3" {{ isset($data) && isset($data->Bobot2[11]) && $data->Bobot2[11] == 3 ? 'selected' : '' }}>3</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -718,7 +750,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[12]) && $data->Bobot2[12] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -746,12 +779,14 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[13]) && $data->Bobot2[13] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
                                         <td>&gt; 80% {5}</td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -779,13 +814,15 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[14]) && $data->Bobot2[14] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
                                         <td rowspan="5"> <br><br><br><br></td>
                                         <td>Penanaman dan pemeliharaan {2}</td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -811,12 +848,14 @@
                                                 <option value="3" {{ isset($data) && isset($data->Bobot2[15]) && $data->Bobot2[15] == 3 ? 'selected' : '' }}>3</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
                                         <td>· ≥ 5 unsur {5}</td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -840,7 +879,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[16]) && $data->Bobot2[16] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -865,7 +905,8 @@
                                                 <option value="4" {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 4 ? 'selected' : '' }}>4</option>
                                                 <option value="5" {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 5 ? 'selected' : '' }}>5</option>
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -890,11 +931,13 @@
                                                 <option value="3" {{ isset($data) && isset($data->Bobot2[18]) && $data->Bobot2[18] == 3 ? 'selected' : '' }}>3</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                         <td>≥ 7 upaya {5}</td>
                                         <td>Dokumentasi (foto dan/atau video) yang menunjukkan kegiatan konservasi
                                             air yang
@@ -914,7 +957,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[19]) && $data->Bobot2[19] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -937,7 +981,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[20]) && $data->Bobot2[20] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -958,7 +1003,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[21]) && $data->Bobot2[21] == 1 ? 'selected' : '' }}>1</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -979,7 +1025,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[22]) && $data->Bobot2[22] == 1 ? 'selected' : '' }}>1</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1000,7 +1047,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[23]) && $data->Bobot2[23] == 1 ? 'selected' : '' }}>1</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1025,7 +1073,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[24]) && $data->Bobot2[24] == 1 ? 'selected' : '' }}>1</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1045,7 +1094,8 @@
                                                 <option value="0" {{ isset($data) && isset($data->Bobot2[25]) && $data->Bobot2[25] == 0 ? 'selected' : '' }}>0</option>
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[25]) && $data->Bobot2[25] == 1 ? 'selected' : '' }}>1</option>
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1064,7 +1114,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[26]) && $data->Bobot2[26] == 1 ? 'selected' : '' }}>1</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1084,7 +1135,8 @@
                                                 <option value="0" {{ isset($data) && isset($data->Bobot2[27]) && $data->Bobot2[27] == 0 ? 'selected' : '' }}>0</option>
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[27]) && $data->Bobot2[27] == 1 ? 'selected' : '' }}>1</option>
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1113,7 +1165,8 @@
                                                 <option value="4" {{ isset($data) && isset($data->Bobot2[28]) && $data->Bobot2[28] == 4 ? 'selected' : '' }}>4</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1138,7 +1191,8 @@
                                                 <option value="3" {{ isset($data) && isset($data->Bobot2[29]) && $data->Bobot2[29] == 3 ? 'selected' : '' }}>3</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1164,12 +1218,14 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[30]) && $data->Bobot2[30] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
                                         <td>· Lingkungan sekitar sekolah bersih dan drainase berfungsi</td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1196,12 +1252,14 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[31]) && $data->Bobot2[31] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
                                         <td>· Sampah terpilah dan terkelola dengan baik</td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1227,7 +1285,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[32]) && $data->Bobot2[32] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1250,7 +1309,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[33]) && $data->Bobot2[33] == 1 ? 'selected' : '' }}>1</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1270,7 +1330,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[34]) && $data->Bobot2[34] == 1 ? 'selected' : '' }}>1</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1290,7 +1351,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 1 ? 'selected' : '' }}>1</option>
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 2 ? 'selected' : '' }}>2</option>
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1314,7 +1376,8 @@
                                                 <option value="3" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 3 ? 'selected' : '' }}>3</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1337,7 +1400,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 1 ? 'selected' : '' }}>1</option>
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 2 ? 'selected' : '' }}>2</option>
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1365,12 +1429,14 @@
                                                 <option value="3" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 3 ? 'selected' : '' }}>3</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
                                         <td>· ≥ 5 media</td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1398,13 +1464,15 @@
                                                 <option value="4" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 4 ? 'selected' : '' }}>4</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
                                         <td rowspan="3"> <br><br></td>
                                         <td>· &gt; 20 %</td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1429,7 +1497,8 @@
                                                 <option value="4" {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 4 ? 'selected' : '' }}>4</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1451,7 +1520,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot2[41]) && $data->Bobot2[41] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
 
                                     </tr>
                                     <tr>
@@ -1463,14 +1533,16 @@
                                             ditandatangani oleh kepala sekolah. {1/2/3/4}</td>
                                         <td>
                                         </td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                         <td rowspan="8"><input type="text" class="form-control" name="Total3[]" id="Total3"
                                                 value="{{$data->Total3[0]}}">
                                         </td>
                                         <td rowspan="8"><input type="text" class="form-control" name="Nilai3[]" id="Nilai3"
                                                 value="{{$data->Nilai3[0]}}">
                                         </td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="7"> <br><br><br><br><br><br></td>
@@ -1482,8 +1554,10 @@
                                             3. Contoh: Pemantauan dan Evaluasi Pelaksanaan Gerakan PBLHS Januari
                                             s.d.
                                             Maret 2019</td>
-                                        <td> </td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>2) % rencana kegiatan Gerakan PBLHS yang terlaksana</td>
@@ -1505,7 +1579,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot3[0]) && $data->Bobot3[0] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>· &gt; 80 %</td>
@@ -1526,7 +1601,8 @@
                                                 <option value="1" {{ isset($data) && isset($data->Bobot3[1]) && $data->Bobot3[1] == 1 ? 'selected' : '' }}>1</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="4">2. Pemantauan dan evaluasi melibatkan kepala sekolah, dewan
@@ -1553,7 +1629,8 @@
 
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="3">· Melibatkan kepala sekolah, dewan pendidik, komite
@@ -1576,7 +1653,8 @@
 
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Undangan, daftar hadir, dan notulensi pelibatan para pihak {1}</td>
@@ -1595,7 +1673,8 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot3[4]) && $data->Bobot3[4] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Tabel setiap pemantauan dan evaluasi pelaksanaan Gerakan PBLHS yang
@@ -1616,19 +1695,26 @@
                                                 <option value="2" {{ isset($data) && isset($data->Bobot3[5]) && $data->Bobot3[5] == 2 ? 'selected' : '' }}>2</option>
 
                                             </select></td>
-                                        <td> </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                         <td colspan="3">Nilai Kuanta Total</td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                         <td><input readonly type="text" class="form-control" name="TotalAkhir"
                                                 id="TotalAkhir" value="{{$data->TotalAkhir ?? ''}}">
                                         </td>
-                                        <td></td>
+                                        <td><textarea name="Catatan[]" width="100%" height="100%"></textarea></textarea>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
