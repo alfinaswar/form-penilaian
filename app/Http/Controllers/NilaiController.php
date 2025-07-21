@@ -61,12 +61,12 @@ class NilaiController extends Controller
     {
         // Ambil data user beserta relasi Nilai dan NilaiKuisoner
         $data = User::with('Nilai', 'NilaiKuisoner')->findOrFail($id);
-        return view('nilai.cetak_pdf', compact('data'));
-        // // Load view 'nilai.cetak_pdf' dan generate PDF dalam mode landscape
-        // $pdf = Pdf::loadView('nilai.cetak_pdf', compact('data'))->setPaper('a4', 'landscape');
+        // return view('nilai.cetak_pdf', compact('data'));
+        // Load view 'nilai.cetak_pdf' dan generate PDF dalam mode landscape
+        $pdf = Pdf::loadView('nilai.cetak_pdf', compact('data'))->setPaper('a4', 'portrait');
 
-        // // Download file PDF dengan nama sesuai reg_number user
-        // return $pdf->stream('nilai_' . $data->reg_number . '.pdf');
+        // Download file PDF dengan nama sesuai reg_number user
+        return $pdf->stream('nilai_' . $data->reg_number . '.pdf');
     }
 
     /**

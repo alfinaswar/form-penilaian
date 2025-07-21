@@ -175,19 +175,8 @@
                     placeholder="Contoh: https://drive.google.com/....">
             </div>
         </div>
-        <table id="tablenilai">
-            <colgroup>
-                <col style="width: 244.5px">
-                <col style="width: 376.5px">
-                <col style="width: 221.5px">
-                <col style="width: 133.5px">
-                <col style="width: 601.5px">
-                <col style="width: 121.5px">
-                <col style="width: 82.5px">
-                <col style="width: 167.5px">
-                <col style="width: 167.5px">
-                <col style="width: 211.5px">
-            </colgroup>
+        <table id="tablenilai" width="100%">
+
             <thead>
                 <tr>
                     <th>KOMPONEN</th>
