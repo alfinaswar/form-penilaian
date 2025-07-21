@@ -175,7 +175,7 @@
                     placeholder="Contoh: https://drive.google.com/....">
             </div>
         </div>
-        <table id="tablenilai" width="100%">
+        <table id="tablenilai" width="100%" border="1">
 
             <thead>
                 <tr>
