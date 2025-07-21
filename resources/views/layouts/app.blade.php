@@ -13,7 +13,8 @@
     <meta property="og:description" content="Yashadmin:Sales Management System Admin Bootstrap 5 Template">
     <meta property="og:image" content="https:/yashadmin.dexignzone.com/xhtml/social-image.png">
     <meta name="format-detection" content="telephone=no">
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- PAGE TITLE HERE -->
     <title>Kuisoner</title>
     <!-- FAVICONS ICON -->

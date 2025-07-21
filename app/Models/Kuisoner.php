@@ -25,5 +25,6 @@ class Kuisoner extends Model
         'Nilai3' => 'array',
         'Status3' => 'array',
         'Bobot3' => 'array',
+        'Catatan' => 'array',
     ];
 }

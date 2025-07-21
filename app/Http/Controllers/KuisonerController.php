@@ -61,8 +61,11 @@ class KuisonerController extends Controller
     {
         $data = $request->all();
         $data['idUser'] = $request->idUser;
-        Kuisoner::create($data);
-        return redirect()->route('kuisoner.index')->with('success', 'Kuisoner berhasil ditambahkan');
+        Kuisoner::updateOrCreate(
+            ['idUser' => $data['idUser']],
+            $data
+        );
+        return redirect()->route('home')->with('success', 'Kuisoner berhasil ditambahkan');
     }
 
     /**

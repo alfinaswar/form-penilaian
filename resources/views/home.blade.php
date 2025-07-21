@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session()->has('success'))
+        <script>
+            setTimeout(function () {
+                swal.fire({
+                    title: "{{ __('Success!') }}",
+                    text: "{!! \Session::get('success') !!}",
+                    icon: "success",
+                    type: "success"
+                });
+            }, 1000); // delay 1 detik
+        </script>
+    @endif
     <div class="row justify-content-center">
         <div class="col-xl-12 col-xxl-12">
             <div class="card">
