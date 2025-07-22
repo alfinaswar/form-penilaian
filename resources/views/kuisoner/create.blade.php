@@ -117,8 +117,14 @@
                                 <div class="col-12">
                                     <label for="link" class="form-label"><b>Masukkan link bukti (misal: Google
                                             Drive)</b></label>
-                                    <input type="text" class="form-control" name="link" id="link"
+                                    <input type="text" class="form-control" name="Link" id="link"
                                         placeholder="Contoh: https://drive.google.com/....">
+                                    @if (!empty($data->Link))
+                                        <div class="mt-2 text-success">Link: <a href="{{ $data->Link }}"
+                                                target="_blank">{{ $data->Link }}</a></div>
+                                    @else
+                                        <div class="mt-2 text-danger">Tidak ada link</div>
+                                    @endif
                                 </div>
                             </div>
                             <table class="tg">
