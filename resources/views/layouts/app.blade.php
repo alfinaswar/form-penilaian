@@ -129,12 +129,7 @@
                     <li>
                         <a href="{{ route('home') }}">
                             <div class="menu-icon">
-                                <!-- Icon: School/Profile -->
-                                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 3L2 9l10 6 10-6-10-6zm0 2.18L18.6 9 12 12.82 5.4 9 12 5.18zM4 10.36v6.28c0 .53.21 1.04.59 1.41.38.38.89.59 1.41.59h12c.53 0 1.04-.21 1.41-.59.38-.38.59-.89.59-1.41v-6.28l-8 4.8-8-4.8z"
-                                        fill="#90959F" />
-                                </svg>
+                                <i class="fa fa-home"></i>
                             </div>
                             <span class="nav-text">Dashboard</span>
                         </a>
@@ -144,14 +139,17 @@
                     <li>
                         <a href="{{ route('profil.index') }}">
                             <div class="menu-icon">
-                                <!-- Icon: School/Profile -->
-                                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 3L2 9l10 6 10-6-10-6zm0 2.18L18.6 9 12 12.82 5.4 9 12 5.18zM4 10.36v6.28c0 .53.21 1.04.59 1.41.38.38.89.59 1.41.59h12c.53 0 1.04-.21 1.41-.59.38-.38.59-.89.59-1.41v-6.28l-8 4.8-8-4.8z"
-                                        fill="#90959F" />
-                                </svg>
+                                <i class="fa fa-school"></i>
                             </div>
                             <span class="nav-text">Profile Sekolah</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('guide.index') }}">
+                            <div class="menu-icon">
+                                <i class="fa fa-book"></i>
+                            </div>
+                            <span class="nav-text">Petunjuk</span>
                         </a>
                     </li>
                     {{-- @endcan
@@ -173,12 +171,7 @@
                     <li>
                         <a href="{{ route('users.index') }}">
                             <div class="menu-icon">
-                                <!-- Icon: Users/People -->
-                                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path
-                                        d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C17 14.17 12.33 13 10 13zm8 0c-.29 0-.62.02-.97.05C18.16 14.09 21 15.17 21 16.5V19h3v-2.5c0-2.33-4.67-3.5-7-3.5z"
-                                        fill="#90959F" />
-                                </svg>
+                                <i class="fa fa-users"></i>
                             </div>
                             <span class="nav-text">Data Pengguna</span>
                         </a>
@@ -186,12 +179,7 @@
                     <li>
                         <a href="{{ route('roles.index') }}">
                             <div class="menu-icon">
-                                <!-- Icon: Key/Access -->
-                                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12.65 10.86A5 5 0 1021 17.5V19a1 1 0 01-1 1h-2v-2h-2v-2h-2.35zM7 17a3 3 0 110-6 3 3 0 010 6z"
-                                        fill="#90959F" />
-                                </svg>
+                                <i class="fa fa-key"></i>
                             </div>
                             <span class="nav-text">Hak Akses</span>
                         </a>

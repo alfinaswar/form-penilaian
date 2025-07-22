@@ -54,10 +54,14 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="d-flex">
-                                                    <a class="btn btn-primary btn-sm me-2"
-                                                        href="{{ route('users.edit', $user->id) }}">Edit</a>
+                                                    <a class="btn btn-warning btn-sm me-2"
+                                                        href="{{ route('users.edit', $user->id) }}">
+                                                        <i class="fa fa-edit"></i> Edit
+                                                    </a>
                                                     {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style' => 'display:inline']) !!}
-                                                    {!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-sm']) !!}
+                                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                        <i class="fa fa-trash"></i> Hapus
+                                                    </button>
                                                     {!! Form::close() !!}
                                                 </div>
                                             </td>

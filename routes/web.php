@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
-
+    Route::get('/petunjuk-penggunaan-aplikasi', [HomeController::class, 'Guide'])->name('guide.index');
     Route::prefix('profil')->group(function () {
         Route::GET('/identitas', [UserController::class, 'profil'])->name('profil.index');
         Route::GET('/identitas/edit/{id}', [UserController::class, 'editProfil'])->name('profil.edit');

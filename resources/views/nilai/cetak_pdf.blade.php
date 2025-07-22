@@ -164,17 +164,34 @@
     </style>
 </head>
 
-<body>
+<body onload="window.print()">
     <div class="table-responsive">
-
-        <div class="row mb-3">
-            <div class="col-12">
-                <label for="link" class="form-label"><b>Masukkan link bukti (misal: Google
-                        Drive)</b></label>
-                <input type="text" class="form-control" name="link" id="link"
-                    placeholder="Contoh: https://drive.google.com/....">
-            </div>
-        </div>
+        <p style="font-size: 15px; margin-bottom: 20px;">
+            Dokumen ini merupakan hasil verifikasi dan evaluasi yang telah dilakukan oleh tim penilai. Seluruh data dan
+            informasi yang tercantum merupakan hasil verifikasi dan evaluasi sesuai dengan standar yang berlaku.
+        </p>
+        <table style="margin-bottom: 20px; font-size: 14px;">
+            <tr>
+                <td style="font-weight: bold; width: 180px;">Nomor Register</td>
+                <td>: {{ $data->reg_number ?? '-' }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Nama Sekolah</td>
+                <td>: {{ $data->nama_sekolah ?? '-' }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">NPSN</td>
+                <td>: {{ $data->npsn ?? '-' }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Jenjang</td>
+                <td>: {{ $data->jenjang ?? '-' }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Alamat</td>
+                <td>: {{ $data->alamat_sekolah ?? '-' }}</td>
+            </tr>
+        </table>
         <table id="tablenilai" width="100%" border="1">
 
             <thead>

@@ -25,12 +25,8 @@
                 <div class="col-md-10">
                     <div class="row no-gutters bg-white rounded shadow overflow-hidden">
                         <!-- Kolom Kiri -->
-                        <div class="col-md-6  d-flex flex-column justify-content-center align-items-center text-center p-4">
-                            <img src="{{ asset('assets/images/bglogin/kuantalogo.png') }}" alt="Logo" class="mb-3" style="max-width: 150px;">
-                            <h4 class="mb-2">KUANTA</h4>
-                            <p class="mb-1">Sistem Informasi Adiwiyata</p>
-                            <p class="mb-1">Pusat Pengembangan Generasi Lingkungan Hidup</p>
-                            <p class="mb-0">Sekretariat / Sekretariat Utama</p>
+                        <div class="col-md-6 p-0">
+                            <img src="{{ asset('assets/dokumen/kuanta.png') }}" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                         </div>
 
                         <!-- Kolom Kanan (Login Form) -->
@@ -84,6 +80,12 @@
                                 <div class="text-center">
                                     <p class="mb-2">Belum punya akun?</p>
                                     <a href="{{ route('register') }}" class="text-primary">Daftar Sekarang</a>
+                                </div>
+                                <!-- Link Petunjuk Penggunaan Aplikasi -->
+                                <div class="text-center mt-3">
+                                    <a href="{{ asset('assets/dokumen/kuanta_petunjuk.pdf') }}" class="text-secondary" target="_blank" download>
+                                        <i class="fa fa-download"></i> Download Petunjuk Penggunaan Aplikasi
+                                    </a>
                                 </div>
                             </div>
                         </div> <!-- End col-md-6 -->

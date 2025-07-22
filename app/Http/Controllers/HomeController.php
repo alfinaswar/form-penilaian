@@ -34,4 +34,8 @@ class HomeController extends Controller
         $user = User::get();
         return view('kuisoner', compact('user'));
     }
+    public function Guide()
+    {
+        return view('petunjuk.index');
+    }
 }
