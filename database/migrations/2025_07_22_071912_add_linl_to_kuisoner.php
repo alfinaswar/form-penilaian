@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('kuisoners', function (Blueprint $table) {
-            $table->string('Link', 100)->nullable()->after('idUser');
+            $table->string('Link', 255)->nullable()->after('idUser');
         });
     }
 
