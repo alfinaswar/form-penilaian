@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             {{ $message }}
@@ -23,8 +21,8 @@
                         <div class="d-flex align-items-center">
                             <div class="alert-social-icon me-3">
                                 <!-- Flat icon, contoh: icon informasi dari flaticon.com -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Info" width="40"
-                                    height="40">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Info"
+                                    width="40" height="40">
                             </div>
                             <div>
                                 <h5 class="mt-1 mb-2" style="color: #ffffff; font-weight: bold;">Informasi</h5>
@@ -110,20 +108,31 @@
                         }
                     </style>
                     <div class="table-responsive">
-                        <form action="{{route('kuisoner.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('kuisoner.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type="text" value="{{$idUser}}" name="idUser" hidden>
+                            <input type="text" value="{{ $idUser }}" name="idUser" hidden>
+
                             <div class="row mb-3">
                                 <div class="col-12">
-                                    <label for="link" class="form-label"><b>Masukkan link bukti (misal: Google
+                                    <label for="UrlKuesioner" class="form-label"><b>Buka Link Kuesioner (misal: Google
                                             Drive)</b></label>
-                                    <input type="text" class="form-control" name="Link" id="link"
-                                        placeholder="Contoh: https://drive.google.com/....">
-                                    @if (!empty($data->Link))
-                                        <div class="mt-2 text-success">Link: <a href="{{ $data->Link }}"
-                                                target="_blank">{{ $data->Link }}</a></div>
+                                    @if (!empty($datauser->UrlKuesioner))
+                                        <div class="mt-2 text-success">Link Kuesioner: <a
+                                                href="{{ $datauser->UrlKuesioner }}" target="_blank">Buka Link</a></div>
                                     @else
-                                        <div class="mt-2 text-danger">Tidak ada link</div>
+                                        <div class="mt-2 text-danger">Tidak ada link kuesioner</div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <label for="UrlBukti" class="form-label"><b>Buka Link Bukti (misal: Google
+                                            Drive)</b></label>
+                                    @if (!empty($datauser->UrlBukti))
+                                        <div class="mt-2 text-success">Link Bukti: <a href="{{ $datauser->UrlBukti }}"
+                                                target="_blank">Buka Link</a></div>
+                                    @else
+                                        <div class="mt-2 text-danger">Tidak ada link bukti</div>
                                     @endif
                                 </div>
                             </div>
@@ -165,30 +174,42 @@
                                         <td rowspan="4">1</td>
                                         <td>Dokumentasi proses IPMLH sekolah, daerah dan global {1/2}</td>
                                         <td><select name="Status1[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status1[0]) && $data->Status1[0] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status1[0]) && $data->Status1[0] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status1[0]) && $data->Status1[0] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status1[0]) && $data->Status1[0] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status1[0]) && $data->Status1[0] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status1[0]) && $data->Status1[0] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td>
 
                                             <select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot1[0]) && $data->Bobot1[0] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot1[0]) && $data->Bobot1[0] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot1[0]) && $data->Bobot1[0] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot1[0]) && $data->Bobot1[0] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot1[0]) && $data->Bobot1[0] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot1[0]) && $data->Bobot1[0] == 2 ? 'selected' : '' }}>
+                                                    2</option>
                                             </select>
                                         </td>
-                                        <td rowspan="13"><input type="text" class="form-control" name="Total1[]" id="Total1"
-                                                value="{{$data->Total1[0] ?? ''}}">
+                                        <td rowspan="13"><input type="text" class="form-control" name="Total1[]"
+                                                id="Total1" value="{{ $data->Total1[0] ?? '' }}">
                                         </td>
-                                        <td rowspan="13"><input type="text" class="form-control" name="Nilai1[]" id="Nilai1"
-                                                value="{{$data->Nilai1[0] ?? ''}}">
+                                        <td rowspan="13"><input type="text" class="form-control" name="Nilai1[]"
+                                                id="Nilai1" value="{{ $data->Nilai1[0] ?? '' }}">
                                         </td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[0] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[0] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -197,62 +218,98 @@
                                         <td rowspan="3">Sesuai dengan Laporan EDS dan hasil IPMLH {3}</td>
                                         <td>Dokumentasi proses EDS {1/2}</td>
                                         <td><select name="Status1[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status1[1]) && $data->Status1[1] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status1[1]) && $data->Status1[1] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status1[1]) && $data->Status1[1] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status1[1]) && $data->Status1[1] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status1[1]) && $data->Status1[1] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status1[1]) && $data->Status1[1] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot1[1]) && $data->Bobot1[1] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot1[1]) && $data->Bobot1[1] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot1[1]) && $data->Bobot1[1] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot1[1]) && $data->Bobot1[1] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot1[1]) && $data->Bobot1[1] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot1[1]) && $data->Bobot1[1] == 2 ? 'selected' : '' }}>
+                                                    2</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[1] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[1] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Laporan EDS yang terkait lingkungan hidup {1/2}</td>
                                         <td><select name="Status1[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status1[2]) && $data->Status1[2] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status1[2]) && $data->Status1[2] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status1[2]) && $data->Status1[2] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status1[2]) && $data->Status1[2] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status1[2]) && $data->Status1[2] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status1[2]) && $data->Status1[2] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot1[2]) && $data->Bobot1[2] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot1[2]) && $data->Bobot1[2] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot1[2]) && $data->Bobot1[2] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot1[2]) && $data->Bobot1[2] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot1[2]) && $data->Bobot1[2] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot1[2]) && $data->Bobot1[2] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[2] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[2] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Tabel rencana Gerakan PBLHS {1/2}</td>
                                         <td><select name="Status1[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status1[3]) && $data->Status1[3] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status1[3]) && $data->Status1[3] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status1[3]) && $data->Status1[3] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status1[3]) && $data->Status1[3] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status1[3]) && $data->Status1[3] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status1[3]) && $data->Status1[3] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot1[3]) && $data->Bobot1[3] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot1[3]) && $data->Bobot1[3] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot1[3]) && $data->Bobot1[3] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot1[3]) && $data->Bobot1[3] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot1[3]) && $data->Bobot1[3] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot1[3]) && $data->Bobot1[3] == 2 ? 'selected' : '' }}>
+                                                    2</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[3] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[3] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -263,21 +320,33 @@
                                         <td rowspan="3">2</td>
                                         <td>Undangan, daftar hadir, notulensi rapat {1/2}</td>
                                         <td><select name="Status1[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status1[4]) && $data->Status1[4] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status1[4]) && $data->Status1[4] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status1[4]) && $data->Status1[4] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status1[4]) && $data->Status1[4] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status1[4]) && $data->Status1[4] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status1[4]) && $data->Status1[4] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot1[4]) && $data->Bobot1[4] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot1[4]) && $data->Bobot1[4] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot1[4]) && $data->Bobot1[4] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot1[4]) && $data->Bobot1[4] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot1[4]) && $data->Bobot1[4] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot1[4]) && $data->Bobot1[4] == 2 ? 'selected' : '' }}>
+                                                    2</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[4] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[4] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -287,40 +356,62 @@
                                             komite
                                             sekolah, peserta didik, dan masyarakat {1/2}</td>
                                         <td><select name="Status1[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status1[5]) && $data->Status1[5] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status1[5]) && $data->Status1[5] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status1[5]) && $data->Status1[5] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status1[5]) && $data->Status1[5] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status1[5]) && $data->Status1[5] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status1[5]) && $data->Status1[5] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot1[5]) && $data->Bobot1[5] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot1[5]) && $data->Bobot1[5] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot1[5]) && $data->Bobot1[5] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot1[5]) && $data->Bobot1[5] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot1[5]) && $data->Bobot1[5] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot1[5]) && $data->Bobot1[5] == 2 ? 'selected' : '' }}>
+                                                    2</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[5] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[5] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Dokumentasi (foto dan/atau video) {1}</td>
                                         <td><select name="Status1[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status1[6]) && $data->Status1[6] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status1[6]) && $data->Status1[6] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status1[6]) && $data->Status1[6] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status1[6]) && $data->Status1[6] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status1[6]) && $data->Status1[6] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status1[6]) && $data->Status1[6] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot1[6]) && $data->Bobot1[6] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot1[6]) && $data->Bobot1[6] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot1[6]) && $data->Bobot1[6] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot1[6]) && $data->Bobot1[6] == 1 ? 'selected' : '' }}>
+                                                    1</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[6] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[6] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -334,21 +425,33 @@
                                             sekolah, dan disahkan pejabat yang berwenang (2 tahun terakhir) {1/2}
                                         </td>
                                         <td><select name="Status1[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status1[7]) && $data->Status1[7] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status1[7]) && $data->Status1[7] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status1[7]) && $data->Status1[7] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status1[7]) && $data->Status1[7] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status1[7]) && $data->Status1[7] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status1[7]) && $data->Status1[7] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot1[7]) && $data->Bobot1[7] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot1[7]) && $data->Bobot1[7] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot1[7]) && $data->Bobot1[7] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot1[7]) && $data->Bobot1[7] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot1[7]) && $data->Bobot1[7] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot1[7]) && $data->Bobot1[7] == 2 ? 'selected' : '' }}>
+                                                    2</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[7] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[7] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -357,22 +460,34 @@
                                         <td>Visi, misi, tujuan sekolah dan program pengembangan diri {3}</td>
                                         <td>Program ekstrakurikuler dan pembiasaan diri {1/2}</td>
                                         <td><select name="Status1[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status1[8]) && $data->Status1[8] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status1[8]) && $data->Status1[8] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status1[8]) && $data->Status1[8] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status1[8]) && $data->Status1[8] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status1[8]) && $data->Status1[8] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status1[8]) && $data->Status1[8] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot1[]" onchange="calculateTotal()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot1[8]) && $data->Bobot1[8] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot1[8]) && $data->Bobot1[8] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot1[8]) && $data->Bobot1[8] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot1[8]) && $data->Bobot1[8] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot1[8]) && $data->Bobot1[8] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot1[8]) && $data->Bobot1[8] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[8] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[8] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -397,36 +512,48 @@
                                             (2
                                             tahun terakhir) {1/2}</td>
                                         <td rowspan="3"><select name="Status1[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status1[9]) && $data->Status1[9] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status1[9]) && $data->Status1[9] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status1[9]) && $data->Status1[9] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status1[9]) && $data->Status1[9] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status1[9]) && $data->Status1[9] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status1[9]) && $data->Status1[9] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="3"><select name="Bobot1[]" onchange="calculateTotal()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot1[9]) && $data->Bobot1[9] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot1[9]) && $data->Bobot1[9] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot1[9]) && $data->Bobot1[9] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot1[9]) && $data->Bobot1[9] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot1[9]) && $data->Bobot1[9] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot1[9]) && $data->Bobot1[9] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[9] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[9] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>b. % RPP yang mengintegrasikan aspek penerapan PRLH</td>
                                         <td rowspan="2">5</td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[10] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[10] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>· &gt; 80% {5}</td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[11] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[11] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -434,14 +561,16 @@
                                         <td colspan="6">Pembelajaran pada mata pelajaran, ekstrakurikuler dan
                                             pembiasaan diri
                                             yang mengintegrasikan penerapan PRLH di Sekolah</td>
-                                        <td rowspan="52"><input type="text" class="form-control" name="Total2[]" id="Total2"
-                                                value="{{$data->Total2[0]}}">
+                                        <td rowspan="52"><input type="text" class="form-control" name="Total2[]"
+                                                id="Total2"
+                                                value="{{ isset($data->Total2[0]) ? $data->Total2[0] : '' }}">
                                         </td>
-                                        <td rowspan="52"><input type="text" class="form-control" name="Nilai2[]" id="Nilai2"
-                                                value="{{$data->Nilai2[0]}}">
+                                        <td rowspan="52"><input type="text" class="form-control" name="Nilai2[]"
+                                                id="Nilai2"
+                                                value="{{ isset($data->Nilai2[0]) ? $data->Nilai2[0] : '' }}">
                                         </td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[12] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[12] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -455,22 +584,34 @@
                                         <td rowspan="4">6</td>
                                         <td>Profil sekolah {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[0]) && $data->Status2[0] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[0]) && $data->Status2[0] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[0]) && $data->Status2[0] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[0]) && $data->Status2[0] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[0]) && $data->Status2[0] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[0]) && $data->Status2[0] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[0]) && $data->Bobot2[0] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[0]) && $data->Bobot2[0] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[0]) && $data->Bobot2[0] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[0]) && $data->Bobot2[0] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[0]) && $data->Bobot2[0] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[0]) && $data->Bobot2[0] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[13] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[13] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -478,22 +619,34 @@
                                         <td rowspan="3">≤ 1 unsur utama {1}</td>
                                         <td>Daftar piket kelas {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[1]) && $data->Status2[1] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[1]) && $data->Status2[1] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[1]) && $data->Status2[1] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[1]) && $data->Status2[1] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[1]) && $data->Status2[1] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[1]) && $data->Status2[1] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[1]) && $data->Bobot2[1] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[1]) && $data->Bobot2[1] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[1]) && $data->Bobot2[1] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[1]) && $data->Bobot2[1] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[1]) && $data->Bobot2[1] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[1]) && $data->Bobot2[1] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[14] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[14] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -501,42 +654,66 @@
                                             sanitasi dan drainase
                                             sekolah {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[2]) && $data->Status2[2] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[2]) && $data->Status2[2] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[2]) && $data->Status2[2] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[2]) && $data->Status2[2] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[2]) && $data->Status2[2] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[2]) && $data->Status2[2] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[2]) && $data->Bobot2[2] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[2]) && $data->Bobot2[2] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[2]) && $data->Bobot2[2] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[2]) && $data->Bobot2[2] == 1 ? 'selected' : '' }}>
+                                                    1</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[15] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[15] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>SK Tim/pokja kebersihan, fungsi sanitasi dan drainase sekolah {1/2/3}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[3]) && $data->Status2[3] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[3]) && $data->Status2[3] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[3]) && $data->Status2[3] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[3]) && $data->Status2[3] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[3]) && $data->Status2[3] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[3]) && $data->Status2[3] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[3]) && $data->Bobot2[3] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[3]) && $data->Bobot2[3] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[3]) && $data->Bobot2[3] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[3]) && $data->Bobot2[3] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[3]) && $data->Bobot2[3] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[3]) && $data->Bobot2[3] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[3]) && $data->Bobot2[3] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[3]) && $data->Bobot2[3] == 3 ? 'selected' : '' }}>
+                                                    3</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[16] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[16] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -546,22 +723,36 @@
                                         <td>Buku monitoring/ceklis kegiatan memelihara kebersihan, fungsi sanitasi
                                             dan drainase sekolah {1/2/3}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[4]) && $data->Status2[4] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[4]) && $data->Status2[4] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[4]) && $data->Status2[4] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[4]) && $data->Status2[4] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[4]) && $data->Status2[4] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[4]) && $data->Status2[4] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[4]) && $data->Bobot2[4] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[4]) && $data->Bobot2[4] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[4]) && $data->Bobot2[4] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[4]) && $data->Bobot2[4] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[4]) && $data->Bobot2[4] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[4]) && $data->Bobot2[4] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[4]) && $data->Bobot2[4] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[4]) && $data->Bobot2[4] == 3 ? 'selected' : '' }}>
+                                                    3</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[17] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[17] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -570,22 +761,32 @@
                                             fungsi sanitasi
                                             dan drainase sekolah {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[5]) && $data->Status2[5] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[5]) && $data->Status2[5] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[5]) && $data->Status2[5] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[5]) && $data->Status2[5] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[5]) && $data->Status2[5] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[5]) && $data->Status2[5] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[5]) && $data->Bobot2[5] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[5]) && $data->Bobot2[5] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[5]) && $data->Bobot2[5] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[5]) && $data->Bobot2[5] == 1 ? 'selected' : '' }}>
+                                                    1</option>
 
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[18] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[18] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -596,29 +797,39 @@
                                             sanitasi dan drainase sekolah sebelum dan setelah pelaksanaan Gerakan
                                             PBLHS {1}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[6]) && $data->Status2[6] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[6]) && $data->Status2[6] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[6]) && $data->Status2[6] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[6]) && $data->Status2[6] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[6]) && $data->Status2[6] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[6]) && $data->Status2[6] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[6]) && $data->Bobot2[6] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[6]) && $data->Bobot2[6] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[6]) && $data->Bobot2[6] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[6]) && $data->Bobot2[6] == 1 ? 'selected' : '' }}>
+                                                    1</option>
 
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[19] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[19] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Sekolah bersih, sanitasi dan drainase berfungsi {3}</td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[20] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[20] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -633,30 +844,42 @@
                                             maupun
                                             ekstrakurikuler {1/2}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[7]) && $data->Status2[7] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[7]) && $data->Status2[7] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[7]) && $data->Status2[7] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[7]) && $data->Status2[7] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[7]) && $data->Status2[7] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[7]) && $data->Status2[7] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[7]) && $data->Bobot2[7] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[7]) && $data->Bobot2[7] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[7]) && $data->Bobot2[7] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[7]) && $data->Bobot2[7] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[7]) && $data->Bobot2[7] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[7]) && $data->Bobot2[7] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[21] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[21] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="8"> <br><br><br><br><br><br><br></td>
                                         <td>≥ 7 upaya {5}</td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[22] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[22] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -665,23 +888,37 @@
                                         <td>Bukti penyerahan sampah kepada pihak ketiga untuk didaur ulang {1/2/3}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[8]) && $data->Status2[8] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[8]) && $data->Status2[8] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[8]) && $data->Status2[8] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[8]) && $data->Status2[8] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[8]) && $data->Status2[8] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[8]) && $data->Status2[8] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[8]) && $data->Bobot2[8] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[8]) && $data->Bobot2[8] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[8]) && $data->Bobot2[8] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[8]) && $data->Bobot2[8] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[8]) && $data->Bobot2[8] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[8]) && $data->Bobot2[8] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[8]) && $data->Bobot2[8] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[8]) && $data->Bobot2[8] == 3 ? 'selected' : '' }}>
+                                                    3</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[23] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[23] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -690,22 +927,34 @@
                                             penggunaan
                                             kembali dan daur ulang sampah {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[9]) && $data->Status2[9] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[9]) && $data->Status2[9] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[9]) && $data->Status2[9] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[9]) && $data->Status2[9] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[9]) && $data->Status2[9] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[9]) && $data->Status2[9] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[9]) && $data->Bobot2[9] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[9]) && $data->Bobot2[9] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[9]) && $data->Bobot2[9] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[9]) && $data->Bobot2[9] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[9]) && $data->Bobot2[9] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[9]) && $data->Bobot2[9] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[24] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[24] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -718,22 +967,34 @@
                                             Adiwiyata
                                             dalam mengumpulkan sampah dari sumbernya ke TPS {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[10]) && $data->Status2[10] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[10]) && $data->Status2[10] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[10]) && $data->Status2[10] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[10]) && $data->Status2[10] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[10]) && $data->Status2[10] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[10]) && $data->Status2[10] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[10]) && $data->Bobot2[10] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[10]) && $data->Bobot2[10] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[10]) && $data->Bobot2[10] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[10]) && $data->Bobot2[10] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[10]) && $data->Bobot2[10] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[10]) && $data->Bobot2[10] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[25] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[25] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -742,23 +1003,37 @@
                                         <td>SOP pemindahan sampah yang menunjukkan keterlibatan peserta didik dan
                                             kader Adiwiyata {1/2/3}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[11]) && $data->Status2[11] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[11]) && $data->Status2[11] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[11]) && $data->Status2[11] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[11]) && $data->Status2[11] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[11]) && $data->Status2[11] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[11]) && $data->Status2[11] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[11]) && $data->Bobot2[11] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[11]) && $data->Bobot2[11] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[11]) && $data->Bobot2[11] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[11]) && $data->Bobot2[11] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[11]) && $data->Bobot2[11] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[11]) && $data->Bobot2[11] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[11]) && $data->Bobot2[11] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[11]) && $data->Bobot2[11] == 3 ? 'selected' : '' }}>
+                                                    3</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[26] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[26] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -769,22 +1044,34 @@
                                             Sekolah {1/2}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[12]) && $data->Status2[12] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[12]) && $data->Status2[12] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[12]) && $data->Status2[12] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[12]) && $data->Status2[12] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[12]) && $data->Status2[12] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[12]) && $data->Status2[12] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[12]) && $data->Bobot2[12] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[12]) && $data->Bobot2[12] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[12]) && $data->Bobot2[12] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[12]) && $data->Bobot2[12] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[12]) && $data->Bobot2[12] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[12]) && $data->Bobot2[12] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[27] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[27] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -798,30 +1085,42 @@
                                             sekolah atau Ketua
                                             pokja pengelolaan sampah {1/2}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[13]) && $data->Status2[13] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[13]) && $data->Status2[13] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[13]) && $data->Status2[13] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[13]) && $data->Status2[13] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[13]) && $data->Status2[13] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[13]) && $data->Status2[13] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[13]) && $data->Bobot2[13] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[13]) && $data->Bobot2[13] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[13]) && $data->Bobot2[13] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[13]) && $data->Bobot2[13] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[13]) && $data->Bobot2[13] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[13]) && $data->Bobot2[13] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[28] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[28] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td>&gt; 80% {5}</td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[29] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[29] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -835,31 +1134,43 @@
                                             dan pembibitan di
                                             lingkungan sekolah {1/2}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[14]) && $data->Status2[14] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[14]) && $data->Status2[14] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[14]) && $data->Status2[14] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[14]) && $data->Status2[14] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[14]) && $data->Status2[14] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[14]) && $data->Status2[14] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[14]) && $data->Bobot2[14] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[14]) && $data->Bobot2[14] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[14]) && $data->Bobot2[14] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[14]) && $data->Bobot2[14] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[14]) && $data->Bobot2[14] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[14]) && $data->Bobot2[14] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[30] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[30] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td rowspan="5"> <br><br><br><br></td>
                                         <td>Penanaman dan pemeliharaan {2}</td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[31] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[31] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -870,31 +1181,45 @@
                                         <td rowspan="2">14</td>
                                         <td rowspan="2">Profil sekolah {1/2/3}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[15]) && $data->Status2[15] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[15]) && $data->Status2[15] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[15]) && $data->Status2[15] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[15]) && $data->Status2[15] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[15]) && $data->Status2[15] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[15]) && $data->Status2[15] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[15]) && $data->Bobot2[15] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[15]) && $data->Bobot2[15] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[15]) && $data->Bobot2[15] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[15]) && $data->Bobot2[15] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[15]) && $data->Bobot2[15] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[15]) && $data->Bobot2[15] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[15]) && $data->Bobot2[15] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[15]) && $data->Bobot2[15] == 3 ? 'selected' : '' }}>
+                                                    3</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[32] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[32] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td>· ≥ 5 unsur {5}</td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[33] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[33] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -905,22 +1230,34 @@
                                             pemeliharaan
                                             dan pembibitan baik pada mapel maupun ekstrakurikuler {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[16]) && $data->Status2[16] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[16]) && $data->Status2[16] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[16]) && $data->Status2[16] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[16]) && $data->Status2[16] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[16]) && $data->Status2[16] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[16]) && $data->Status2[16] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[16]) && $data->Bobot2[16] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[16]) && $data->Bobot2[16] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[16]) && $data->Bobot2[16] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[16]) && $data->Bobot2[16] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[16]) && $data->Bobot2[16] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[16]) && $data->Bobot2[16] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[34] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[34] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -930,24 +1267,42 @@
                                             pembibitan
                                             tanaman {1/2/3/4/5}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[17]) && $data->Status2[17] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[17]) && $data->Status2[17] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[17]) && $data->Status2[17] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[17]) && $data->Status2[17] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[17]) && $data->Status2[17] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[17]) && $data->Status2[17] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 3 ? 'selected' : '' }}>3</option>
-                                                <option value="4" {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 4 ? 'selected' : '' }}>4</option>
-                                                <option value="5" {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 5 ? 'selected' : '' }}>5</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 3 ? 'selected' : '' }}>
+                                                    3</option>
+                                                <option value="4"
+                                                    {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 4 ? 'selected' : '' }}>
+                                                    4</option>
+                                                <option value="5"
+                                                    {{ isset($data) && isset($data->Bobot2[17]) && $data->Bobot2[17] == 5 ? 'selected' : '' }}>
+                                                    5</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[35] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[35] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -958,23 +1313,37 @@
                                         <td>Dokumentasi hasil praktek/penugasan/penelitian kegiatan konservasi air
                                             {1/2/3}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[18]) && $data->Status2[18] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[18]) && $data->Status2[18] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[18]) && $data->Status2[18] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[18]) && $data->Status2[18] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[18]) && $data->Status2[18] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[18]) && $data->Status2[18] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[18]) && $data->Bobot2[18] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[18]) && $data->Bobot2[18] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[18]) && $data->Bobot2[18] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[18]) && $data->Bobot2[18] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[18]) && $data->Bobot2[18] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[18]) && $data->Bobot2[18] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[18]) && $data->Bobot2[18] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[18]) && $data->Bobot2[18] == 3 ? 'selected' : '' }}>
+                                                    3</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[36] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[36] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -986,22 +1355,34 @@
                                             air yang
                                             dilakukan sekolah {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[19]) && $data->Status2[19] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[19]) && $data->Status2[19] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[19]) && $data->Status2[19] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[19]) && $data->Status2[19] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[19]) && $data->Status2[19] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[19]) && $data->Status2[19] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[19]) && $data->Bobot2[19] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[19]) && $data->Bobot2[19] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[19]) && $data->Bobot2[19] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[19]) && $data->Bobot2[19] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[19]) && $data->Bobot2[19] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[19]) && $data->Bobot2[19] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[37] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[37] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1011,22 +1392,34 @@
                                         <td rowspan="4">17</td>
                                         <td>Aturan/tata tertib perilaku penghematan energi {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[20]) && $data->Status2[20] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[20]) && $data->Status2[20] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[20]) && $data->Status2[20] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[20]) && $data->Status2[20] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[20]) && $data->Status2[20] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[20]) && $data->Status2[20] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[20]) && $data->Bobot2[20] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[20]) && $data->Bobot2[20] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[20]) && $data->Bobot2[20] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[20]) && $data->Bobot2[20] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[20]) && $data->Bobot2[20] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[20]) && $data->Bobot2[20] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[38] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[38] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1035,21 +1428,31 @@
                                         <td rowspan="3">≥ 7 upaya {5}</td>
                                         <td>Dokumentasi (foto dan/atau video) kegiatan konservasi energi {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[21]) && $data->Status2[21] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[21]) && $data->Status2[21] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[21]) && $data->Status2[21] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[21]) && $data->Status2[21] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[21]) && $data->Status2[21] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[21]) && $data->Status2[21] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[21]) && $data->Bobot2[21] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[21]) && $data->Bobot2[21] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[21]) && $data->Bobot2[21] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[21]) && $data->Bobot2[21] == 1 ? 'selected' : '' }}>
+                                                    1</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[39] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[39] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1058,21 +1461,31 @@
                                             hemat energi {1}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[22]) && $data->Status2[22] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[22]) && $data->Status2[22] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[22]) && $data->Status2[22] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[22]) && $data->Status2[22] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[22]) && $data->Status2[22] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[22]) && $data->Status2[22] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[22]) && $data->Bobot2[22] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[22]) && $data->Bobot2[22] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[22]) && $data->Bobot2[22] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[22]) && $data->Bobot2[22] == 1 ? 'selected' : '' }}>
+                                                    1</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[40] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[40] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1081,21 +1494,31 @@
                                             listrik dari energi
                                             terbarukan (jika ada) {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[23]) && $data->Status2[23] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[23]) && $data->Status2[23] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[23]) && $data->Status2[23] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[23]) && $data->Status2[23] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[23]) && $data->Status2[23] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[23]) && $data->Status2[23] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[23]) && $data->Bobot2[23] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[23]) && $data->Bobot2[23] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[23]) && $data->Bobot2[23] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[23]) && $data->Bobot2[23] == 1 ? 'selected' : '' }}>
+                                                    1</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[41] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[41] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1108,21 +1531,31 @@
                                             proses penemuan karya inovatif Sekolah terkait dengan penerapan PRLH
                                             {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[24]) && $data->Status2[24] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[24]) && $data->Status2[24] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[24]) && $data->Status2[24] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[24]) && $data->Status2[24] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[24]) && $data->Status2[24] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[24]) && $data->Status2[24] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[24]) && $data->Bobot2[24] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[24]) && $data->Bobot2[24] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[24]) && $data->Bobot2[24] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[24]) && $data->Bobot2[24] == 1 ? 'selected' : '' }}>
+                                                    1</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[42] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[42] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1131,41 +1564,61 @@
                                         <td rowspan="3">· ≥ 5 karya inovatif</td>
                                         <td>Karya inovatif yang dihasilkan oleh Sekolah {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[25]) && $data->Status2[25] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[25]) && $data->Status2[25] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[25]) && $data->Status2[25] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[25]) && $data->Status2[25] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[25]) && $data->Status2[25] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[25]) && $data->Status2[25] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[25]) && $data->Bobot2[25] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[25]) && $data->Bobot2[25] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[25]) && $data->Bobot2[25] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[25]) && $data->Bobot2[25] == 1 ? 'selected' : '' }}>
+                                                    1</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[43] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[43] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td>Penghargaan karya inovatif terkait dengan penerapan PRLH {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[26]) && $data->Status2[26] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[26]) && $data->Status2[26] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[26]) && $data->Status2[26] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[26]) && $data->Status2[26] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[26]) && $data->Status2[26] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[26]) && $data->Status2[26] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[26]) && $data->Bobot2[26] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[26]) && $data->Bobot2[26] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[26]) && $data->Bobot2[26] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[26]) && $data->Bobot2[26] == 1 ? 'selected' : '' }}>
+                                                    1</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[44] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[44] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1174,20 +1627,30 @@
                                             dihasilkan Sekolah
                                             dalam upaya penerapan PRLH {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[27]) && $data->Status2[27] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[27]) && $data->Status2[27] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[27]) && $data->Status2[27] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[27]) && $data->Status2[27] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[27]) && $data->Status2[27] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[27]) && $data->Status2[27] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[27]) && $data->Bobot2[27] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[27]) && $data->Bobot2[27] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[27]) && $data->Bobot2[27] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[27]) && $data->Bobot2[27] == 1 ? 'selected' : '' }}>
+                                                    1</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[45] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[45] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1201,24 +1664,40 @@
                                             dll) aksi penerapan PRLH untuk dan bersama masyarakat sekitar Sekolah
                                             {1/2/3/4}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[28]) && $data->Status2[28] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[28]) && $data->Status2[28] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[28]) && $data->Status2[28] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[28]) && $data->Status2[28] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[28]) && $data->Status2[28] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[28]) && $data->Status2[28] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[28]) && $data->Bobot2[28] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[28]) && $data->Bobot2[28] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[28]) && $data->Bobot2[28] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[28]) && $data->Bobot2[28] == 3 ? 'selected' : '' }}>3</option>
-                                                <option value="4" {{ isset($data) && isset($data->Bobot2[28]) && $data->Bobot2[28] == 4 ? 'selected' : '' }}>4</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[28]) && $data->Bobot2[28] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[28]) && $data->Bobot2[28] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[28]) && $data->Bobot2[28] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[28]) && $data->Bobot2[28] == 3 ? 'selected' : '' }}>
+                                                    3</option>
+                                                <option value="4"
+                                                    {{ isset($data) && isset($data->Bobot2[28]) && $data->Bobot2[28] == 4 ? 'selected' : '' }}>
+                                                    4</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[46] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[46] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1229,23 +1708,37 @@
                                             masyarakat sekitar Sekolah dari berbagai sudut pengambilan gambar
                                             {1/2/3}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[29]) && $data->Status2[29] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[29]) && $data->Status2[29] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[29]) && $data->Status2[29] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[29]) && $data->Status2[29] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[29]) && $data->Status2[29] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[29]) && $data->Status2[29] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[29]) && $data->Bobot2[29] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[29]) && $data->Bobot2[29] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[29]) && $data->Bobot2[29] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[29]) && $data->Bobot2[29] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[29]) && $data->Bobot2[29] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[29]) && $data->Bobot2[29] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[29]) && $data->Bobot2[29] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[29]) && $data->Bobot2[29] == 3 ? 'selected' : '' }}>
+                                                    3</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[47] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[47] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1257,30 +1750,42 @@
                                             lingkungan sekitar Sekolah dari berbagai sudut pengambilan gambar {1/2}
                                         </td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[30]) && $data->Status2[30] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[30]) && $data->Status2[30] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[30]) && $data->Status2[30] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[30]) && $data->Status2[30] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[30]) && $data->Status2[30] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[30]) && $data->Status2[30] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[30]) && $data->Bobot2[30] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[30]) && $data->Bobot2[30] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[30]) && $data->Bobot2[30] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[30]) && $data->Bobot2[30] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[30]) && $data->Bobot2[30] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[30]) && $data->Bobot2[30] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[48] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[48] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td>· Lingkungan sekitar sekolah bersih dan drainase berfungsi</td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[49] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[49] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1293,30 +1798,42 @@
                                             Sekolah dari
                                             berbagai sudut pengambilan gambar {1/2}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[31]) && $data->Status2[31] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[31]) && $data->Status2[31] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[31]) && $data->Status2[31] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[31]) && $data->Status2[31] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[31]) && $data->Status2[31] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[31]) && $data->Status2[31] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[31]) && $data->Bobot2[31] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[31]) && $data->Bobot2[31] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[31]) && $data->Bobot2[31] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[31]) && $data->Bobot2[31] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[31]) && $data->Bobot2[31] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[31]) && $data->Bobot2[31] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[50] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[50] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td>· Sampah terpilah dan terkelola dengan baik</td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[51] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[51] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1329,22 +1846,34 @@
                                         <td>Dokumen MoU atau dokumen kerjasama lainnya antara Sekolah dengan mitra
                                             {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[32]) && $data->Status2[32] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[32]) && $data->Status2[32] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[32]) && $data->Status2[32] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[32]) && $data->Status2[32] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[32]) && $data->Status2[32] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[32]) && $data->Status2[32] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[32]) && $data->Bobot2[32] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[32]) && $data->Bobot2[32] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[32]) && $data->Bobot2[32] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[32]) && $data->Bobot2[32] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[32]) && $data->Bobot2[32] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[32]) && $data->Bobot2[32] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[52] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[52] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1355,21 +1884,31 @@
                                             dan
                                             dokumen terkait lainnya) {1}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[33]) && $data->Status2[33] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[33]) && $data->Status2[33] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[33]) && $data->Status2[33] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[33]) && $data->Status2[33] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[33]) && $data->Status2[33] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[33]) && $data->Status2[33] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[33]) && $data->Bobot2[33] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[33]) && $data->Bobot2[33] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[33]) && $data->Bobot2[33] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[33]) && $data->Bobot2[33] == 1 ? 'selected' : '' }}>
+                                                    1</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[53] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[53] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1377,21 +1916,31 @@
                                         <td>Dokumentasi (foto dan/atau video) pertemuan, rapat yang dilakukan {1}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[34]) && $data->Status2[34] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[34]) && $data->Status2[34] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[34]) && $data->Status2[34] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[34]) && $data->Status2[34] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[34]) && $data->Status2[34] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[34]) && $data->Status2[34] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[34]) && $data->Bobot2[34] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[34]) && $data->Bobot2[34] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[34]) && $data->Bobot2[34] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[34]) && $data->Bobot2[34] == 1 ? 'selected' : '' }}>
+                                                    1</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[54] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[54] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1399,21 +1948,33 @@
                                         <td>Tauatan dari group jejaring kerja dan komunikasi di media social {1}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[35]) && $data->Status2[35] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[35]) && $data->Status2[35] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[35]) && $data->Status2[35] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[35]) && $data->Status2[35] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[35]) && $data->Status2[35] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[35]) && $data->Status2[35] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[35]) && $data->Bobot2[35] == 2 ? 'selected' : '' }}>
+                                                    2</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[55] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[55] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1423,23 +1984,37 @@
                                         <td rowspan="2">23</td>
                                         <td>Dokumen tertulis (undangan, brosur, leaflet dll) {1/2/3}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[36]) && $data->Status2[36] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[36]) && $data->Status2[36] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[36]) && $data->Status2[36] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[36]) && $data->Status2[36] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[36]) && $data->Status2[36] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[36]) && $data->Status2[36] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[36]) && $data->Bobot2[36] == 3 ? 'selected' : '' }}>
+                                                    3</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[56] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[56] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1450,21 +2025,33 @@
                                             Dokumentasi
                                             dapat berupa foto dan/atau video (bisa dalam bentuk tautan) {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[37]) && $data->Status2[37] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[37]) && $data->Status2[37] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[37]) && $data->Status2[37] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[37]) && $data->Status2[37] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[37]) && $data->Status2[37] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[37]) && $data->Status2[37] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[37]) && $data->Bobot2[37] == 2 ? 'selected' : '' }}>
+                                                    2</option>
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[57] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[57] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1477,31 +2064,45 @@
                                             elektronik dan
                                             media lainnya) yang memuat materi kampanye Gerakan PBLHS {1/2/3}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[38]) && $data->Status2[38] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[38]) && $data->Status2[38] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[38]) && $data->Status2[38] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[38]) && $data->Status2[38] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[38]) && $data->Status2[38] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[38]) && $data->Status2[38] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 3 ? 'selected' : '' }}>3</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[38]) && $data->Bobot2[38] == 3 ? 'selected' : '' }}>
+                                                    3</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[58] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[58] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td>· ≥ 5 media</td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[59] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[59] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1513,33 +2114,49 @@
                                             kegiatan
                                             pemberdayaan Kader Adiwiyata {1/2/3/4}</td>
                                         <td rowspan="2"><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[39]) && $data->Status2[39] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[39]) && $data->Status2[39] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[39]) && $data->Status2[39] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[39]) && $data->Status2[39] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[39]) && $data->Status2[39] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[39]) && $data->Status2[39] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td rowspan="2"><select name="Bobot2[]" onchange="calculateTotal2()"
                                                 class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 3 ? 'selected' : '' }}>3</option>
-                                                <option value="4" {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 4 ? 'selected' : '' }}>4</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 3 ? 'selected' : '' }}>
+                                                    3</option>
+                                                <option value="4"
+                                                    {{ isset($data) && isset($data->Bobot2[39]) && $data->Bobot2[39] == 4 ? 'selected' : '' }}>
+                                                    4</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[60] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[60] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td rowspan="3"> <br><br></td>
                                         <td>· &gt; 20 %</td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[61] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[61] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1549,24 +2166,40 @@
                                         <td>Dokumen pembagian tugas atau rencana aksi Kader Adiwiyata {1/2/3/4}
                                         </td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[40]) && $data->Status2[40] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[40]) && $data->Status2[40] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[40]) && $data->Status2[40] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[40]) && $data->Status2[40] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[40]) && $data->Status2[40] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[40]) && $data->Status2[40] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 2 ? 'selected' : '' }}>2</option>
-                                                <option value="3" {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 3 ? 'selected' : '' }}>3</option>
-                                                <option value="4" {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 4 ? 'selected' : '' }}>4</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 2 ? 'selected' : '' }}>
+                                                    2</option>
+                                                <option value="3"
+                                                    {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 3 ? 'selected' : '' }}>
+                                                    3</option>
+                                                <option value="4"
+                                                    {{ isset($data) && isset($data->Bobot2[40]) && $data->Bobot2[40] == 4 ? 'selected' : '' }}>
+                                                    4</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[62] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[62] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1575,22 +2208,34 @@
                                         <td>Dokumentasi (foto dan/atau video) kegiatan pemberdayaan Kader Adiwiyata
                                             {1/2}</td>
                                         <td><select name="Status2[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status2[41]) && $data->Status2[41] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status2[41]) && $data->Status2[41] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status2[41]) && $data->Status2[41] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status2[41]) && $data->Status2[41] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status2[41]) && $data->Status2[41] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status2[41]) && $data->Status2[41] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot2[]" onchange="calculateTotal2()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot2[41]) && $data->Bobot2[41] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot2[41]) && $data->Bobot2[41] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot2[41]) && $data->Bobot2[41] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot2[41]) && $data->Bobot2[41] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot2[41]) && $data->Bobot2[41] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot2[41]) && $data->Bobot2[41] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[63] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[63] ?? '' }}</textarea>
                                         </td>
 
                                     </tr>
@@ -1605,14 +2250,14 @@
                                         </td>
                                         <td>
                                         </td>
-                                        <td rowspan="8"><input type="text" class="form-control" name="Total3[]" id="Total3"
-                                                value="{{$data->Total3[0]}}">
+                                        <td rowspan="8"><input type="text" class="form-control" name="Total3[]"
+                                                id="Total3" value="{{ $data->Total3[0] ?? '' }}">
                                         </td>
-                                        <td rowspan="8"><input type="text" class="form-control" name="Nilai3[]" id="Nilai3"
-                                                value="{{$data->Nilai3[0]}}">
+                                        <td rowspan="8"><input type="text" class="form-control" name="Nilai3[]"
+                                                id="Nilai3" value="{{ $data->Nilai3[0] ?? '' }}">
                                         </td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[64] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[64] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1631,8 +2276,7 @@
 
                                         </td>
                                         <td>
-                                            <textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[65] ?? ''}}</textarea>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[65] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1641,23 +2285,34 @@
                                         <td>Tabel rencana Gerakan PBLHS yang ditandatangani oleh kepala sekolah
                                             {1/2}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status3[0]) && $data->Status3[0] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status3[0]) && $data->Status3[0] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status3[0]) && $data->Status3[0] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status3[0]) && $data->Status3[0] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status3[0]) && $data->Status3[0] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status3[0]) && $data->Status3[0] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot3[0]) && $data->Bobot3[0] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot3[0]) && $data->Bobot3[0] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot3[0]) && $data->Bobot3[0] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot3[0]) && $data->Bobot3[0] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot3[0]) && $data->Bobot3[0] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot3[0]) && $data->Bobot3[0] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
                                         <td>
-                                            <textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[66] ?? ''}}</textarea>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[66] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1666,21 +2321,31 @@
                                             pelaksanaan
                                             Gerakan PBLHS {1}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status3[1]) && $data->Status3[1] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status3[1]) && $data->Status3[1] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status3[1]) && $data->Status3[1] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status3[1]) && $data->Status3[1] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status3[1]) && $data->Status3[1] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status3[1]) && $data->Status3[1] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot3[1]) && $data->Bobot3[1] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot3[1]) && $data->Bobot3[1] == 1 ? 'selected' : '' }}>1</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot3[1]) && $data->Bobot3[1] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot3[1]) && $data->Bobot3[1] == 1 ? 'selected' : '' }}>
+                                                    1</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[67] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[67] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1693,23 +2358,35 @@
                                             disusun
                                             oleh Tim Adiwiyata Sekolah {1}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status3[2]) && $data->Status3[2] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status3[2]) && $data->Status3[2] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status3[2]) && $data->Status3[2] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status3[2]) && $data->Status3[2] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status3[2]) && $data->Status3[2] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status3[2]) && $data->Status3[2] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot3[2]) && $data->Bobot3[2] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot3[2]) && $data->Bobot3[2] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot3[2]) && $data->Bobot3[2] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot3[2]) && $data->Bobot3[2] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot3[2]) && $data->Bobot3[2] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot3[2]) && $data->Bobot3[2] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[68] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[68] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1718,44 +2395,68 @@
                                             dan masyarakat</td>
                                         <td>Dokumentasi (foto dan/atau video) pelibatan para pihak {1}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status3[3]) && $data->Status3[3] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status3[3]) && $data->Status3[3] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status3[3]) && $data->Status3[3] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status3[3]) && $data->Status3[3] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status3[3]) && $data->Status3[3] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status3[3]) && $data->Status3[3] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot3[3]) && $data->Bobot3[3] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot3[3]) && $data->Bobot3[3] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot3[3]) && $data->Bobot3[3] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot3[3]) && $data->Bobot3[3] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot3[3]) && $data->Bobot3[3] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot3[3]) && $data->Bobot3[3] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[69] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[69] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Undangan, daftar hadir, dan notulensi pelibatan para pihak {1}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status3[4]) && $data->Status3[4] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status3[4]) && $data->Status3[4] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status3[4]) && $data->Status3[4] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status3[4]) && $data->Status3[4] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status3[4]) && $data->Status3[4] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status3[4]) && $data->Status3[4] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot3[4]) && $data->Bobot3[4] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot3[4]) && $data->Bobot3[4] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot3[4]) && $data->Bobot3[4] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot3[4]) && $data->Bobot3[4] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot3[4]) && $data->Bobot3[4] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot3[4]) && $data->Bobot3[4] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[70] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[70] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1763,22 +2464,34 @@
                                             ditandatangani oleh
                                             kepala sekolah {1}</td>
                                         <td><select name="Status3[]" class="multi-select">
-                                                <option value="" {{ isset($data) && isset($data->Status3[5]) && $data->Status3[5] == '' ? 'selected' : '' }}>Pilih
+                                                <option value=""
+                                                    {{ isset($data) && isset($data->Status3[5]) && $data->Status3[5] == '' ? 'selected' : '' }}>
+                                                    Pilih
                                                 </option>
-                                                <option value="L" {{ isset($data) && isset($data->Status3[5]) && $data->Status3[5] == 'L' ? 'selected' : '' }}>Lengkap
+                                                <option value="L"
+                                                    {{ isset($data) && isset($data->Status3[5]) && $data->Status3[5] == 'L' ? 'selected' : '' }}>
+                                                    Lengkap
                                                 </option>
-                                                <option value="TL" {{ isset($data) && isset($data->Status3[5]) && $data->Status3[5] == 'TL' ? 'selected' : '' }}>Tidak
+                                                <option value="TL"
+                                                    {{ isset($data) && isset($data->Status3[5]) && $data->Status3[5] == 'TL' ? 'selected' : '' }}>
+                                                    Tidak
                                                     lengkap</option>
                                             </select>
                                         </td>
                                         <td><select name="Bobot3[]" onchange="calculateTotal3()" class="multi-select">
-                                                <option value="0" {{ isset($data) && isset($data->Bobot3[5]) && $data->Bobot3[5] == 0 ? 'selected' : '' }}>0</option>
-                                                <option value="1" {{ isset($data) && isset($data->Bobot3[5]) && $data->Bobot3[5] == 1 ? 'selected' : '' }}>1</option>
-                                                <option value="2" {{ isset($data) && isset($data->Bobot3[5]) && $data->Bobot3[5] == 2 ? 'selected' : '' }}>2</option>
+                                                <option value="0"
+                                                    {{ isset($data) && isset($data->Bobot3[5]) && $data->Bobot3[5] == 0 ? 'selected' : '' }}>
+                                                    0</option>
+                                                <option value="1"
+                                                    {{ isset($data) && isset($data->Bobot3[5]) && $data->Bobot3[5] == 1 ? 'selected' : '' }}>
+                                                    1</option>
+                                                <option value="2"
+                                                    {{ isset($data) && isset($data->Bobot3[5]) && $data->Bobot3[5] == 2 ? 'selected' : '' }}>
+                                                    2</option>
 
                                             </select></td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[71] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[71] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1794,10 +2507,10 @@
                                         <td>
                                         </td>
                                         <td><input readonly type="text" class="form-control" name="TotalAkhir"
-                                                id="TotalAkhir" value="{{$data->TotalAkhir ?? ''}}">
+                                                id="TotalAkhir" value="{{ $data->TotalAkhir ?? '' }}">
                                         </td>
-                                        <td><textarea name="Catatan[]" width="100%"
-                                                height="100%">{{$data->Catatan[72] ?? ''}}</textarea>
+                                        <td>
+                                            <textarea name="Catatan[]" width="100%" height="100%">{{ $data->Catatan[72] ?? '' }}</textarea>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -30,97 +30,71 @@
                     <!-- Kolom Kanan (Form Registrasi) -->
                     <div class="col-md-8 p-4">
                         <div class="auth-form">
-                            <form method="POST" action="{{ route('users.register') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('users.store-penilai') }}"
+                                enctype="multipart/form-data">
                                 @csrf
-                                <h3 class="form-title text-center">Registrasi Sekolah</h3>
+                                <h3 class="form-title text-center">Registrasi Penilai</h3>
                                 <div class="dez-separator-outer m-b5">
                                     <div class="dez-separator bg-primary style-liner"></div>
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label>Nomor Registrasi</label>
-                                    <input type="text" name="reg_number" class="form-control"
-                                        placeholder="Nomor Registrasi" required>
-                                    {{-- <small class="form-text text-muted">Pastikan NPSN telah sesuai</small> --}}
+                                    <label>Nama Penilai</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Nama Penilai"
+                                        required>
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label>Nama Sekolah</label>
-                                    <input type="text" name="nama_sekolah" class="form-control"
-                                        placeholder="Nama Sekolah" required>
+                                    <label>Provinsi</label>
+                                    <input type="text" name="provinsi" class="form-control" placeholder="Provinsi"
+                                        required>
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label>Jenjang Sekolah</label>
-                                    <select name="jenjang" class="form-control" required>
-                                        <option value="">-- Pilih Jenjang --</option>
-                                        <option value="SD">SD</option>
-                                        <option value="SMP">SMP</option>
-                                        <option value="SMA">SMA</option>
-                                        <option value="SMK">SMK</option>
-                                    </select>
+                                    <label>Kabupaten/Kota</label>
+                                    <input type="text" name="kota" class="form-control"
+                                        placeholder="Kabupaten/Kota" required>
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label>Status Sekolah</label>
-                                    <select name="status_sekolah" class="form-control" required>
-                                        <option value="">-- Pilih Status --</option>
-                                        <option value="Negeri">Negeri</option>
-                                        <option value="Swasta">Swasta</option>
-                                    </select>
+                                    <label>Kecamatan</label>
+                                    <input type="text" name="kecamatan" class="form-control" placeholder="Kecamatan"
+                                        required>
                                 </div>
 
+
+
                                 <div class="form-group mb-3">
-                                    <label>Jalan / RT-RW</label>
+                                    <label>Alamat Lengkap</label>
                                     <input type="text" name="alamat_sekolah" class="form-control"
-                                        placeholder="Nama jalan / dusun / RT-RW" required>
+                                        placeholder="Alamat Lengkap" required>
                                 </div>
 
+
+
                                 <div class="form-group mb-3">
-                                    <label>Kontak Person</label>
+                                    <label>Kontak Person / Wa</label>
                                     <input type="text" name="cp" class="form-control"
-                                        placeholder="Nama kontak person" required>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label>Telp/WA</label>
-                                    <input type="text" name="telepon_sekolah" class="form-control"
-                                        placeholder="No Telp/HP kontak person" required>
+                                        placeholder="Kontak Person" required>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label>Email</label>
-                                    <input type="email" name="email_sekolah" class="form-control"
-                                        placeholder="Email aktif" required>
-                                    <small class="form-text text-muted">Pastikan email benar dan aktif, akses
-                                        aplikasi akan dikirim ke email yang didaftarkan.</small>
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                        required>
                                 </div>
+
+
                                 <div class="form-group mb-3">
-                                    <label>Password</label>
-                                    <input type="password" name="password" id="password" class="form-control" required
-                                        autocomplete="new-password" placeholder="Masukkan password">
-                                    <small class="form-text text-muted">
-                                        Password minimal 8 karakter, mengandung huruf besar, huruf kecil, angka, dan
-                                        simbol. Gunakan kombinasi yang kuat agar akun Anda lebih aman.
-                                    </small>
-                                    <div id="password-strength" class="mt-2"></div>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label>Url Isian Kuesioner</label>
-                                    <input type="text" name="UrlKuesioner" class="form-control"
-                                        placeholder="Link Google Drive" required>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label>Url Bukti Dukung</label>
-                                    <input type="text" name="UrlBukti" class="form-control"
+                                    <label>SK PNS</label>
+                                    <input type="text" name="SkPns" class="form-control"
                                         placeholder="Link Google Drive" required>
                                 </div>
 
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" name="konfirmasi" required>
-                                    <label class="form-check-label">
-                                        Dengan ini menyatakan bahwa isian registrasi di atas sudah benar.
-                                    </label>
+                                <div class="form-group mb-3">
+                                    <label>Surat Tugas</label>
+                                    <input type="text" name="SuratTugas" class="form-control"
+                                        placeholder="Link Google Drive" required>
                                 </div>
 
                                 <div class="text-center">

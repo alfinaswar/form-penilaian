@@ -13,8 +13,8 @@
     <title>Login Page</title>
 
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="{{asset('')}}assets/images/favicon.png">
-    <link href="{{asset('')}}assets/css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('') }}assets/images/favicon.png">
+    <link href="{{ asset('') }}assets/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -26,15 +26,17 @@
                     <div class="row no-gutters bg-white rounded shadow overflow-hidden">
                         <!-- Kolom Kiri -->
                         <div class="col-md-6 p-0">
-                            <img src="{{ asset('assets/dokumen/kuanta.png') }}" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            <img src="{{ asset('assets/dokumen/kuanta.png') }}" alt="Logo"
+                                style="width: 100%; height: 100%; object-fit: cover; display: block;">
                         </div>
 
                         <!-- Kolom Kanan (Login Form) -->
                         <div class="col-md-6 p-4">
                             <div class="auth-form">
                                 <!-- Alert Berhasil Daftar -->
-                                @if(session('success'))
-                                    <div class="alert alert-success border border-success alert-outline mb-4" role="alert" style="border-width:2px;">
+                                @if (session('success'))
+                                    <div class="alert alert-success border border-success alert-outline mb-4"
+                                        role="alert" style="border-width:2px;">
                                         <strong>Berhasil!</strong> {{ session('success') }}
                                     </div>
                                 @endif
@@ -49,9 +51,9 @@
 
                                     <div class="form-group mb-3">
                                         <input id="email" type="email"
-                                            class="form-control @error('email') is-invalid @enderror"
-                                            name="email" value="{{ old('email') }}" required autocomplete="email"
-                                            autofocus placeholder="Email">
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            value="{{ old('email') }}" required autocomplete="email" autofocus
+                                            placeholder="Email">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -61,9 +63,8 @@
 
                                     <div class="form-group mb-3">
                                         <input id="password" type="password"
-                                            class="form-control @error('password') is-invalid @enderror"
-                                            name="password" required autocomplete="current-password"
-                                            placeholder="Password">
+                                            class="form-control @error('password') is-invalid @enderror" name="password"
+                                            required autocomplete="current-password" placeholder="Password">
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -78,12 +79,19 @@
 
                                 <!-- Registration Link -->
                                 <div class="text-center">
+
                                     <p class="mb-2">Belum punya akun?</p>
-                                    <a href="{{ route('register') }}" class="text-primary">Daftar Sekarang</a>
+                                    <p> Daftar</p>
+                                    <a href="{{ route('register') }}" class="text-primary me-2">Sebagai
+                                        Rekolah</a>
+                                    <a href="{{ route('users.register-penilai') }}" class="text-success">sebagai
+                                        Penilai</a>
                                 </div>
+
                                 <!-- Link Petunjuk Penggunaan Aplikasi -->
                                 <div class="text-center mt-3">
-                                    <a href="{{ asset('assets/dokumen/kuanta_petunjuk.pdf') }}" class="text-secondary" target="_blank" download>
+                                    <a href="{{ asset('assets/dokumen/kuanta_petunjuk.pdf') }}" class="text-secondary"
+                                        target="_blank" download>
                                         <i class="fa fa-download"></i> Download Petunjuk Penggunaan Aplikasi
                                     </a>
                                 </div>

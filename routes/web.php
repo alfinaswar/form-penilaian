@@ -1,25 +1,24 @@
 <?php
 
 use App\Http\Controllers\BalasanKuisonerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KuisonerController;
 use App\Http\Controllers\NilaiController;
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+ * |--------------------------------------------------------------------------
+ * | Web Routes
+ * |--------------------------------------------------------------------------
+ * |
+ * | Here is where you can register web routes for your application. These
+ * | routes are loaded by the RouteServiceProvider and all of them will
+ * | be assigned to the "web" middleware group. Make something great!
+ * |
+ */
 
 Route::get('/', function () {
     return view('auth/login');
@@ -31,6 +30,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home/kuisoner', [HomeController::class, 'kuisoner'])->name('home.kuisoner');
 
 Route::POST('/register-sekolah', [UserController::class, 'Register'])->name('users.register');
+Route::get('/register-penilai', [UserController::class, 'RegisterPenilai'])->name('users.register-penilai');
+Route::POST('/store-penilai', [UserController::class, 'StorePenilai'])->name('users.store-penilai');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
@@ -40,7 +41,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::GET('/identitas', [UserController::class, 'profil'])->name('profil.index');
         Route::GET('/identitas/edit/{id}', [UserController::class, 'editProfil'])->name('profil.edit');
         Route::PUT('/identitas/update/{id}', [UserController::class, 'updateProfil'])->name('profil.update');
-
     });
     Route::prefix('kuisoner')->group(function () {
         Route::GET('/upload-kuisoner', [KuisonerController::class, 'index'])->name('kuisoner.index');
@@ -60,6 +60,4 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('/destroy/{id}', [NilaiController::class, 'destroy'])->name('nilai.destroy');
         Route::get('/show/{id}', [NilaiController::class, 'show'])->name('nilai.show');
     });
-
-
 });

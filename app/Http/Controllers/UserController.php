@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
-use Illuminate\Support\Arr;
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
@@ -25,16 +25,24 @@ class UserController extends Controller
         return view('users.index', compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
+
     public function profil()
     {
         $sekolah = User::where('id', auth()->user()->id)->first();
         return view('profil.index', compact('sekolah'));
     }
+
     public function editProfil($id)
     {
         $sekolah = User::where('id', $id)->first();
         return view('profil.edit', compact('sekolah'));
     }
+
+    public function RegisterPenilai()
+    {
+        return view('auth.register-penilai');
+    }
+
     public function updateProfil(Request $request, $id)
     {
         $data = $request->all();
@@ -47,6 +55,7 @@ class UserController extends Controller
         $sekolah->update($data);
         return redirect()->route('profil.index')->with('success', 'Profil berhasil diubah');
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -66,7 +75,6 @@ class UserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-
         $input = $request->all();
         // dd($input);
         $input['password'] = Hash::make($input['password']);
@@ -74,16 +82,16 @@ class UserController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('users.index')
+        return redirect()
+            ->route('users.index')
             ->with('success', 'User created successfully');
     }
+
     public function Register(Request $request)
     {
-
         $user = User::create([
             'name' => $request->input('nama_sekolah'),
-            'npsn' => $request->input('npsn'),
-            'reg_number' => $this->generateRegNumber(),
+            'reg_number' => $request->input('reg_number'),
             'nama_sekolah' => $request->input('nama_sekolah'),
             'jenjang' => $request->input('jenjang'),
             'status_sekolah' => $request->input('status_sekolah'),
@@ -92,13 +100,37 @@ class UserController extends Controller
             'telepon_sekolah' => $request->input('telepon_sekolah'),
             'email_sekolah' => $request->input('email_sekolah'),
             'email' => $request->input('email_sekolah'),
+            'UrlKuesioner' => $request->input('UrlKuesioner'),
+            'UrlBukti' => $request->input('UrlBukti'),
+            'Role' => 'Sekolah',
             'password' => Hash::make($request->input('password')),
         ]);
 
-        $user->assignRole('Admin');
+        $user->assignRole('Sekolah');
 
         return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login menggunakan email yang didaftarkan.');
     }
+
+    public function StorePenilai(Request $request)
+    {
+        $user = User::create([
+            'name' => $request->input('name'),
+            'nama_sekolah' => '-',
+            'provinsi' => $request->input('provinsi'),
+            'kota' => $request->input('kota'),
+            'kecamatan' => $request->input('kecamatan'),
+            'alamat_sekolah' => $request->input('alamat_sekolah'),
+            'cp' => $request->input('cp'),
+            'email' => $request->input('email'),
+            'Role' => 'Penilai',
+            'password' => Hash::make($request->input('password')),
+        ]);
+
+        $user->assignRole('Penilai');
+
+        return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login menggunakan email yang didaftarkan.');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -155,7 +187,8 @@ class UserController extends Controller
 
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('users.index')
+        return redirect()
+            ->route('users.index')
             ->with('success', 'User updated successfully');
     }
 
@@ -168,9 +201,11 @@ class UserController extends Controller
     public function destroy($id): RedirectResponse
     {
         User::find($id)->delete();
-        return redirect()->route('users.index')
+        return redirect()
+            ->route('users.index')
             ->with('success', 'User deleted successfully');
     }
+
     // Fungsi generate kode register unik dengan format seperti SJ89#K (2 huruf, 2 digit angka, #, 1 huruf)
     protected function generateRegNumber()
     {

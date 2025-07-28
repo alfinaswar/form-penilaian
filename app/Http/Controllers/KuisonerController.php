@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kuisoner;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -36,12 +37,11 @@ class KuisonerController extends Controller
                     }
                     return '<span class="badge bg-danger">Inactive</span>';
                 })
-
                 ->rawColumns(['action', 'file_kuisoner', 'status'])
                 ->make(true);
         }
 
-        return view('kuisoner.index'); // Return your view for non-AJAX requests
+        return view('kuisoner.index');  // Return your view for non-AJAX requests
     }
 
     /**
@@ -49,9 +49,11 @@ class KuisonerController extends Controller
      */
     public function create($id)
     {
+        $datauser = User::find($id);
         $idUser = $id;
         $data = Kuisoner::where('idUser', $idUser)->first();
-        return view('kuisoner.create', compact('idUser', 'data'));
+        // dd($idUser);
+        return view('kuisoner.create', compact('idUser', 'data', 'datauser'));
     }
 
     /**
