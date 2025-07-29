@@ -31,6 +31,11 @@ class UserController extends Controller
         $sekolah = User::where('id', auth()->user()->id)->first();
         return view('profil.index', compact('sekolah'));
     }
+    public function ProfilePenilai()
+    {
+        $sekolah = User::where('id', auth()->user()->id)->first();
+        return view('profil.index-penilai', compact('sekolah'));
+    }
 
     public function editProfil($id)
     {
@@ -167,6 +172,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id): RedirectResponse
     {
+        // Validasi input
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
@@ -175,21 +181,27 @@ class UserController extends Controller
         ]);
 
         $input = $request->all();
+
         if (!empty($input['password'])) {
-            $input['password'] = Hash::make($input['password']);
+            $input['password'] = \Hash::make($input['password']);
         } else {
-            $input = Arr::except($input, array('password'));
+            $input = \Arr::except($input, array('password'));
         }
 
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id', $id)->delete();
+
+        $user->roles()->detach();
 
         $user->assignRole($request->input('roles'));
 
+        if ($request->has('permissions')) {
+            $user->syncPermissions($request->input('permissions'));
+        }
+
         return redirect()
             ->route('users.index')
-            ->with('success', 'User updated successfully');
+            ->with('success', 'User dan role/permission berhasil diupdate');
     }
 
     /**

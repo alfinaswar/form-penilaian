@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/petunjuk-penggunaan-aplikasi', [HomeController::class, 'Guide'])->name('guide.index');
     Route::prefix('profil')->group(function () {
         Route::GET('/identitas', [UserController::class, 'profil'])->name('profil.index');
+        Route::GET('/identitas-penilai', [UserController::class, 'ProfilePenilai'])->name('profil.penilai');
         Route::GET('/identitas/edit/{id}', [UserController::class, 'editProfil'])->name('profil.edit');
         Route::PUT('/identitas/update/{id}', [UserController::class, 'updateProfil'])->name('profil.update');
     });

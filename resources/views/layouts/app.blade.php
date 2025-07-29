@@ -135,15 +135,26 @@
                         </a>
                     </li>
 
-                    {{-- @can('profile-sekolah') --}}
-                    <li>
-                        <a href="{{ route('profil.index') }}">
-                            <div class="menu-icon">
-                                <i class="fa fa-school"></i>
-                            </div>
-                            <span class="nav-text">Profile Sekolah</span>
-                        </a>
-                    </li>
+                    @can('profile-sekolah')
+                        <li>
+                            <a href="{{ route('profil.index') }}">
+                                <div class="menu-icon">
+                                    <i class="fa fa-school"></i>
+                                </div>
+                                <span class="nav-text">Profile Sekolah</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('profile-penilai')
+                        <li>
+                            <a href="{{ route('profil.penilai') }}">
+                                <div class="menu-icon">
+                                    <i class="fa fa-user-check"></i>
+                                </div>
+                                <span class="nav-text">Profile Penilai</span>
+                            </a>
+                        </li>
+                    @endcan
                     <li>
                         <a href="{{ route('guide.index') }}">
                             <div class="menu-icon">
@@ -152,40 +163,29 @@
                             <span class="nav-text">Petunjuk</span>
                         </a>
                     </li>
-                    {{-- @endcan
-                    @can('upload-kuisoner') --}}
 
-
-
-                    {{-- @endcan
-                    @can('isi-kuisoner') --}}
-
-                    {{-- @endcan
-                    @can('upload-bukti') --}}
-
-                    {{-- @endcan --}}
                 </ul>
-                {{-- @can('management-user') --}}
-                <ul class="metismenu" id="menu">
-                    <li class="menu-title">Management User</li>
-                    <li>
-                        <a href="{{ route('users.index') }}">
-                            <div class="menu-icon">
-                                <i class="fa fa-users"></i>
-                            </div>
-                            <span class="nav-text">Data Pengguna</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('roles.index') }}">
-                            <div class="menu-icon">
-                                <i class="fa fa-key"></i>
-                            </div>
-                            <span class="nav-text">Hak Akses</span>
-                        </a>
-                    </li>
-                </ul>
-                {{-- @endcan --}}
+                @can('management-user')
+                    <ul class="metismenu" id="menu">
+                        <li class="menu-title">Management User</li>
+                        <li>
+                            <a href="{{ route('users.index') }}">
+                                <div class="menu-icon">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                                <span class="nav-text">Data Pengguna</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('roles.index') }}">
+                                <div class="menu-icon">
+                                    <i class="fa fa-key"></i>
+                                </div>
+                                <span class="nav-text">Hak Akses</span>
+                            </a>
+                        </li>
+                    </ul>
+                @endcan
             </div>
         </div>
 
