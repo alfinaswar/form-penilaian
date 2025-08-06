@@ -43,24 +43,28 @@
                                 @foreach ($user as $key => $item)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td><a href="{{ route('kuisoner.create', $item->id) }}">{{ $item->reg_number }}</a></td>
+                                        <td><a href="{{ route('profil.sekolah', $item->id) }}">{{ $item->reg_number }}</a></td>
                                         <td>{{ $item->jenjang }}</td>
                                         <td>{{ $item->Nilai->StatusKuisoner ?? 'PROGRESS' }}</td>
                                         <td>{{ $item->Nilai->StatusBukti ?? 'PROGRESS' }}</td>
                                         <td>{{ $item->Nilai->NilaiKuisoner ?? 'PROGRESS' }}</td>
                                         <td>{{ $item->NilaiKuisoner->TotalAkhir ?? 'PROGRESS' }}</td>
                                         <td>
-                                            {{-- @can('admin') --}}
-                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#inputModal" data-id="{{ $item->id }}"
-                                                data-register="{{ $item->reg_number }}">
-                                                <i class="fa fa-edit"></i> Form Penilaian
-                                            </button>
-                                            <a href="{{ route('nilai.cetak_pdf', $item->id) }}" target="_blank"
-                                                class="btn btn-sm btn-danger" style="margin-top: 5px;">
-                                                <i class="fa fa-file-pdf-o"></i> Cetak PDF
-                                            </a>
-                                            {{-- @endcan --}}
+                                            @can('aksi-admin')
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#inputModal" data-id="{{ $item->id }}"
+                                                    data-register="{{ $item->reg_number }}">
+                                                    <i class="fa fa-edit"></i> Form Penilaian
+                                                </button>
+                                                <a href="{{ route('kuisoner.create', $item->id) }}" target="_blank"
+                                                    class="btn btn-sm btn-danger" style="margin-top: 5px;">
+                                                    <i class="fa fa-file-pdf-o"></i> Cetak PDF
+                                                </a>
+                                                <a href="{{ route('nilai.cetak_pdf', $item->id) }}" target="_blank"
+                                                    class="btn btn-sm btn-danger" style="margin-top: 5px;">
+                                                    <i class="fa fa-file-pdf-o"></i> Cetak PDF
+                                                </a>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach

@@ -31,6 +31,11 @@ class UserController extends Controller
         $sekolah = User::where('id', auth()->user()->id)->first();
         return view('profil.index', compact('sekolah'));
     }
+    public function profilSekolah($id)
+    {
+        $sekolah = User::where('id', $id)->first();
+        return view('profil.index', compact('sekolah'));
+    }
     public function ProfilePenilai()
     {
         $sekolah = User::where('id', auth()->user()->id)->first();

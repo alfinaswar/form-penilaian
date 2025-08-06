@@ -112,6 +112,13 @@
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="sekolah-tab" data-bs-toggle="tab"
+                                        data-bs-target="#sekolah-login" type="button" role="tab"
+                                        aria-controls="sekolah-login" aria-selected="false">
+                                        <i class="fas fa-school tab-icon"></i>Sekolah
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="penilai-tab" data-bs-toggle="tab"
                                         data-bs-target="#penilai-login" type="button" role="tab"
                                         aria-controls="penilai-login" aria-selected="false">
@@ -167,24 +174,23 @@
                                     </form>
                                 </div>
 
-                                <!-- Penilai Login Tab -->
-                                <div class="tab-pane fade" id="penilai-login" role="tabpanel"
-                                    aria-labelledby="penilai-tab">
+                                <!-- Sekolah Login Tab -->
+                                <div class="tab-pane fade" id="sekolah-login" role="tabpanel"
+                                    aria-labelledby="sekolah-tab">
                                     <form class="dez-form pb-3" method="POST" action="{{ route('login') }}">
                                         @csrf
-                                        <input type="hidden" name="user_type" value="penilai">
+                                        <input type="hidden" name="user_type" value="sekolah">
 
-                                        <h3 class="form-title text-center">Login Penilai</h3>
+                                        <h3 class="form-title text-center">Login Sekolah</h3>
                                         <div class="dez-separator-outer m-b5">
-                                            <div class="dez-separator bg-success style-liner"></div>
+                                            <div class="dez-separator bg-warning style-liner"></div>
                                         </div>
-                                        <p class="text-center">Masukkan kredensial penilai Anda.</p>
+                                        <p class="text-center">Masukkan kredensial sekolah Anda.</p>
 
                                         <div class="form-group mb-3">
-                                            <input id="penilai_email" type="email"
-                                                class="form-control @error('email') is-invalid @enderror" name="email"
-                                                value="{{ old('email') }}" required autocomplete="email"
-                                                placeholder="Email Penilai">
+                                            <input type="email" name="email" value="{{ old('email') }}" required
+                                                class="form-control @error('email') is-invalid @enderror"
+                                                placeholder="Email Sekolah" autocomplete="email">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -193,10 +199,9 @@
                                         </div>
 
                                         <div class="form-group mb-3">
-                                            <input id="penilai_password" type="password"
+                                            <input type="password" name="password" required
                                                 class="form-control @error('password') is-invalid @enderror"
-                                                name="password" required autocomplete="current-password"
-                                                placeholder="Password Penilai">
+                                                placeholder="Password Sekolah" autocomplete="current-password">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -205,7 +210,52 @@
                                         </div>
 
                                         <div class="text-center mb-3">
-                                            <button class="btn btn-penilai text-white btn-block w-100" type="submit">
+                                            <button class="btn btn-warning text-white btn-block w-100" type="submit">
+                                                <i class="fas fa-sign-in-alt me-2"></i>Login sebagai Sekolah
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- Penilai Login Tab -->
+                                <div class="tab-pane fade" id="penilai-login" role="tabpanel"
+                                    aria-labelledby="penilai-tab">
+                                    <form class="dez-form pb-3" method="POST" action="{{ route('login') }}">
+                                        @csrf
+                                        <input type="hidden" name="user_type" value="admin">
+
+                                        <h3 class="form-title text-center">Login Admin</h3>
+                                        <div class="dez-separator-outer m-b5">
+                                            <div class="dez-separator bg-primary style-liner"></div>
+                                        </div>
+                                        <p class="text-center">Masukkan kredensial administrator Anda.</p>
+
+                                        <div class="form-group mb-3">
+                                            <input id="admin_email" type="email"
+                                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                                value="{{ old('email') }}" required autocomplete="email" autofocus
+                                                placeholder="Email Admin">
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <input id="admin_password" type="password"
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                name="password" required autocomplete="current-password"
+                                                placeholder="Password Admin">
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="text-center mb-3">
+                                            <button class="btn btn-admin text-white btn-block w-100" type="submit">
                                                 <i class="fas fa-sign-in-alt me-2"></i>Login sebagai Penilai
                                             </button>
                                         </div>

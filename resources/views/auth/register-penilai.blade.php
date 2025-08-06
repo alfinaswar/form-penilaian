@@ -52,8 +52,8 @@
 
                                 <div class="form-group mb-3">
                                     <label>Kabupaten/Kota</label>
-                                    <input type="text" name="kota" class="form-control"
-                                        placeholder="Kabupaten/Kota" required>
+                                    <input type="text" name="kota" class="form-control" placeholder="Kabupaten/Kota"
+                                        required>
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -74,21 +74,25 @@
 
                                 <div class="form-group mb-3">
                                     <label>Kontak Person / Wa</label>
-                                    <input type="text" name="cp" class="form-control"
-                                        placeholder="Kontak Person" required>
+                                    <input type="text" name="cp" class="form-control" placeholder="Kontak Person"
+                                        required>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label>Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>Email</label>
+                                    <input type="password" name="password" class="form-control" placeholder="Password"
                                         required>
                                 </div>
 
 
                                 <div class="form-group mb-3">
                                     <label>SK PNS</label>
-                                    <input type="text" name="SkPns" class="form-control"
-                                        placeholder="Link Google Drive" required>
+                                    <input type="text" name="SkPns" class="form-control" placeholder="Link Google Drive"
+                                        required>
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -118,11 +122,11 @@
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="{{ asset('assets/js/deznav-init.js') }}"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const passwordInput = document.getElementById('password');
             const strengthDiv = document.getElementById('password-strength');
 
-            passwordInput.addEventListener('input', function() {
+            passwordInput.addEventListener('input', function () {
                 const val = passwordInput.value;
                 let strength = 0;
                 let messages = [];
