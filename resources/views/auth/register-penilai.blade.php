@@ -19,7 +19,7 @@
                     <!-- Kolom Kiri -->
                     <div
                         class="col-md-4 bg-light d-flex flex-column justify-content-center align-items-center text-center p-4">
-                        <img src="{{ asset('assets/images/bglogin/kuantalogo.png') }}" alt="Logo" class="mb-3"
+                        <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo" class="mb-3"
                             style="max-width: 150px;">
                         <h4 class="mb-2">KUANTA</h4>
                         <p class="mb-1">Sistem Informasi Adiwiyata</p>

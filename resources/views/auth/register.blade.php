@@ -19,7 +19,7 @@
                     <!-- Kolom Kiri -->
                     <div
                         class="col-md-4 bg-light d-flex flex-column justify-content-center align-items-center text-center p-4">
-                        <img src="{{ asset('assets/images/bglogin/kuantalogo.png') }}" alt="Logo" class="mb-3"
+                        <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo" class="mb-3"
                             style="max-width: 150px;">
                         <h4 class="mb-2">KUANTA</h4>
                         <p class="mb-1">Sistem Informasi Adiwiyata</p>
@@ -78,8 +78,8 @@
 
                                 <div class="form-group mb-3">
                                     <label>Kontak Person</label>
-                                    <input type="text" name="cp" class="form-control"
-                                        placeholder="Nama kontak person" required>
+                                    <input type="text" name="cp" class="form-control" placeholder="Nama kontak person"
+                                        required>
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -144,11 +144,11 @@
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="{{ asset('assets/js/deznav-init.js') }}"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const passwordInput = document.getElementById('password');
             const strengthDiv = document.getElementById('password-strength');
 
-            passwordInput.addEventListener('input', function() {
+            passwordInput.addEventListener('input', function () {
                 const val = passwordInput.value;
                 let strength = 0;
                 let messages = [];
