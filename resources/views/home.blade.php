@@ -3,7 +3,7 @@
 @section('content')
     @if (session()->has('success'))
         <script>
-            setTimeout(function () {
+            setTimeout(function() {
                 swal.fire({
                     title: "{{ __('Success!') }}",
                     text: "{!! \Session::get('success') !!}",
@@ -43,7 +43,8 @@
                                 @foreach ($user as $key => $item)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td><a href="{{ route('profil.sekolah', $item->id) }}">{{ $item->reg_number }}</a></td>
+                                        <td><a href="{{ route('profil.sekolah', $item->id) }}">{{ $item->reg_number }}</a>
+                                        </td>
                                         <td>{{ $item->jenjang }}</td>
                                         <td>{{ $item->Nilai->StatusKuisoner ?? 'PROGRESS' }}</td>
                                         <td>{{ $item->Nilai->StatusBukti ?? 'PROGRESS' }}</td>
@@ -54,15 +55,23 @@
                                                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                                     data-bs-target="#inputModal" data-id="{{ $item->id }}"
                                                     data-register="{{ $item->reg_number }}">
-                                                    <i class="fa fa-edit"></i> Form Penilaian
+                                                    <i class="fa fa-clipboard-list"></i> Form Penilaian
                                                 </button>
+
                                                 <a href="{{ route('kuisoner.create', $item->id) }}" target="_blank"
-                                                    class="btn btn-sm btn-danger" style="margin-top: 5px;">
-                                                    <i class="fa fa-file-pdf-o"></i> Cetak PDF
+                                                    class="btn btn-sm btn-info" style="margin-top: 5px;">
+                                                    <i class="fa fa-file-alt"></i> Kuesioner
                                                 </a>
+
                                                 <a href="{{ route('nilai.cetak_pdf', $item->id) }}" target="_blank"
-                                                    class="btn btn-sm btn-danger" style="margin-top: 5px;">
-                                                    <i class="fa fa-file-pdf-o"></i> Cetak PDF
+                                                    class="btn btn-sm btn-success" style="margin-top: 5px;">
+                                                    <i class="fa fa-file-pdf"></i> Cetak PDF
+                                                </a>
+                                            @endcan'
+                                            @can('aksi-sekolah')
+                                                <a href="{{ route('nilai.cetak_pdf', $item->id) }}" target="_blank"
+                                                    class="btn btn-sm btn-success" style="margin-top: 5px;">
+                                                    <i class="fa fa-file-pdf"></i> Cetak PDF
                                                 </a>
                                             @endcan
                                         </td>
@@ -123,20 +132,19 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">Simpan</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-
 @endsection
 
 @push('scripts')
     <script>
         const inputModal = document.getElementById('inputModal');
-        inputModal.addEventListener('show.bs.modal', function (event) {
+        inputModal.addEventListener('show.bs.modal', function(event) {
             const button = event.relatedTarget;
             const userId = button.getAttribute('data-id');
             const regNumber = button.getAttribute('data-register');
