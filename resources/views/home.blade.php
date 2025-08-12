@@ -67,7 +67,19 @@
                                                     class="btn btn-sm btn-success" style="margin-top: 5px;">
                                                     <i class="fa fa-file-pdf"></i> Cetak PDF
                                                 </a>
-                                            @endcan'
+                                            @endcan
+                                            @can('aksi-penilai')
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#inputModal" data-id="{{ $item->id }}"
+                                                    data-register="{{ $item->reg_number }}">
+                                                    <i class="fa fa-clipboard-list"></i> Form Penilaian
+                                                </button>
+
+                                                <a href="{{ route('kuisoner.create', $item->id) }}" target="_blank"
+                                                    class="btn btn-sm btn-info" style="margin-top: 5px;">
+                                                    <i class="fa fa-file-alt"></i> Kuesioner
+                                                </a>
+                                            @endcan
                                             @can('aksi-sekolah')
                                                 <a href="{{ route('nilai.cetak_pdf', $item->id) }}" target="_blank"
                                                     class="btn btn-sm btn-success" style="margin-top: 5px;">
