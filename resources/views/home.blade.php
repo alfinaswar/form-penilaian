@@ -3,7 +3,7 @@
 @section('content')
     @if (session()->has('success'))
         <script>
-            setTimeout(function() {
+            setTimeout(function () {
                 swal.fire({
                     title: "{{ __('Success!') }}",
                     text: "{!! \Session::get('success') !!}",
@@ -43,8 +43,15 @@
                                 @foreach ($user as $key => $item)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td><a href="{{ route('profil.sekolah', $item->id) }}">{{ $item->reg_number }}</a>
-                                        </td>
+                                        @if(auth()->user()->hasRole('Penilai'))
+                                            <td>
+                                                <a href="{{ route('profil.sekolah', $item->id) }}">{{ $item->reg_number }}</a>
+                                            </td>
+                                        @else
+                                            <td>
+                                                {{ $item->reg_number }}
+                                            </td>
+                                        @endif
                                         <td>{{ $item->jenjang }}</td>
                                         <td>{{ $item->Nilai->StatusKuisoner ?? 'PROGRESS' }}</td>
                                         <td>{{ $item->Nilai->StatusBukti ?? 'PROGRESS' }}</td>
@@ -72,12 +79,12 @@
                                                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                                     data-bs-target="#inputModal" data-id="{{ $item->id }}"
                                                     data-register="{{ $item->reg_number }}">
-                                                    <i class="fa fa-clipboard-list"></i> Form Penilaian
+                                                    <i class="fa fa-clipboard-list"></i> Hasil Kuanta
                                                 </button>
 
                                                 <a href="{{ route('kuisoner.create', $item->id) }}" target="_blank"
                                                     class="btn btn-sm btn-info" style="margin-top: 5px;">
-                                                    <i class="fa fa-file-alt"></i> Kuesioner
+                                                    <i class="fa fa-file-alt"></i> Kuanta
                                                 </a>
                                             @endcan
                                             @can('aksi-sekolah')
@@ -156,7 +163,7 @@
 @push('scripts')
     <script>
         const inputModal = document.getElementById('inputModal');
-        inputModal.addEventListener('show.bs.modal', function(event) {
+        inputModal.addEventListener('show.bs.modal', function (event) {
             const button = event.relatedTarget;
             const userId = button.getAttribute('data-id');
             const regNumber = button.getAttribute('data-register');
